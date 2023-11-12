@@ -4,7 +4,7 @@ function App() {
   return (
     <div>
         <p>
-          Hello!
+          Hello! This is the development site.
         </p>
     </div>
   );
