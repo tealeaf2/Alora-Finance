@@ -41,3 +41,38 @@
     transform: rotate(360deg);
   }
 }
+
+.sprout {
+  position: absolute;
+  bottom: 0;
+  left: 63%;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.money_tree {
+  position: absolute;
+  bottom: 65%;
+  left: 55%;
+  transform: translateX(-50%);
+  transform: translateY(-50%)
+}
+
+.home_dude {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+.horizontal-line {
+  width: 50%; /* Set the width of your horizontal line */
+  height: 1px;  /* Set the height of your horizontal line */
+  background-color: black; /* Set the color of your horizontal line */
+  transform: rotate(90deg); /* Rotate the line 90 degrees to make it vertical */
+  position: fixed; /* Use absolute positioning */
+  bottom: 70%; /* Position the line in the middle of the container */
+  left: 25%; /* Adjust the left position to center the line */
+  transform-origin: 0 0; /* Set the transform origin to the top-left corner */
+}
+
