@@ -1,5 +1,13 @@
+/* imports font used by Sadie */
+@font-face{
+  font-family: 'Outfit';
+  src: local('Outfit'),
+    url(./fonts/Outfit/static/Outfit-Regular.ttf) format('ttf');
+}
+
 .App {
   text-align: center;
+  font-family: Outfit;
 }
 
 .App-logo {
@@ -13,21 +21,74 @@
   }
 }
 
+/* Header Menu */
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #E8F9D6;
+  padding: 30px 32px 28px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  font-weight: bold;
+  color: #4B6133;
+  overflow: auto;
 }
 
-.App-header-button {
+/* Logo/Home on the left */
+.App-header-home{
+  margin:auto;
+  vertical-align:middle;
+}
+.App-header-home-logo{
+  vertical-align: middle;
+  object-fit: cover;
+  object-position: 50% 45%;
+  cursor: pointer;
+}
+
+/* Pages on the right */
+.App-header-sections{
+  margin-top: 10px;
+}
+.App-header-sections-button{
+  background-color: white;
+  border: none;
+  vertical-align: middle;
+  border-radius:30px;
+  margin: 4px 10px;
+  display: inline-block;
   
+  text-align: center;
+  padding: 8px 20px;
+  color: black;
+  font-weight: normal;
+  font-size: 17px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  text-decoration-line: none;
 }
-
+.App-header-sections-button1{
+  border: 3px solid #FFE4F7;
+}
+.App-header-sections-button1:hover{
+  background-color: #FFE4F7;
+}
+.App-header-sections-button2{
+  border: 3px solid #C8D1FD;
+}
+.App-header-sections-button2:hover{
+  background-color: #C8D1FD;
+}
+.App-header-sections-button3{
+  border: 3px solid #F6DFC4;
+}
+.App-header-sections-button3:hover{
+  background-color: #F6DFC4;
+}
+.App-header-sections-button4{
+  border: 3px solid #DBF4C0;
+}
+.App-header-sections-button4:hover{
+  background-color: #DBF4C0;
+}
 
 .App-link {
   color: #61dafb;
@@ -56,12 +117,6 @@
   left: 55%;
   transform: translateX(-50%);
   transform: translateY(-50%)
-}
-
-.home_dude {
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
 

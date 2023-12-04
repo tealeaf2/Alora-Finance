@@ -1,39 +1,38 @@
-// sys.path.append('../src')
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import '..index';
-import App from '..App';
-import reportWebVitals from '..reportWebVitals';
+import '../index.css';
+import App from '../App';
+import reportWebVitals from '../reportWebVitals';
 
+import home_logo from '../images/Home_Logo.png';
 
-// .button {
-//     background-color: #04AA6D; /* Green */
-//     border: none;
-//     color: white;
-//     padding: 15px 32px;
-//     text-align: center;
-//     text-decoration: none;
-//     display: inline-block;
-//     margin: 4px 2px;
-//     cursor: pointer;
-//   }
+const Header = () => {
+    return (
+        <header className="App-header">
+            <div className="app-header-home">
+                <a onClick={()=>void 0}><img src={home_logo} className="App-header-home-logo" alt='' width="260px" height='60px'/></a>
+            </div>
 
-<div className='App-header'>
-    <div className='App-logo'>
-        <a className='add-btn'>LOGO</a>
-    </div>
-    <div className='add-section'>
-        <a className='add-btn' href='#'>lessons</a>
-    </div>
-    <div className='add-section'>
-        <a className='add-btn' href='#'>games</a>
-    </div>
-    <div className='progress'>
-        <a className='add-btn' href='#'>progress</a>
-    </div>
-    <div className='profile'>
-        <a className='add-btn' href='#'>profile</a>
-    </div>
+            <div className="App-header-sections">
+                <div className="App-header-sections-button App-header-sections-button1">
+                    <a onClick={()=>void 0}>lessons</a> {/*link to another page*/}
+                </div>
+                
+                <div className="App-header-sections-button App-header-sections-button2">
+                    <a onClick={()=>void 0}>games</a>
+                </div>
 
-</div>
+                <div className="App-header-sections-button App-header-sections-button3">
+                    <a onClick={()=>void 0}>games</a>
+                </div>
+
+                <div className="App-header-sections-button App-header-sections-button4">
+                    <a onClick={()=>void 0}>profile</a>
+                </div>
+            </div>
+        </header>
+    )
+}
+
+export default Header;
+
