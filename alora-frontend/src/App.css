@@ -1,13 +1,5 @@
-/* imports font used by Sadie */
-@font-face{
-  font-family: 'Outfit';
-  src: local('Outfit'),
-    url(./fonts/Outfit/static/Outfit-Regular.ttf) format('ttf');
-}
-
 .App {
   text-align: center;
-  font-family: Outfit;
 }
 
 .App-logo {
@@ -30,6 +22,7 @@
   font-weight: bold;
   color: #4B6133;
   overflow: auto;
+
 }
 
 /* Logo/Home on the left */

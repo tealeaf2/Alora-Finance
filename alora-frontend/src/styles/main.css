@@ -1,6 +1,13 @@
+/* import font used by Sadie */
+@font-face{
+    font-family: 'Outfit Regular';
+    src: local('Outfit-Regular'),
+      url(../fonts/Outfit/static/Outfit-Regular.ttf) format('ttf');
+  }
+
 *{
     padding:0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Outfit Regular;
 }
