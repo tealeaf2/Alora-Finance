@@ -7,13 +7,11 @@ import Header from './global/Header';
 function App() {
   return (
     <div className="App">
-      <div className = "App">
-        <Header />
+      <Header />
 
-        <img src={sprout} className="sprout" alt="" width="35%" height="auto"/>
-        <img src={money_tree} className="money_tree" alt="" width="20%" height="auto"/>
-        <div className="horizontal-line"></div>
-      </div>
+      <img src={sprout} className="sprout" alt="" width="35%" height="auto"/>
+      <img src={money_tree} className="money_tree" alt="" width="20%" height="auto"/>
+      <div className="horizontal-line"></div>
     </div>
   )
   }
