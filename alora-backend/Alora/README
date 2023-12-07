@@ -1,0 +1,2 @@
+Start Server: python manage.py runserver
+Error: That port is already in use: sudo lsof -t -i tcp:8000 | xargs kill -9
