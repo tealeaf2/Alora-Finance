@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import ReactDOM from 'react-dom/client';
 import '../styles/index.css';
 import App from '../App';
@@ -14,22 +15,30 @@ const Header = () => {
             </div>
 
             <div className="App-header-sections">
+                <Link to="/lessons">
                 <div className="App-header-sections-button App-header-sections-button1">
-                    <a onClick={()=>void 0}>lessons</a> {/*link to another page*/}
+                    Lessons
                 </div>
+                </Link>
                 
+                <Link to="/games">
                 <div className="App-header-sections-button App-header-sections-button2">
-                    <a onClick={()=>void 0}>games</a>
+                    Games
                 </div>
+                </Link>
 
+                <Link to="/games">
                 <div className="App-header-sections-button App-header-sections-button3">
-                    <a onClick={()=>void 0}>games</a>
+                    Games
                 </div>
+                </Link>
 
+                <Link to="/profile">
                 <div className="App-header-sections-button App-header-sections-button4">
-                    <a onClick={()=>void 0}>profile</a>
+                    Profile
                 </div>
-            </div>
+                </Link>
+            </div>  
         </header>
     )
 }
