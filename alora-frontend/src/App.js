@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home'
 import Lessons from './pages/Lessons'
 import Profile from './pages/Profile'
+import Progress from './pages/Progress'
 import Games from './pages/Games'
 
 
@@ -16,6 +17,7 @@ export default function App() {
          <Route exact path='/' element={<Home/>} />
          <Route path='/lessons' element={<Lessons/>} />
          <Route path='/games' element={<Games/>} />
+         <Route path='/progress' element={<Progress/>} />
          <Route path='/profile' element={<Profile/>} />
        </Routes>
      </Router>

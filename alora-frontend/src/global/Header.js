@@ -34,9 +34,9 @@ const Header = () => {
                 </div>
                 </Link>
 
-                <Link to="/games">
+                <Link to="/progress">
                 <div className="App-header-sections-button App-header-sections-button3">
-                    Games
+                    Progress
                 </div>
                 </Link>
 
