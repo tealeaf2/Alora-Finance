@@ -8,6 +8,8 @@ function Progress() {
     return (
         <div className="App">
           <Header />
+
+          
     
           <img src={sprout} className="sprout" alt="" width="35%" height="auto"/>
           <img src={money_tree} className="money_tree" alt="" width="20%" height="auto"/>

@@ -1,8 +1,11 @@
-function Games() {
-    return (
+import Header from '../global/Header';
 
-    <></>
+export default function Games() {
+    return (
+        <>
+            <Header/>
+
+        </>
     )
 }
 
-export default Games

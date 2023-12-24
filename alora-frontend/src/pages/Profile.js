@@ -1,8 +1,12 @@
-function Profile() {
+import Header from '../global/Header';
+
+
+export default function Profile() {
     return (
 
-    <></>
+        <>
+            <Header/>
+        </>
     )
 }
 
-export default Profile
