@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './styles/index.css';
+// import './styles/App.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Sprout from './images/Sprout.png'
+// import { BrowserRouter } from 'react-router-dom';
+
 
 import'./styles/main.css'
 

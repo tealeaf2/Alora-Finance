@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .App {
   text-align: center;
 }
@@ -17,9 +21,9 @@
 .App-header {
   background-color: #E8F9D6;
   padding: 30px 32px 28px;
-  display: flex;
-  justify-content: space-between;
-  font-weight: bold;
+  /* display: flex; */
+ /* justify-content: space-between; */
+  /* font-weight: bold;*/
   color: #4B6133;
   overflow: auto;
 
@@ -27,19 +31,20 @@
 
 /* Logo/Home on the left */
 .App-header-home{
-  margin:auto;
+  /*margin:auto;*/
   vertical-align:middle;
 }
 .App-header-home-logo{
   vertical-align: middle;
   object-fit: cover;
-  object-position: 50% 45%;
+  /* object-position: 50% 45%; */
   cursor: pointer;
 }
 
 /* Pages on the right */
 .App-header-sections{
   margin-top: 10px;
+  font-family: monospace;
 }
 .App-header-sections-button{
   background-color: white;
@@ -52,7 +57,7 @@
   text-align: center;
   padding: 8px 20px;
   color: black;
-  font-weight: normal;
+  font-weight: bold;
   font-size: 17px;
   transition-duration: 0.4s;
   cursor: pointer;

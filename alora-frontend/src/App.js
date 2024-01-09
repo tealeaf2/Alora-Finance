@@ -1,21 +1,46 @@
-import './App.css';
-import {PageRoutes} from './Routes';
-// import sprout from './images/Sprout.png';
-// import home_dude from './images/Home-Dude.png';
-// import money_tree from'./images/Money_Tree.png';
-// import Header from './global/Header';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function App() {
-  return (
-    // <div className="App">
-    //   <Header />
 
-    //   <img src={sprout} className="sprout" alt="" width="35%" height="auto"/>
-    //   <img src={money_tree} className="money_tree" alt="" width="20%" height="auto"/>
-    //   <div className="horizontal-line"></div>
-    // </div>
-    <PageRoutes />
-    )
-  }
-  
-export default App;
+// import './styles/App.css';
+import HomePage from './pages/HomePage'
+import LessonsPage from './pages/LessonsPage'
+import ProfilePage from './pages/ProfilePage'
+import ProgressPage from './pages/ProgressPage'
+import GamePage from './pages/GamePage'
+
+
+export default function App() {
+ return (
+   <>
+     <Router>
+       <Routes>
+         <Route exact path='/' element={<HomePage/>} />
+         <Route path='/lessons' element={<LessonsPage/>} />
+         <Route path='/games' element={<GamePage/>} />
+         <Route path='/progress' element={<ProgressPage/>} />
+         <Route path='/profile' element={<ProfilePage/>} />
+       </Routes>
+     </Router>
+   </>
+ );
+}
+
+
+// import './styles/App.css';
+// import Progress from './pages/Progress'
+// import Lessons from './pages/Lessons'
+// import Profile from './pages/Profile'
+// import Games from './pages/Games'
+
+// function App() {
+//   return (
+//     <>
+//       <Progress/>
+//       {/* <Games/>
+//       <Lessons/>
+//       <Profile/> */}
+//     </>
+//   )
+//   }
+
+// export default App;
