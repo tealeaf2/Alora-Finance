@@ -1,6 +1,6 @@
 import Header from '../global/Header';
 
-export const LessonsPage = () => {
+export default function LessonsPage () {
     return (
         <>
         <Header />
