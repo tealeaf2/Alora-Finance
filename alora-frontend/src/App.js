@@ -2,11 +2,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 // import './styles/App.css';
-import Home from './pages/Home'
-import Lessons from './pages/Lessons'
-import Profile from './pages/Profile'
-import Progress from './pages/Progress'
-import Games from './pages/Games'
+import HomePage from './pages/HomePage'
+import LessonsPage from './pages/LessonsPage'
+import ProfilePage from './pages/ProfilePage'
+import ProgressPage from './pages/ProgressPage'
+import GamePage from './pages/GamePage'
 
 
 export default function App() {
@@ -14,11 +14,11 @@ export default function App() {
    <>
      <Router>
        <Routes>
-         <Route exact path='/' element={<Home/>} />
-         <Route path='/lessons' element={<Lessons/>} />
-         <Route path='/games' element={<Games/>} />
-         <Route path='/progress' element={<Progress/>} />
-         <Route path='/profile' element={<Profile/>} />
+         <Route exact path='/' element={<HomePage/>} />
+         <Route path='/lessons' element={<LessonsPage/>} />
+         <Route path='/games' element={<GamePage/>} />
+         <Route path='/progress' element={<ProgressPage/>} />
+         <Route path='/profile' element={<ProfilePage/>} />
        </Routes>
      </Router>
    </>
