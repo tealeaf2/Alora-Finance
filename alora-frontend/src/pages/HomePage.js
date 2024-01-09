@@ -1,4 +1,4 @@
-import Progress from './Progress'
+import Progress from './ProgressPage'
 
 export default function Home() {
  return (
