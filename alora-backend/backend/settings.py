@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'classroom',
     
     # EXTERNAL
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

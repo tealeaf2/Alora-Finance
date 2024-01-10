@@ -1,14 +1,29 @@
 import '../styles/App.css';
 import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+
+
 import Header from '../global/Header';
 import UnitDisplaySmall from '../components/unitDisplaySmall';
 import DisplayUnitAndLessons from '../components/displayUnitAndLessons'
-import {units} from './data';
 
 export default function Lessons() {
     const [home, setHome] = useState(false)
     const [Id, setId] = useState(0)
     const [unitName, setUnitName] = useState('')
+    const [units, setUnits] = useState([])
+
+    useEffect(() => {
+        async function getUnits() {
+            try {
+                const {data} = await axios.get('api/units/')
+                setUnits(data)
+            } catch (error) {
+                console.log(error.message);
+            }
+        }
+        getUnits()
+    },[])
 
     return (
         <>
@@ -22,7 +37,7 @@ export default function Lessons() {
                     </button>
 
                     {units.map(unit => (
-                        <div key={unit._id} 
+                        <div key={unit.id} 
                             className="py-2"
                         >
                             <UnitDisplaySmall unit={unit} />
@@ -41,10 +56,10 @@ export default function Lessons() {
                                         className="text-left py-10 px-10 rounded-3xl w-full text-3xl App-header-sections-button3"
                                         onClick={() => {
                                             setHome(true)
-                                            setId(unit._id)
-                                            setUnitName(unit.unit_name)
+                                            setId(unit.id)
+                                            setUnitName(unit.name)
                                         }}>
-                                        Unit {unit._id}: {unit.unit_name}
+                                        Unit {unit.id}: {unit.name}
                                     </button>
                                 </div>
                             ))}

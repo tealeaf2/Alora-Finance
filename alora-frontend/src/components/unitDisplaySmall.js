@@ -5,7 +5,7 @@ function UnitDisplaySmall ({unit}) {
         <div 
             className="grid py-8 px-4 h-10 w-30 place-content-center border-4 rounded-3xl text-lg App-header-sections-button3"
             onClick = {() => null}>
-            {unit.unit_name}
+            {unit.name}
         </div>
   
     )
