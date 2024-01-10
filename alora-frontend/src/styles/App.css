@@ -63,6 +63,11 @@
   cursor: pointer;
   text-decoration-line: none;
 }
+
+.Unit-display-lesson{
+  border: 3px solid #F6DFC4;
+}
+
 .App-header-sections-button1{
   border: 3px solid #FFE4F7;
 }
@@ -117,11 +122,10 @@
   transform: translateY(-50%)
 }
 
-
 .horizontal-line {
   width: 50%; /* Set the width of your horizontal line */
-  height: 1px;  /* Set the height of your horizontal line */
-  background-color: black; /* Set the color of your horizontal line */
+  height: 2px;  /* Set the height of your horizontal line */
+  background-color: #4c4f54; /* Set the color of your horizontal line */
   transform: rotate(90deg); /* Rotate the line 90 degrees to make it vertical */
   position: fixed; /* Use absolute positioning */
   bottom: 70%; /* Position the line in the middle of the container */
