@@ -30,10 +30,3 @@ const listLessons = () => async (dispatch) => {
         });
     }
 };
-
-try {
-    const {data} = await axios.get('api/units/')
-    setUnits(data)
-} catch (error) {
-    console.log(error.message);
-}
