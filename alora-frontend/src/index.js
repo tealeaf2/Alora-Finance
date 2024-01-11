@@ -4,17 +4,19 @@ import './styles/index.css';
 // import './styles/App.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Sprout from './images/Sprout.png'
-// import { BrowserRouter } from 'react-router-dom';
+
+import { Provider } from 'react-redux'
+import store from './Store'
+
 
 
 import'./styles/main.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,5 +1,6 @@
 import '../styles/App.css';
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 
 
@@ -7,28 +8,40 @@ import Header from '../global/Header';
 import UnitDisplaySmall from '../components/unitDisplaySmall';
 import DisplayUnitAndLessons from '../components/displayUnitAndLessons'
 
+import { listUnits } from '../actions/unitActions'
+
 export default function Lessons() {
+    const dispatch = useDispatch()
+    const unitList = useSelector(state => state.unitList)
+    const {error, loading, units} = unitList
+
+    
+
     const [home, setHome] = useState(false)
     const [Id, setId] = useState(0)
     const [unitName, setUnitName] = useState('')
-    const [units, setUnits] = useState([])
+
+    
+
+    // const [units, setUnits] = useState([])
 
     useEffect(() => {
-        async function getUnits() {
-            try {
-                const {data} = await axios.get('api/units/')
-                setUnits(data)
-            } catch (error) {
-                console.log(error.message);
-            }
-        }
-        getUnits()
-    },[])
+        dispatch(listUnits())
+    },[dispatch])
+
+
+    // Check if unitList is undefined or still loading
+    if (!unitList || unitList.loading) {
+        // Return loading indicator or handle loading state
+        return <div>Loading...</div>;
+    }
+
 
     return (
         <>
             <Header/>
             <div className="flex justify-between bg-white">
+                {/* LEFT SIDE BAR */}
                 <div className="px-10 h-screen py-6 border-r-4 border-gray text-center">
                     <button className="text-2xl h-20 w-60 mx-auto my-2"
                         onClick={() => setHome(false)}
@@ -46,6 +59,7 @@ export default function Lessons() {
                 </div>
                         
                         
+                {/* RIGHT SIDE BAR */}
                 <div className="flex-grow max-w-screen-xl mx-auto p-6">
                     {home ? <DisplayUnitAndLessons id={Id} name={unitName} />
                         :
