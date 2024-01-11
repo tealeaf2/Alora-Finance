@@ -15,12 +15,11 @@ export default function Lessons() {
     const unitList = useSelector(state => state.unitList)
     const {error, loading, units} = unitList
 
-    
-
+    const [unit, setUnit] = useState({})
     const [home, setHome] = useState(false)
-    const [Id, setId] = useState(0)
-    const [unitName, setUnitName] = useState('')
+  
 
+    console.log(unit)
     
 
     // const [units, setUnits] = useState([])
@@ -61,7 +60,7 @@ export default function Lessons() {
                         
                 {/* RIGHT SIDE BAR */}
                 <div className="flex-grow max-w-screen-xl mx-auto p-6">
-                    {home ? <DisplayUnitAndLessons id={Id} name={unitName} />
+                    {home ? <DisplayUnitAndLessons number={unit.number} name={unit.name} />
                         :
                         <div className="max-h-screen overflow-y-auto max-w-screen-xl mx-auto px-10 py-5">
                             {units.map(unit => (
@@ -70,8 +69,7 @@ export default function Lessons() {
                                         className="text-left py-10 px-10 rounded-3xl w-full text-3xl App-header-sections-button3"
                                         onClick={() => {
                                             setHome(true)
-                                            setId(unit.id)
-                                            setUnitName(unit.name)
+                                            setUnit(units[unit.id - 1])
                                         }}>
                                         Unit {unit.id}: {unit.name}
                                     </button>
