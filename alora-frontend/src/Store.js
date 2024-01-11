@@ -1,7 +1,4 @@
-import { configureStore, combineReducers, applyMiddleware } from '@reduxjs/toolkit';
-import { thunk } from 'redux-thunk'
-import { composeWithDevTools } from '@redux-devtools/extension'
-
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
 import { unitListReducer } from './reducers/unitReducers'
 
@@ -12,8 +9,8 @@ const reducer = combineReducers({
 const initialState = {}
 
 const store = configureStore({
-    reducer: {reducer},
-    // preloadedState: initialState,
+    reducer: reducer,
+    preloadedState: initialState,
     // middleware: middleware,
 });
 

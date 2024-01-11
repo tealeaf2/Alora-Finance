@@ -13,6 +13,7 @@ class Classroom(models.Model):
 class Unit(models.Model):
     name = models.CharField(max_length=100)
     lessons_total = models.IntegerField(default=0)
+    # number = models.IntegerField(default=1)
     image = models.ImageField(null=True, blank=True)
     
     def __str__(self):
@@ -20,6 +21,7 @@ class Unit(models.Model):
 
 class Lesson(models.Model):
     name = models.CharField(max_length=100)
+    # number = models.IntegerField(default=1)
     link = models.CharField(max_length=200)
     lesson_num = models.IntegerField(default=0)
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE, related_name="lesson_unit", null=True, blank=True)

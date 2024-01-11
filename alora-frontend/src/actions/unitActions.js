@@ -12,6 +12,7 @@ export const listUnits = () => async (dispatch) => {
         // Dispatches the action (with type UNIT_LIST_REQUEST) to indicate the start of the async operation
         dispatch({ type: UNIT_LIST_REQUEST });
 
+
         // Make an asynchronous API call (e.g., using axios)
         const { data } = await axios.get('/api/units/');
 

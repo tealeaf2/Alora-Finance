@@ -12,36 +12,30 @@ import { listUnits } from '../actions/unitActions'
 
 export default function Lessons() {
     const dispatch = useDispatch()
-    const unitList = useSelector((state) => state.unitList)
-    console.log(unitList)
+    const unitList = useSelector(state => state.unitList)
     const {error, loading, units} = unitList
 
-    console.log(error, loading, units)
-
-
-
+    
 
     const [home, setHome] = useState(false)
     const [Id, setId] = useState(0)
     const [unitName, setUnitName] = useState('')
 
+    
+
     // const [units, setUnits] = useState([])
 
     useEffect(() => {
         dispatch(listUnits())
-
     },[dispatch])
 
 
-            // async function getUnits() {
-        //     try {
-        //         const {data} = await axios.get('api/units/')
-        //         setUnits(data)
-        //     } catch (error) {
-        //         console.log(error.message);
-        //     }
-        // }
-        // getUnits()
+    // Check if unitList is undefined or still loading
+    if (!unitList || unitList.loading) {
+        // Return loading indicator or handle loading state
+        return <div>Loading...</div>;
+    }
+
 
     return (
         <>
