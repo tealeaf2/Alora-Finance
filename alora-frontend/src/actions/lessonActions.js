@@ -7,7 +7,7 @@ import {
 } from '../constants/lessonConstants'; 
 
 // ACTION CREATOR returning a function instead of an action through thunk
-const listLessons = () => async (dispatch) => {
+export const listLessons = () => async (dispatch) => {
     try {
         // Dispatches the action (with type LESSON_LIST_REQUEST) to indicate the start of the async operation
         dispatch({ type: LESSON_LIST_REQUEST });
