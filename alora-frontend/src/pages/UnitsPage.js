@@ -10,7 +10,7 @@ import DisplayUnitAndLessons from '../components/displayUnitAndLessons'
 
 import { listUnits } from '../actions/unitActions'
 
-export default function Lessons() {
+export default function Units() {
     const dispatch = useDispatch()
     const unitList = useSelector(state => state.unitList)
     const {error, loading, units} = unitList
