@@ -1,12 +1,20 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
 import { unitListReducer } from './reducers/unitReducers'
-import { lessonListReducer } from './reducers/lessonReducers'
+import { lessonListReducer,
+        lessonDetailsReducer 
+
+} from './reducers/lessonReducers'
+import { quizListReducer } from './reducers/quizReducers'
 
 
 const reducer = combineReducers({
     unitList: unitListReducer,
+
     lessonList: lessonListReducer,
+    lessonDetails: lessonDetailsReducer,
+
+    quizList: quizListReducer,
 })
 
 const initialState = {}

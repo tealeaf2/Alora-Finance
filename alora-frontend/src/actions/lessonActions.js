@@ -3,7 +3,10 @@ import axios from 'axios'
 import { 
     LESSON_LIST_REQUEST,
     LESSON_LIST_SUCCESS,
-    LESSON_LIST_FAILURE
+    LESSON_LIST_FAILURE,
+    LESSON_DETAILS_REQUEST,
+    LESSON_DETAILS_SUCCESS,
+    LESSON_DETAILS_FAILURE,
 } from '../constants/lessonConstants'; 
 
 // ACTION CREATOR returning a function instead of an action through thunk
@@ -30,3 +33,28 @@ export const listLessons = () => async (dispatch) => {
         });
     }
 };
+
+
+export const listLessonDetails = (id) => async (dispatch) => {
+
+    try {
+
+        dispatch({ type: LESSON_DETAILS_REQUEST })
+
+        const { data } = await axios.get('/api/lessons/${id}')
+
+        dispatch({
+            type: LESSON_DETAILS_SUCCESS,
+            payload: data
+        })
+
+    } catch (error) {
+        dispatch({
+            type: LESSON_DETAILS_FAILURE,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        });
+    }
+
+}

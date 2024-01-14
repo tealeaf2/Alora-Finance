@@ -1,7 +1,10 @@
 import { 
     LESSON_LIST_REQUEST,
     LESSON_LIST_SUCCESS,
-    LESSON_LIST_FAILURE
+    LESSON_LIST_FAILURE,
+    LESSON_DETAILS_REQUEST,
+    LESSON_DETAILS_SUCCESS,
+    LESSON_DETAILS_FAILURE
 } from '../constants/lessonConstants'; 
 
 
@@ -29,3 +32,19 @@ export const lessonListReducer = (state = { lessons: [] }, action) => {
             return state
     }
 };
+
+export const lessonDetailsReducer = (state = { lesson: {}}, action) => {
+    switch (action.type) {
+        case LESSON_DETAILS_REQUEST:
+            return { loading: true, ...state}
+        
+        case LESSON_DETAILS_SUCCESS:
+            return { loading: false, lesson: action.payload }
+        
+        case LESSON_DETAILS_FAILURE:
+            return { loading: false, error: action.payload }
+
+        default:
+            return state
+    }
+}
