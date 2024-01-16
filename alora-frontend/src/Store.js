@@ -5,7 +5,12 @@ import { lessonListReducer,
         lessonDetailsReducer 
 
 } from './reducers/lessonReducers'
+
 import { quizListReducer } from './reducers/quizReducers'
+
+import { treeDetailsReducer,
+        treeListReducer,
+} from './reducers/treeReducers';
 
 
 const reducer = combineReducers({
@@ -15,6 +20,9 @@ const reducer = combineReducers({
     lessonDetails: lessonDetailsReducer,
 
     quizList: quizListReducer,
+
+    treeDetails: treeDetailsReducer,
+    treeList: treeListReducer,
 })
 
 const initialState = {}
