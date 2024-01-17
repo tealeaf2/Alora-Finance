@@ -1,0 +1,9 @@
+Video: https://www.youtube.com/watch?v=i5JykvxUk_A&list=LL&index=2
+
+Activate Virtual Environmnet: . .venv/bin/activate
+Install django: pip install django
+Rest: pip install djangorestframework 
+Commands list: django-admin
+Run server: python manage.py runserver
+Migrate important stuff: python manage.py migrate
+Error: Port is already in use: sudo lsof -t -i tcp:8000 | xargs kill -9

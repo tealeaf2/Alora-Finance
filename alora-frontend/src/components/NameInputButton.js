@@ -1,32 +1,83 @@
-import { useState } from 'react';
+// import React from 'react';
+// import axios from 'axios';
+
+// //function to store name from input box
+// const getValue = (e) => {
+//     const uName = e.target.value;
+//     console.log(uName);
+// }
+
+//  const NameInputButton = ()  => {
+//     return (
+//     <>
+//         <label for="Name">Enter your name: </label>
+//         <input type="text" 
+//         name = "fname"
+//         placeholder = "Your name"
+//         onChange =  { getValue } />
+//     </>
+//     )
+// }
+
+// export default NameInputButton;
+
+
+import React, {useEffect, useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import axios from 'axios';
 
- const NameInputButton = ()  => {
 
-    const [currentVal, setVal] = useState(' ')
+import { listTrees } from '../actions/treeActions'
+
+const NameInputButton = () => {
+    // const [lessons, setLessons] = useState([])
+    const [name, setName] = useState(' ')
+    const dispatch = useDispatch()
+    const treeList = useSelector(state => state.treeList)
+    const {error, loading, names} = treeList
+
+    console.log(names)
+
+    useEffect(() => {
+        dispatch(listTrees())
     
-    //function to store name from input box
-    const getValue = (e) => {
-        setVal(e.target.value);
+    },[dispatch])
+
+    const getName = (e) => {
+        setName(e.target.value);
+        console.log(name)
     }
-    
-    //function to output name (as a test, will be sent to django api later)
-    const handleClick = () => {
-        console.log(currentVal)
+
+    const handleClick = async () => {
+        // console.log(currentVal)
+        await axios.post(
+            '/api/names/',
+                {
+                    'name':  name
+                },
+            {
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            }
+        )
     }
-    
 
     return (
+        <>
 
-    <>
-        <label for="Name">Enter your name: </label>
-        <input type="text" 
-        name = "fname"
-        placeholder = "Your name"
-        onChange = { getValue }
-        />
-        <button type = 'submit' onClick = { handleClick }> Submit </button>
-    </>
+            <form>
+                <label for="Name">Enter your name: </label>
+                <input type="text" 
+                name = "fname"
+                placeholder = "Your name"
+                onChange =  { getName } />
+                <button type = 'submit' onClick = { handleClick }> Submit </button>
+            </form>
+
+            
+        </>
     )
 }
 

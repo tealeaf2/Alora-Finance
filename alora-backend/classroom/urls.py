@@ -6,4 +6,6 @@ urlpatterns = [
     path('units/<int:pk>', getUnit, name='unit'),
     path('lessons/', getAllLessons, name='all-lessons'),
     path('lessons/<int:pk>', getLesson, name='all-lessons'),
+    path('names/', name_list),
+    path('names/<int:id>', name_detail)
 ]

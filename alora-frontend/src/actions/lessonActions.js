@@ -41,7 +41,8 @@ export const listLessonDetails = (id) => async (dispatch) => {
 
         dispatch({ type: LESSON_DETAILS_REQUEST })
 
-        const { data } = await axios.get('/api/lessons/${id}')
+
+        const { data } = await axios.get(`/api/lessons/${ id }`)
 
         dispatch({
             type: LESSON_DETAILS_SUCCESS,
