@@ -5,7 +5,7 @@ from rest_framework import status
 
 
 #models
-from classroom.models import Unit, Lesson, Name
+from classroom.models import Unit, Lesson
 
 #serializers
 from classroom.serializer import *
@@ -20,8 +20,8 @@ def getAllUnits(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
-def getUnit(request, pk):
-    unit = Unit.objects.get(id=pk)
+def getUnit(request, uk):
+    unit = Unit.objects.get(id=uk)
     serializer = UnitSerializer(unit, many=False)
     return Response(serializer.data)
 
@@ -35,8 +35,8 @@ def getAllLessons(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
-def getLesson(request, pk):
-    lesson = Lesson.objects.get(id=pk)
+def getLesson(request, uk, lk):
+    lesson = Lesson.objects.get(unit=uk, lesson_num=lk)
     serializer = LessonSerializer(lesson, many=False)
     return Response(serializer.data)
 
@@ -44,43 +44,31 @@ def getLesson(request, pk):
 #############################   NAME   #############################   
 
 
-# RETURNS ALL NAMES IN DB
-@api_view(['GET', 'POST'])
-def name_list(request,format=None):
-    
+# RETURNS NAME OF TREE FROM UNIT OR UPDATE THE UNIT TREE_NAME
+@api_view(['GET', 'PUT'])
+def name_list(request, uk):
+
+    #TO GET THE UNIT TREE NAME
     if request.method == 'GET':
-        names = Name.objects.all()
-        serializer = NameSerializer(names, many=True)
-        return Response(serializer.data)
+        unit = Unit.objects.get(id=uk)
+        name = unit.tree_name
+        response_data = {'name': name}
+        return Response(response_data)
     
-    if request.method =='POST':
-        serializer = NameSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        
-# RETURNS NAME BASED ON ID
-@api_view(['GET', 'PUT', 'DELETE'])
-def name_detail(request,id,format=None):
-    
-    try:
-        name = Name.objects.get(pk=id) 
-    except Name.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-    
-    if request.method == 'GET':
-        serializer = NameSerializer(name)
-        return Response(serializer.data)
-    
+    #TO UPDATE THE VALUE OF THE TREE NAME
     elif request.method == 'PUT':
-        serializer = NameSerializer(name, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-    elif request.method == 'DELETE':
-        name.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        try:
+            unit = Unit.objects.get(id=uk)
+            data = request.data
+
+            unit.tree_name = data['name']
+            unit.save()
+
+            response_data = {'success': True}
+            return Response(response_data)
+
+        except Unit.DoesNotExist:
+            response_data = {'error': 'Unit not found'}
+            return Response(response_data)
         
     

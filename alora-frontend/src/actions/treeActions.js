@@ -1,33 +1,31 @@
 import axios from 'axios'
 
 import { 
-    NAME_LIST_REQUEST,
-    NAME_LIST_SUCCESS,
-    NAME_LIST_FAILURE,
-    NAME_DETAILS_REQUEST,
-    NAME_DETAILS_SUCCESS,
-    NAME_DETAILS_FAILURE,
+    NAME_DETAIL_REQUEST,
+    NAME_DETAIL_SUCCESS,
+    NAME_DETAIL_FAILURE,
+    NAME_UPDATE_REQUEST,
+    NAME_UPDATE_SUCCESS,
+    NAME_UPDATE_FAILURE,
 } from '../constants/treeConstants'; 
 
-// ACTION CREATOR returning a function instead of an action through thunk
-// RETURNS ALL NAMES IN DB
-export const listTrees = () => async (dispatch) => {
+export const listTreeName = (id) => async (dispatch) => {
     try {
         // Dispatches the action (with type NAME_LIST_REQUEST) to indicate the start of the async operation
-        dispatch({ type: NAME_LIST_REQUEST });
+        dispatch({ type: NAME_DETAIL_REQUEST });
 
         // Make an asynchronous API call (e.g., using axios)
-        const { data } = await axios.get('/api/names/');
+        const { data } = await axios.get(`/api/units/${id}/name`);
 
         // Dispatches the action (with type NAME_LIST_SUCCESS) when the API call is successful
         dispatch({
-            type: NAME_LIST_SUCCESS,
+            type: NAME_DETAIL_SUCCESS,
             payload: data,
         });
     } catch (error) {
         // Dispatches the action (with type NAME_LIST_FAILURE) when there's an error
         dispatch({
-            type: NAME_LIST_FAILURE,
+            type: NAME_DETAIL_FAILURE,
             payload: error.response && error.response.data.message
                 ? error.response.data.message
                 : error.message,
@@ -35,23 +33,33 @@ export const listTrees = () => async (dispatch) => {
     }
 };
 
-// RETURNS NAME BASED ON ID
-export const listTreeDetails = (id) => async (dispatch) => {
+export const updateTreeName = (id, name) => async (dispatch) => {
 
     try {
 
-        dispatch({ type: NAME_DETAILS_REQUEST })
+        dispatch({ type: NAME_UPDATE_REQUEST })
 
-        const { data } = await axios.get(`/api/names/${id}`)
+        const config = {
+            headers: {
+                'Content-type': 'application/json',
+            }
+        }
+
+        //Calls the api in the backend and saves tree_name with new tempName
+        const { data } = await axios.put(
+            `/api/units/${id}/name`, 
+            name,
+            config
+        )
 
         dispatch({
-            type: NAME_DETAILS_SUCCESS,
+            type: NAME_UPDATE_SUCCESS,
             payload: data
         })
 
     } catch (error) {
         dispatch({
-            type: NAME_DETAILS_FAILURE,
+            type: NAME_UPDATE_FAILURE,
             payload: error.response && error.response.data.detail
                 ? error.response.data.detail
                 : error.message,

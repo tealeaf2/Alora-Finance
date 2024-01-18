@@ -1,29 +1,26 @@
 import { 
-    NAME_LIST_REQUEST,
-    NAME_LIST_SUCCESS,
-    NAME_LIST_FAILURE,
-    NAME_DETAILS_REQUEST,
-    NAME_DETAILS_SUCCESS,
-    NAME_DETAILS_FAILURE
+    NAME_UPDATE_REQUEST,
+    NAME_UPDATE_SUCCESS,
+    NAME_UPDATE_FAILURE,
+    NAME_DETAIL_REQUEST,
+    NAME_DETAIL_SUCCESS,
+    NAME_DETAIL_FAILURE
 } from '../constants/treeConstants'; 
 
-
-// Initial state with an empty array of names
-// RETURNS ALL PROFILES
-export const treeListReducer = (state = { names: [] }, action) => {
+export const listTreeNameReducer = (state = { treeNameGet: { 'name': null } }, action) => {
     switch (action.type) {
-        // When a request for NAME list is made
-        case NAME_LIST_REQUEST:
-            // return state s.t. request is loading and empty NAMEs array
-            return { loading: true, names: [] }
+        // When a request looking for name
+        case NAME_DETAIL_REQUEST:
+            // return state s.t. request is loading and returns name dict with null value
+            return { loading: true, treeNameGet: { 'name': null } }
 
         // When the NAME list request is successful
-        case NAME_LIST_SUCCESS:
-            // return state s.t. request not loading and NAMEs array filled 
-            return { loading: false, names: action.payload }
+        case NAME_DETAIL_SUCCESS:
+            // return state s.t. request not loading and NAME is successful, returning tree_name
+            return { loading: false, treeNameGet: action.payload }
 
         // When the NAME list request encounters an error
-        case NAME_LIST_FAILURE:
+        case NAME_DETAIL_FAILURE:
             // return state s.t. request not loading and error msg
             return { loading: false, error: action.payload }
 
@@ -34,15 +31,15 @@ export const treeListReducer = (state = { names: [] }, action) => {
     }
 };
 
-export const treeDetailsReducer = (state = { tree: {}}, action) => {
+export const updateTreeNameReducer = (state = { treeNameUpdate: [] }, action) => {
     switch (action.type) {
-        case NAME_DETAILS_REQUEST:
-            return { loading: true, ...state}
+        case NAME_UPDATE_REQUEST:
+            return { loading: true, state}
         
-        case NAME_DETAILS_SUCCESS:
-            return { loading: false, tree: action.payload }
+        case NAME_UPDATE_SUCCESS:
+            return { loading: false, treeNameUpdate: action.payload }
         
-        case NAME_DETAILS_FAILURE:
+        case NAME_UPDATE_FAILURE:
             return { loading: false, error: action.payload }
 
         default:

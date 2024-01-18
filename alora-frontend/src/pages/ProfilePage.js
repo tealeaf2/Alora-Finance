@@ -1,5 +1,4 @@
 import Header from '../global/Header';
-import NameInputButton from '../components/NameInputButton'
 
 
 export default function Profile() {
@@ -7,7 +6,6 @@ export default function Profile() {
 
         <>
             <Header/>
-            <NameInputButton/>
 
         </>
     )
