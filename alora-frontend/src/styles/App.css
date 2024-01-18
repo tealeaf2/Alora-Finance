@@ -124,3 +124,9 @@
   transform-origin: 0 0; /* Set the transform origin to the top-left corner */
 }
 
+.ad-space {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  /* top: 70%; /* Set top to the same value as the bottom of the horizontal line */
+}
