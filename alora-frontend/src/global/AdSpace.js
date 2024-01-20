@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// Keep this in for later use down the line
 
 function Adspace() {
   const [ad, setAd] = useState(null);
