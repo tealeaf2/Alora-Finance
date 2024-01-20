@@ -8,8 +8,8 @@ import { lessonListReducer,
 
 import { quizListReducer } from './reducers/quizReducers'
 
-import { treeDetailsReducer,
-        treeListReducer,
+import { listTreeNameReducer,
+        updateTreeNameReducer
 } from './reducers/treeReducers';
 
 
@@ -21,8 +21,8 @@ const reducer = combineReducers({
 
     quizList: quizListReducer,
 
-    treeDetails: treeDetailsReducer,
-    treeList: treeListReducer,
+    treeName: listTreeNameReducer,
+    treeNameUpdate: updateTreeNameReducer,
 })
 
 const initialState = {}

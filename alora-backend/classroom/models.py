@@ -16,6 +16,7 @@ class Unit(models.Model):
     lessons_total = models.IntegerField(default=0)
     number = models.IntegerField(default=1)
     image = models.ImageField(null=True, blank=True)
+    tree_name = models.CharField(max_length=50, null=True, blank=True)
     
     def __str__(self):
         return self.name
@@ -73,12 +74,6 @@ class Progress(models.Model):
     account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name="progress_acount", null=True, blank=True)
     lessons_done = models.IntegerField(default=0)
     unit = models.OneToOneField(Unit, on_delete=models.CASCADE, related_name="progress_unit", null=True, blank=True)
-    
-    def __str__(self):
-        return self.name
-    
-class Name(models.Model):
-    name = models.CharField(max_length=100)
     
     def __str__(self):
         return self.name
