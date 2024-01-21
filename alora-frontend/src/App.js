@@ -8,6 +8,8 @@ import LessonPage from './pages/LessonPage'
 import ProfilePage from './pages/ProfilePage'
 import ProgressPage from './pages/ProgressPage'
 import GamePage from './pages/GamePage'
+import LoginPage from './pages/LoginPage'
+import RegisterPage from './pages/RegisterPage'
 
 
 export default function App() {
@@ -21,6 +23,8 @@ export default function App() {
          <Route path='/games' element={<GamePage/>} />
          <Route path='/progress' element={<ProgressPage/>} />
          <Route path='/profile' element={<ProfilePage/>} />
+         <Route path='/login' element={<LoginPage/>} />
+         <Route path='/register' element={<RegisterPage/>} />
        </Routes>
      </Router>
    </>

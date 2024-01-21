@@ -11,7 +11,7 @@ const Header = () => {
             <div className="max-w-screen-xl sm:px-6 lg:px-8">
                 <div className="flex h-20 items-center justify-between">
                     <div className="flex-1 md:flex md:items-center md:gap-5">
-                        <Link to="/">
+                        <Link to="/progress">
                             <img alt="alora finance logo" src={home_logo} className="App-header-logo-width" width="260px" height='60px'/>         
                         </Link>
                     </div>
