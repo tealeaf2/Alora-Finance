@@ -133,3 +133,7 @@
   transform-origin: 0 0; /* Set the transform origin to the top-left corner */
 }
 
+.container{
+  width: 500px;
+}
+
