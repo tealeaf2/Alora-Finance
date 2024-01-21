@@ -71,4 +71,12 @@ def name_list(request, uk):
             response_data = {'error': 'Unit not found'}
             return Response(response_data)
         
+#############################   PROGRESS   #############################   
+#TODO
+
+@api_view(['GET'])
+def getAllProgress(request):
+
+    return Response({'template': 'template'})
+        
     
