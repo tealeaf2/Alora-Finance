@@ -7,7 +7,7 @@ module.exports = {
         sans: ["Varela Round", "sans-serif"]
       },
       colors: {
-        'login-green': '#E3ECD7'
+        'login-green': '#d2e5ba'
       }
     },
   },
