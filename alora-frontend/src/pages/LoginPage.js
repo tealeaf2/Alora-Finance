@@ -10,7 +10,7 @@ function LoginPage() {
        
     <div className="flex h-screen items-center justify-center">
       <div className="grid grid-cols-2  mx-20  md:max-w-[75vw] xl:max-w-[1000px] flex-1">
-        <div className="flex flex-col justify-center items-center grow p-5 rounded-[14%] border-2 border-[#BACAA2] max-w-[450px]">
+        <div className="flex flex-col justify-center items-center grow p-5 md:px-[6%] rounded-[14%] border-2 border-[#BACAA2] max-w-[450px]">
           <h1 className="text-center text-[#76974A] text-4xl font-bold mb-4">
             Sign In
           </h1>
