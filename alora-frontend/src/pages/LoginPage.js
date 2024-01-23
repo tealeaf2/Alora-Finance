@@ -10,11 +10,11 @@ function LoginPage() {
        
     <div className="flex h-screen items-center justify-center">
       <div className="grid grid-cols-2  mx-20  md:max-w-[75vw] xl:max-w-[1000px] flex-1">
-        <div className="flex flex-col justify-center items-center grow p-5 rounded-[40px] border-2 border-[#BACAA2] max-w-[450px]">
-          <h1 className="text-center text-[#76974A] text-4xl font-bold mb-3">
+        <div className="flex flex-col justify-center items-center grow p-5 rounded-[14%] border-2 border-[#BACAA2] max-w-[450px]">
+          <h1 className="text-center text-[#76974A] text-4xl font-bold mb-4">
             Sign In
           </h1>
-          <div className='flex mb-3'>
+          <div className='flex mb-3 self-stretch'>
           <div className='px-6 border-2 border-r-0 border-login-green rounded-l-full'></div>
           <div className='flex-1'>
             <label
@@ -40,7 +40,7 @@ function LoginPage() {
           </div>
           
 
-          <div className='flex mb-3'>
+          <div className='flex mb-3 self-stretch'>
           <div className='px-6 border-2 border-r-0 border-login-green rounded-l-full'></div>
           <div className='flex-1'>
             <label
@@ -65,10 +65,29 @@ function LoginPage() {
             </div>
           </div>
           <a
-          className="rounded-3xl border border-[#4F6038] bg-[#4F6038] px-12 py-2 text-xl font-medium text-white hover:bg-transparent hover:text-[#4F6038] focus:outline-none focus:ring active:text-[#4F6038] text-center max-w-[fit-content]"
+          className="rounded-3xl border border-[#4F6038] bg-[#4F6038] px-12 py-2 text-xl font-medium text-white hover:bg-transparent hover:text-[#4F6038] focus:outline-none focus:ring active:text-[#4F6038] text-center max-w-[fit-content] mb-1"
           href=""
         >
           log in
+        </a>
+
+        <a
+        className="text-sm mb-2"
+        href=""
+        >
+          Forgot Password?
+        </a>
+
+        <p
+        className='mb-[-5px]'
+        >
+          Don't have an account yet?
+        </p>
+        <a
+        className="text-[#76974A]"
+        href=""
+        >
+          Create an account
         </a>
         </div>
         
