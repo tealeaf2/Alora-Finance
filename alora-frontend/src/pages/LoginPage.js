@@ -92,7 +92,7 @@ function LoginPage() {
         </div>
         
           
-        <div className=' justify-center max-w-[450px] justify-self-center'>
+        <div className='flex flex-col justify-center max-w-[450px] justify-self-center'>
           <Link to="/progress">
             <img alt="alora finance logo" src={home_dude} className="App-header-logo-width" width="100%" height='60px'/>         
           </Link>
