@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('users/login/', views.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('users/profile/', views.getUserProfile, name='users-profile')
     # path('units/', getAllUnits, name='all-units'),
     # path('units/<int:uk>', getUnit, name='unit'),
 
