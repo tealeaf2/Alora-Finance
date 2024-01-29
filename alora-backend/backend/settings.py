@@ -43,9 +43,11 @@ INSTALLED_APPS = [
     # INTERNAL
     'account',
     'classroom',
+    # 'account.apps.AccountConfig'
     
     # EXTERNAL
-    'rest_framework'
+    'rest_framework',
+    # 'corsheader'
 ]
 
 REST_FRAMEWORK = {
