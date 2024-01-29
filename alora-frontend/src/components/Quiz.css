@@ -1,0 +1,13 @@
+.correct{
+    background: #dffff2;
+    border-color: #00d397;
+}
+.incorrect{
+    background: #FFEBEB;
+    border-color: #FF4A4A;
+}
+
+.unanswered{
+    background: #FFEBEB;
+    border-color: #000000;
+}
