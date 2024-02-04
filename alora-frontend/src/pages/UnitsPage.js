@@ -56,7 +56,7 @@ export default function Units() {
                         
                         
                 {/* RIGHT SIDE BAR */}
-                <div className="flex-grow max-w-screen-xl mx-auto p-6 max-h-screen overflow-auto">
+                <div className="flex-grow max-w-screen-xl mx-auto p-6">
                     {home ? <DisplayUnitAndLessons number={unit.number} name={unit.name} />
                         :
                         <div className="max-h-screen max-w-screen-xl mx-auto px-10 py-5">
@@ -68,7 +68,7 @@ export default function Units() {
                                             setHome(true)
                                             setUnit(units[unit.number - 1])
                                         }}>
-                                        Unit {unit.number}: {unit.name}
+                                        Unit {unit.id}: {unit.name}
                                     </button>
                                 </div>
                             ))}
