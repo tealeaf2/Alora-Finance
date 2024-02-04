@@ -3,6 +3,15 @@ from account.models import Account
 
 
 # Create your models here.
+class Topic(models.Model):
+    name = models.CharField(max_lenght=100)
+    topic_num = models.IntegerField(default=0)
+    units_total = models.IntegerField(default=0)
+    tree_name = models.CharField(max_length=50, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
 class Classroom(models.Model):
     name = models.CharField(max_length=100)
     teacher = models.CharField(max_length=100)
