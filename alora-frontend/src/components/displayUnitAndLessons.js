@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { listLessons } from '../actions/lessonActions'
 
-function DisplayUnitAndLessons ({number, name}) {
+function DisplayUnitAndLessons ({number, name, image}) {
     // const [lessons, setLessons] = useState([])
     const dispatch = useDispatch()
     const lessonList = useSelector(state => state.lessonList)
@@ -19,9 +19,9 @@ function DisplayUnitAndLessons ({number, name}) {
     return (
         <>
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 py-3">
-                <div className="h-32 rounded-3xl lg:col-span-2 Unit-display-lesson"> 
+                <div className="grid grid-cols-1h-32 rounded-3xl lg:col-span-2 Unit-display-lesson"> 
                     <div className="py-10 px-10 text-3xl">
-                    Unit {number}: {name}
+                    <img src={image}/>  Unit {number}: {name}
                     </div>
                 </div>
                 <div className="h-32">image</div>
