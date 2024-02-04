@@ -76,7 +76,9 @@ def name_list(request, uk):
 
 @api_view(['GET'])
 def getAllProgress(request):
-
+    units=getAllUnits(request)
+    lessons=getAllLessons(request)
+    names=name_list(request)
     return Response({'template': 'template'})
         
     
