@@ -148,6 +148,7 @@ DATABASES = {
     }
 }
 
+# ALLOWED_HOSTS = ['.vercel.app'] # Allow *.vercel.app
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
