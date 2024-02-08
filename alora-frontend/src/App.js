@@ -20,7 +20,7 @@ export default function App() {
        <Routes>
          <Route exact path='/' element={<HomePage/>} />
          <Route path='/lessons' element={<UnitsPage/>} />
-         <Route path='/lessons/:id' element={<LessonPage/>} />
+         <Route path='/unit/:uid/lesson/:lid/:rlid' element={<LessonPage/>} />
          <Route path='/games' element={<GamePage/>} />
          <Route path='/progress' element={<ProgressPage/>} />
          <Route path='/profile' element={<ProfilePage/>} />
