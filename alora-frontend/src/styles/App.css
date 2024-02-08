@@ -25,16 +25,22 @@
   padding: 30px;
 }
 
-/* Logo on the left */
+/* Logo on the left and stays constant */
 .App-header-home {
   vertical-align: middle;
   float: left;
+  min-width: 260px;
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 
 /* Links on the right */
 .App-header-sections {
   font-family: monospace;
   float: right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .App-header-sections-button {
   background-color: #ffffff;
@@ -54,6 +60,7 @@
   text-decoration-line: none;
 }
 
+/*Buttons and effects*/
 .App-header-sections-button1 {
   border: 4px solid #ef7a43;
 }
@@ -61,6 +68,11 @@
   background-color: #ef7a43;
   color: #ffffff;
 }
+.button1-active {
+  background-color: #ef7a43;
+  color: #ffffff;
+}
+
 .App-header-sections-button2 {
   border: 4px solid #0e87b3;
 }
@@ -68,6 +80,11 @@
   background-color: #0e87b3;
   color: #ffffff;
 }
+.button2-active {
+  background-color: #0e87b3;
+  color: #ffffff;
+}
+
 .App-header-sections-button3 {
   border: 4px solid #eea930;
 }
@@ -75,12 +92,28 @@
   background-color: #eea930;
   color: #ffffff;
 }
+.button3-active {
+  background-color: #eea930;
+  color: #ffffff;
+}
+
 .App-header-sections-button4 {
   border: 4px solid #3a8989;
 }
 .App-header-sections-button4:hover {
   background-color: #3a8989;
   color: #ffffff;
+}
+.button4-active {
+  background-color: #3a8989;
+  color: #ffffff;
+}
+
+/*Hide links when screen gets too small*/
+@media (max-width: 768px) {
+  .App-header-sections li {
+    display: none;
+  }
 }
 
 .Unit-display-lesson {
