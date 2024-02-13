@@ -2,10 +2,10 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import status
-
+from django.shortcuts import get_object_or_404
 
 #models
-from classroom.models import Unit, Lesson
+from classroom.models import Unit, Lesson, Quiz
 
 #serializers
 from classroom.serializer import *
@@ -15,7 +15,7 @@ from classroom.serializer import *
 #Units
 @api_view(['GET'])
 def getAllUnits(request):
-    units = Unit.objects.all()
+    units = Unit.objects.all().order_by('number')
     serializer = UnitSerializer(units, many=True)
     return Response(serializer.data)
 
@@ -27,19 +27,31 @@ def getUnit(request, uk):
 
 #############################   LESSONS   #############################   
 
-
+#Gets all of the lessons of a unit
 @api_view(['GET'])
-def getAllLessons(request):
-    lessons = Lesson.objects.all()
+def getAllLessons(request, uk):
+    unit_instance = get_object_or_404(Unit, number=uk)
+    lessons = Lesson.objects.filter(unit=unit_instance).order_by('lesson_num')
     serializer = LessonSerializer(lessons, many=True)
     return Response(serializer.data)
 
+#Gets a specific lesson from a unit
 @api_view(['GET'])
-def getLesson(request, uk, lk):
-    lesson = Lesson.objects.get(unit=uk, lesson_num=lk)
+def getFromUnitLesson(request, uk, lk):
+    unit_instance = get_object_or_404(Unit, number=uk)
+    lesson = get_object_or_404(Lesson, unit=unit_instance, lesson_num=lk)
     serializer = LessonSerializer(lesson, many=False)
     return Response(serializer.data)
 
+#Gets a specfic quiz from lesson
+@api_view(['GET'])
+def getQuiz(request, lk):
+    lesson = get_object_or_404(Lesson, id=lk)
+    quiz = Quiz.objects.filter(lesson=lesson).first()
+    if quiz:
+        return Response(quiz.content)
+    else:
+        return Response({'message': 'Quiz not found for this lesson'}, status=404)
 
 #############################   NAME   #############################   
 
