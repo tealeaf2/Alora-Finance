@@ -7,7 +7,7 @@ import home_logo from '../images/Home_Logo.png';
 
 const Header = () => {
     return (
-        <header className="App-header">
+        <header className="App-header overflow-hidden">
             <div className="max-w-screen-xl sm:px-6 lg:px-8">
                 <div className="flex h-20 items-center justify-between">
                     <div className="flex-1 md:flex md:items-center md:gap-5">

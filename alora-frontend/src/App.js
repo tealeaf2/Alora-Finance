@@ -10,6 +10,7 @@ import ProgressPage from './pages/ProgressPage'
 import GamePage from './pages/GamePage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
+import CoinQuestGame from './games/CoinQuest/CoinQuestGame'
 
 
 export default function App() {
@@ -19,12 +20,13 @@ export default function App() {
        <Routes>
          <Route exact path='/' element={<HomePage/>} />
          <Route path='/lessons' element={<UnitsPage/>} />
-         <Route path='/lessons/:id' element={<LessonPage/>} />
+         <Route path='/unit/:uid/lesson/:lid/:rlid' element={<LessonPage/>} />
          <Route path='/games' element={<GamePage/>} />
          <Route path='/progress' element={<ProgressPage/>} />
          <Route path='/profile' element={<ProfilePage/>} />
          <Route path='/login' element={<LoginPage/>} />
          <Route path='/register' element={<RegisterPage/>} />
+         <Route path='/games/CoinQuest' element={<CoinQuestGame/>} />
        </Routes>
      </Router>
    </>
