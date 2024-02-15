@@ -1,55 +1,93 @@
-import React from 'react';
-import { Link } from "react-router-dom";
-import '../styles/index.css';
-import '../styles/App.css';
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import "../styles/index.css";
+import "../styles/App.css";
 
-import home_logo from '../images/Home_Logo.png';
+import home_text from "../images/Home_Text.png";
+import home_tree from "../images/Home_Tree.png";
 
 const Header = () => {
-    return (
-        <header className="App-header overflow-hidden">
-            <div className="max-w-screen-xl sm:px-6 lg:px-8">
-                <div className="flex h-20 items-center justify-between">
-                    <div className="flex-1 md:flex md:items-center md:gap-5">
-                        <Link to="/progress">
-                            <img alt="alora finance logo" src={home_logo} className="App-header-logo-width" width="260px" height='60px'/>         
-                        </Link>
-                    </div>
+  const location = useLocation();
 
-                    <div className="md:flex md:items-center md:gap-12">
-                        <div className="flex items-center">
-                        <div className="sm:flex sm:gap-4">
+  return (
+    <header className="App-header border-b-4 border-gray-500">
+      <div className="max-w-screen-x1">
+        <div className="flex h-20 items-center justify-between">
+          {/* Alora logo */}
+          <div className="App-header-home flex items-center">
+            <Link to="/progress">
+              <img
+                alt="alora finance logo"
+                src={home_tree}
+                width="70px"
+                height="60px"
+                style={{ marginRight: "3px" }}
+              />
+            </Link>
+            <Link to="/progress">
+              <img
+                alt="alora finance logo"
+                src={home_text}
+                width="150px"
+                height="60px"
+              />
+            </Link>
+          </div>
 
-                            <Link to='/lessons'>
-                                <div className="hidden sm:flex App-header-sections-button App-header-sections-button1">
-                                Lessons
-                                </div>
-                            </Link>
+          {/*Page links*/}
+          <ul className="App-header-sections flex tems-center">
+            <li>
+              <Link to="/lessons">
+                <button
+                  className={`sm:flex App-header-sections-button App-header-sections-button1 ${
+                    location.pathname === "/lessons" ? "button1-active" : ""
+                  }`}
+                >
+                  Lessons
+                </button>
+              </Link>
+            </li>
 
-                            <Link to='/games'>
-                                <div className="hidden sm:flex App-header-sections-button App-header-sections-button2">
-                                Games
-                                </div>
-                            </Link>
+            <li>
+              <Link to="/games">
+                <button
+                  className={`sm:flex App-header-sections-button App-header-sections-button2 ${
+                    location.pathname === "/games" ? "button2-active" : ""
+                  }`}
+                >
+                  Games
+                </button>
+              </Link>
+            </li>
 
-                            <Link to='/progress'>
-                                <div className="hidden sm:flex App-header-sections-button App-header-sections-button3">
-                                Progress
-                                </div>
-                            </Link>
+            <li>
+              <Link to="/progress">
+                <button
+                  className={`sm:flex App-header-sections-button App-header-sections-button3 ${
+                    location.pathname === "/progress" ? "button3-active" : ""
+                  }`}
+                >
+                  Progress
+                </button>
+              </Link>
+            </li>
 
-                            <Link to='/profile'>
-                                <div className="hidden sm:flex App-header-sections-button App-header-sections-button4">
-                                Profile
-                                </div>
-                            </Link>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </header>
-    )
-}
+            <li>
+              <Link to="/profile">
+                <button
+                  className={`sm:flex App-header-sections-button App-header-sections-button4 ${
+                    location.pathname === "/profile" ? "button4-active" : ""
+                  }`}
+                >
+                  Profile
+                </button>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+  );
+};
 
 export default Header;

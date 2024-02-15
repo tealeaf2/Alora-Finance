@@ -1,19 +1,18 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // import './styles/App.css';
-import HomePage from './pages/HomePage'
-import UnitsPage from './pages/UnitsPage'
-import LessonPage from './pages/LessonPage'
-import ProfilePage from './pages/ProfilePage'
-import ProgressPage from './pages/ProgressPage'
-import GamePage from './pages/GamePage'
-import LoginPage from './pages/LoginPage'
-import RegisterPage from './pages/RegisterPage'
-import CoinQuestGame from './games/CoinQuest/CoinQuestGame'
-
+import HomePage from "./pages/HomePage";
+import UnitsPage from "./pages/UnitsPage";
+import LessonPage from "./pages/LessonPage";
+import ProfilePage from "./pages/ProfilePage";
+import ProgressPage from "./pages/ProgressPage";
+import GamePage from "./pages/GamePage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import CoinQuestGame from "./games/CoinQuest/CoinQuestGame";
 
 export default function App() {
+
  return (
    <>
      <Router>
@@ -33,7 +32,6 @@ export default function App() {
  );
 }
 
-
 // import './styles/App.css';
 // import Progress from './pages/Progress'
 // import Lessons from './pages/Lessons'
@@ -50,5 +48,5 @@ export default function App() {
 //     </>
 //   )
 //   }
-  
+
 // export default App;
