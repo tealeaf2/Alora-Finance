@@ -16,10 +16,6 @@ const CoinQuestGame = () => {
         // Append the PixiJS application view to the container
         pixiContainerRef.current.appendChild(app.view);
 
-        // Create a PixiJS button
-        let button = new PIXI.Graphics();
-        button.beginFill(0xFFFFFF);
-
         // Create a PixiJS sprite
         const sprite = PIXI.Sprite.from(block);
         sprite.eventMode='static'
@@ -43,7 +39,6 @@ const CoinQuestGame = () => {
         app.stage.hitArea = app.screen;
         app.stage.on('pointerup', onDragEnd);
         app.stage.on('pointerupoutside', onDragEnd);
-        app.stage.on('rightdown', addSprite);
 
         function onDragMove(event) {
             if (dragTarget) {
@@ -69,9 +64,41 @@ const CoinQuestGame = () => {
             }
         }
 
-        //generate new sprite at location of click
-        function addSprite(e) {
-            console.log('test');
+        
+
+         // Create a button to add 1 block
+        let addOne = new PIXI.Graphics();
+        addOne.beginFill(0x258f99);
+        addOne.drawRoundedRect((app.view.width - 130), 30, 100, 50);
+        addOne.endFill();
+        addOne.interactive = true;
+        addOne.buttonMode = true;
+        app.stage.addChild(addOne);
+        addOne.on('click', placeOne)
+
+        // Create a button to add 10 blocks
+        let addTen = new PIXI.Graphics();
+        addTen.beginFill(0x258f99);
+        addTen.drawRoundedRect((app.view.width - 130), 130, 100, 50);
+        addTen.endFill();
+        addTen.interactive = true;
+        addTen.buttonMode = true;
+        app.stage.addChild(addTen);
+        addTen.on('click', placeTen)
+
+        // Create a button to add 100 block
+        let addHundred = new PIXI.Graphics();
+        addHundred.beginFill(0x258f99);
+        addHundred.drawRoundedRect((app.view.width - 130), 230, 100, 50);
+        addHundred.endFill();
+        addHundred.interactive = true;
+        addHundred.buttonMode = true;
+        app.stage.addChild(addHundred);
+        addHundred.on('click', placeHundred)
+
+        //generate new sprite of one block
+        function placeOne(e) {
+            //placeholder sprite - replace with one block sprite
             const sprite2 = PIXI.Sprite.from(block);
             sprite2.eventMode='static'
             sprite2.cursor='pointer'
@@ -79,11 +106,40 @@ const CoinQuestGame = () => {
             sprite2.on('pointerdown', onDragStart, sprite2);
             sprite2.width = 50;
             sprite2.height = 50;
-            sprite2.x = e.data.global.x
-            sprite2.y = e.data.global.y
+            sprite2.x = (Math.random() * app.view.width * 0.50) + (app.view.width * 0.25);
+            sprite2.y = (Math.random() * app.view.height * 0.50) + (app.view.height * 0.25);
             app.stage.addChild(sprite2);
-            
         }
+
+        function placeTen(e) {
+            //placeholder sprite - replace with one block sprite
+            const sprite2 = PIXI.Sprite.from(block);
+            sprite2.eventMode='static'
+            sprite2.cursor='pointer'
+            sprite2.anchor.set(0.5, 0.5)
+            sprite2.on('pointerdown', onDragStart, sprite2);
+            sprite2.width = 50;
+            sprite2.height = 50;
+            sprite2.x = (Math.random() * app.view.width * 0.50) + (app.view.width * 0.25);
+            sprite2.y = (Math.random() * app.view.height * 0.50) + (app.view.height * 0.25);
+            app.stage.addChild(sprite2);
+        }
+
+        function placeHundred(e) {
+            //placeholder sprite - replace with one block sprite
+            const sprite2 = PIXI.Sprite.from(block);
+            sprite2.eventMode='static'
+            sprite2.cursor='pointer'
+            sprite2.anchor.set(0.5, 0.5)
+            sprite2.on('pointerdown', onDragStart, sprite2);
+            sprite2.width = 50;
+            sprite2.height = 50;
+            sprite2.x = (Math.random() * app.view.width * 0.50) + (app.view.width * 0.25);
+            sprite2.y = (Math.random() * app.view.height * 0.50) + (app.view.height * 0.25);
+            app.stage.addChild(sprite2);
+        }
+            
+    
 
 
 

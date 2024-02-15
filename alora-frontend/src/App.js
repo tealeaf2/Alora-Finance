@@ -12,23 +12,24 @@ import RegisterPage from "./pages/RegisterPage";
 import CoinQuestGame from "./games/CoinQuest/CoinQuestGame";
 
 export default function App() {
-  return (
-    <>
-      <Router>
-        <Routes>
-          <Route exact path="/" element={<HomePage />} />
-          <Route path="/lessons" element={<UnitsPage />} />
-          <Route path="/lessons/:id" element={<LessonPage />} />
-          <Route path="/games" element={<GamePage />} />
-          <Route path="/progress" element={<ProgressPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/games/CoinQuest" element={<CoinQuestGame />} />
-        </Routes>
-      </Router>
-    </>
-  );
+
+ return (
+   <>
+     <Router>
+       <Routes>
+         <Route exact path='/' element={<HomePage/>} />
+         <Route path='/lessons' element={<UnitsPage/>} />
+         <Route path='/unit/:uid/lesson/:lid/:rlid' element={<LessonPage/>} />
+         <Route path='/games' element={<GamePage/>} />
+         <Route path='/progress' element={<ProgressPage/>} />
+         <Route path='/profile' element={<ProfilePage/>} />
+         <Route path='/login' element={<LoginPage/>} />
+         <Route path='/register' element={<RegisterPage/>} />
+         <Route path='/games/CoinQuest' element={<CoinQuestGame/>} />
+       </Routes>
+     </Router>
+   </>
+ );
 }
 
 // import './styles/App.css';

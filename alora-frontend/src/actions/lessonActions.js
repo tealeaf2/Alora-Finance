@@ -10,13 +10,13 @@ import {
 } from '../constants/lessonConstants'; 
 
 // ACTION CREATOR returning a function instead of an action through thunk
-export const listLessons = () => async (dispatch) => {
+export const listLessons = (number) => async (dispatch) => {
     try {
         // Dispatches the action (with type LESSON_LIST_REQUEST) to indicate the start of the async operation
         dispatch({ type: LESSON_LIST_REQUEST });
 
         // Make an asynchronous API call (e.g., using axios)
-        const { data } = await axios.get('/api/lessons/');
+        const { data } = await axios.get(`/api/unit/${number}/lessons/`);
 
         // Dispatches the action (with type LESSON_LIST_SUCCESS) when the API call is successful
         dispatch({
@@ -35,14 +35,14 @@ export const listLessons = () => async (dispatch) => {
 };
 
 
-export const listLessonDetails = (id) => async (dispatch) => {
+export const listLessonDetails = (unit_id, lesson_id) => async (dispatch) => {
 
     try {
 
         dispatch({ type: LESSON_DETAILS_REQUEST })
 
 
-        const { data } = await axios.get(`/api/lessons/${ id }`)
+        const { data } = await axios.get(`/api/units/${unit_id}/lessons/${lesson_id}`)
 
         dispatch({
             type: LESSON_DETAILS_SUCCESS,

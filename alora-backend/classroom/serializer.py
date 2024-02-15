@@ -11,7 +11,7 @@ class LessonSerializer(serializers.ModelSerializer):
         model = Lesson
         fields = '__all__'
         
-# class ProgressSerialzier(serializers.ModelSerializers):
+# class ProgressSerialzier(serializers.ModelSerializer):
 #     class Meta:
 #         model = Progress
 #         fields = [unit, lessons_done]
