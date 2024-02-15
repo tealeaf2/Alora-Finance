@@ -3,7 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import "../styles/index.css";
 import "../styles/App.css";
 
-import home_logo from "../images/Home_Logo.png";
+import home_text from "../images/Home_Text.png";
+import home_tree from "../images/Home_Tree.png";
 
 const Header = () => {
   const location = useLocation();
@@ -11,21 +12,30 @@ const Header = () => {
   return (
     <header className="App-header border-b-4 border-gray-500">
       <div className="max-w-screen-x1">
-        <div className="flex h-20 items-center justify-start">
-          {/*Alora logo*/}
-          <div className="App-header-home flex-1 md:flex md:items-center md:gap-5">
+        <div className="flex h-20 items-center justify-between">
+          {/* Alora logo */}
+          <div className="App-header-home flex items-center">
             <Link to="/progress">
               <img
                 alt="alora finance logo"
-                src={home_logo}
-                width="260px"
+                src={home_tree}
+                width="70px"
+                height="60px"
+                style={{ marginRight: "3px" }}
+              />
+            </Link>
+            <Link to="/progress">
+              <img
+                alt="alora finance logo"
+                src={home_text}
+                width="150px"
                 height="60px"
               />
             </Link>
           </div>
 
           {/*Page links*/}
-          <ul className="App-header-sections md:flex md:items-center md:mx-12">
+          <ul className="App-header-sections flex tems-center">
             <li>
               <Link to="/lessons">
                 <button
