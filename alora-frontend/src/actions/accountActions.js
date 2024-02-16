@@ -22,7 +22,7 @@ export const login = (email, password) => async (dispatch) => {
             }
         }
 
-        console.log("DISPATCHED ACC REQUEST NOW GOING TO ASK FOR DATA")
+        // console.log("DISPATCHED ACC REQUEST NOW GOING TO ASK FOR DATA")
 
         // send username + password = receive token
         const { data } = await axios.post(
@@ -31,8 +31,8 @@ export const login = (email, password) => async (dispatch) => {
             config
         )
 
-        console.log("GOT DATA")
-        console.log(data)
+        // console.log("GOT DATA")
+        // console.log(data)
 
         // if we succeed, return success and data
         dispatch({
@@ -40,7 +40,7 @@ export const login = (email, password) => async (dispatch) => {
             payload: data
         })
     
-        console.log("SENT DATATATATAAAAAAAAAA")
+        // console.log("SENT DATATATATAAAAAAAAAA")
 
         localStorage.setItem('accountInfo', JSON.stringify(data))
 
