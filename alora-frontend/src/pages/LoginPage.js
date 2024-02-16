@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import '../styles/index.css';
 import '../styles/App.css';
 
-import home_dude from '../images/Home-Dude.png';
+import plant3 from '../images/plant3.png';
 
 function LoginPage() {
 
@@ -29,20 +29,26 @@ function LoginPage() {
     // container for whole page
     <div className="flex h-screen items-center justify-center">
       {/* grid container for the login box and image */}
-      <div className="grid grid-cols-2  mx-16  md:max-w-[75vw] xl:max-w-[1000px] flex-1">
+      <div className="grid grid-cols-2  mx-16 xl:mr-[300px]  flex-1">
+
+        {/* container for alora finance logo */}
+        <div className=' absolute bottom-0 left-[-80px] flex flex-col justify-center max-w-[60vw] justify-self-center'>
+          <img alt="alora finance logo" src={plant3} className="App-header-logo-width" width="100%" height='60px'/>         
+        </div>
+
         {/* login box */}
-        <div className="flex flex-col justify-center items-center grow p-5 md:px-[6%] rounded-[14%] border-2 border-[#BACAA2] max-w-[450px]">
-          <h1 className="text-center text-[#76974A] text-4xl lg:text-[2.6rem] font-bold mb-4 lg:mb-8">
+        <div className=" aspect-square flex flex-col col-start-2 justify-center items-center grow p-5 md:px-[6%] rounded-[14%] border-2 border-[#CFDADD] max-w-[600px] ">
+          <h1 className="text-center text-register-green text-4xl lg:text-[2.6rem] font-bold mb-4 lg:mb-8">
             Sign In
           </h1>
 
           {/* container for username element */}
           <div className='flex mb-3 lg:mb-4 self-stretch'>
-            <div className='px-6 border-2 border-r-0 border-login-green rounded-l-full'></div>
+            <div className='px-6 border-2 border-r-0 border-[#C5E3C4] rounded-l-full'></div>
             <div className='flex-1'>
               <label
               htmlFor="Username"
-              className="relative block overflow-hidden rounded-r-full border-2 border-[#d2e5ba] pr-10 pt-3 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
+              className="relative block overflow-hidden rounded-r-full border-2 border-[#C5E3C4] pr-10 pt-3 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
               >
 
             <input
@@ -54,7 +60,7 @@ function LoginPage() {
             />
 
             <span
-              className="absolute start-3 top-3 -translate-y-1/2 text-xs text-login-green transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs"
+              className="absolute start-3 top-3 -translate-y-1/2 text-xs text-register-green transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs"
             >
               Username
             </span>
@@ -65,11 +71,11 @@ function LoginPage() {
           
           {/* container for password element */}
           <div className='flex mb-4 lg:mb-5 self-stretch'>
-            <div className='px-6 border-2 border-r-0 border-login-green rounded-l-full'></div>
+            <div className='px-6 border-2 border-r-0 border-[#C5E3C4] rounded-l-full'></div>
             <div className='flex-1'>
               <label
               htmlFor="Password"
-              className="relative block overflow-hidden rounded-r-full border-2 border-[#d2e5ba] pr-10 pt-3 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
+              className="relative block overflow-hidden rounded-r-full border-2 border-[#C5E3C4] pr-10 pt-3 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
               >
 
               <input
@@ -81,7 +87,7 @@ function LoginPage() {
              />
 
             <span
-              className="absolute start-3 top-3 -translate-y-1/2 text-xs text-login-green transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs "
+              className="absolute start-3 top-3 -translate-y-1/2 text-xs text-register-green transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs "
             >
               Password
             </span>
@@ -92,7 +98,7 @@ function LoginPage() {
 
           {/* login button */}
           <button
-          className="rounded-3xl border border-[#4F6038] bg-[#4F6038] px-12 py-2 text-xl font-medium text-white hover:bg-transparent hover:text-[#4F6038] focus:outline-none focus:ring active:text-[#4F6038] text-center max-w-[fit-content] mb-1 lg:mb-1.5"
+          className="rounded-3xl border border-register-green bg-register-green px-12 py-2 text-xl font-medium text-white hover:bg-transparent hover:text-[#4F6038] focus:outline-none focus:ring active:text-[#4F6038] text-center max-w-[fit-content] mb-1 lg:mb-1.5"
           to=""
           onClick = {logUserAndPwd}
 
@@ -117,17 +123,13 @@ function LoginPage() {
 
         {/* create account link */}
         <Link
-        className="text-[#76974A]"
+        className="text-register-green"
         to="/register"
         >
           Create an account
         </Link>
         </div>
         
-        {/* container for alora finance logo */}
-        <div className='flex flex-col justify-center max-w-[450px] justify-self-center'>
-          <img alt="alora finance logo" src={home_dude} className="App-header-logo-width" width="100%" height='60px'/>         
-        </div>
 
         
       </div>
