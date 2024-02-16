@@ -168,10 +168,13 @@ function LoginPage() {
             </span>
 
             </label>
+            </div>
+            </div>
+          </div>
 //               </label>
 //               </div>
           {/* login button */}
-          <button
+        <button
           className="rounded-3xl border border-register-green bg-register-green px-12 py-2 text-xl font-medium text-white hover:bg-transparent hover:text-[#4F6038] focus:outline-none focus:ring active:text-[#4F6038] text-center max-w-[fit-content] mb-1 lg:mb-1.5"
           to=""
           onClick = {logUserAndPwd}
@@ -202,6 +205,7 @@ function LoginPage() {
         >
           Create an account
         </Link>
+        </div>
         </div>
 //             {/* login button */}
 //             <button
