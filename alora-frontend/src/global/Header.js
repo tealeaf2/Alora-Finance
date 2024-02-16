@@ -38,6 +38,7 @@ const Header = () => {
           <ul className="App-header-sections flex tems-center">
             <li>
               <Link to="/lessons">
+                {/* Sadie needs to fix this for all of the buttons */}
                 <button
                   className={`sm:flex App-header-sections-button App-header-sections-button1 ${
                     location.pathname === "/lessons" ? "button1-active" : ""
