@@ -4,10 +4,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Varela Round", "sans-serif"]
+        sans: ["Varela Round", "sans-serif"],
+        'outfit': 'Outfit Regular'
       },
       colors: {
-        'login-green': '#d2e5ba'
+        'login-green': '#d2e5ba',
+        'register-input-green': '#C5E3C4',
+        'register-green' : '#79AF82'
       }
     },
   },
