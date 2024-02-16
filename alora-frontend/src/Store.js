@@ -12,6 +12,8 @@ import { listTreeNameReducer,
         updateTreeNameReducer
 } from './reducers/treeReducers';
 
+import { accountLoginReducer } from './reducers/accountReducers'
+
 
 const reducer = combineReducers({
     unitList: unitListReducer,
@@ -23,9 +25,16 @@ const reducer = combineReducers({
 
     treeName: listTreeNameReducer,
     treeNameUpdate: updateTreeNameReducer,
+
+    accountLogin: accountLoginReducer,
 })
 
-const initialState = {}
+const accountLoginInfoFromStorage = localStorage.getItem('accountInfo') ?
+    JSON.parse(localStorage.getItem('accountInfo')) : null
+
+const initialState = {
+    accountLogin: { accountInfo: accountLoginInfoFromStorage },
+}
 
 const store = configureStore({
     reducer: reducer,
