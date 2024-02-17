@@ -2,6 +2,7 @@ import '../styles/App.css';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
+import '../styles/index.css'
 
 
 import Header from '../global/Header';
