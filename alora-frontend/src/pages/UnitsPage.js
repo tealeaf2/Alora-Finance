@@ -69,7 +69,7 @@ export default function Units() {
                                             setHome(true)
                                             setUnit(units[unit.number - 1])
                                         }}>
-                                        Unit {unit.id}: {unit.name}
+                                        Unit {unit.number}: {unit.name}
                                     </button>
                                 </div>
                             ))}
