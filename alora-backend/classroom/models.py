@@ -26,6 +26,9 @@ class Unit(models.Model):
     number = models.IntegerField(default=1)
     image = models.ImageField(null=True, blank=True)
     tree_name = models.CharField(max_length=50, null=True, blank=True)
+
+    #Uncomment in model when working on it, because rn, it gives error in progress page
+    # topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name="unit_topic", null=True, blank=True)
     
     def __str__(self):
         return self.name
@@ -37,6 +40,7 @@ class Lesson(models.Model):
     link = models.CharField(max_length=200)
     # videos = models.JSONField(default=None, blank=True, null=True)
     lesson_num = models.IntegerField(default=0)
+    done = models.BooleanField(default=False)
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE, related_name="lesson_unit", null=True, blank=True)
     
     def __str__(self):

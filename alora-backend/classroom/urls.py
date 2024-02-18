@@ -15,5 +15,5 @@ urlpatterns = [
     path('units/<int:uk>/name', name_list),
     
     #TODO
-    path('progress', getAllProgress, name='progress'),
+    path('user/progress', getProgress, name='progress'),
 ]
