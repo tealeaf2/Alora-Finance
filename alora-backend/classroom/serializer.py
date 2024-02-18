@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Unit, Lesson, Progress
+from .models import Unit, Lesson, Classroom
 
 class UnitSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,8 +11,9 @@ class LessonSerializer(serializers.ModelSerializer):
         model = Lesson
         fields = '__all__'
         
-class ProgressSerialzier(serializers.ModelSerializers):
+class ClassroomSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Progress
-        fields = [unit, lessons_done]
+        model = Classroom
+        fields = '__all__'
+        
     
