@@ -5,7 +5,7 @@ from rest_framework import status
 from django.shortcuts import get_object_or_404
 
 #models
-from classroom.models import Unit, Lesson, Quiz
+from classroom.models import Unit, Lesson, Quiz, Topic
 
 #serializers
 from classroom.serializer import *
@@ -96,4 +96,19 @@ def getProgress(request):
 
     return Response({'template': 'template'})
         
+#############################   TOPICS   #############################  
+
+# get all topics
+@api_view(['GET'])
+def getAllTopics(request):
+    topics = Topic.objects.all().order_by('topic_num')
+    serializer = TopicSerializer(topics, many=True)
+    return Response(serializer.data)
+
+# get one topic
+@api_view(['GET'])
+def getTopic(request, pk):
+    topic = get_object_or_404(Topic, id=pk)
+    serializer = TopicSerializer(topic, many=False)
+    return Response(serializer.data)
     
