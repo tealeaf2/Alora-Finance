@@ -27,6 +27,12 @@ def getUnit(request, uk):
 
 #############################   LESSONS   #############################   
 
+#TODO
+#Gets a specific lesson from a unit
+@api_view(['GET'])
+def getUnitsFromTopic(request):
+    return Response({'template': 'template'})
+
 #Gets all of the lessons of a unit
 @api_view(['GET'])
 def getAllLessons(request, uk):
@@ -85,12 +91,9 @@ def name_list(request, uk):
         
 #############################   PROGRESS   #############################   
 #TODO
-
 @api_view(['GET'])
-def getAllProgress(request):
-    units=getAllUnits(request)
-    lessons=getAllLessons(request)
-    names=name_list(request)
+def getProgress(request):
+
     return Response({'template': 'template'})
         
     
