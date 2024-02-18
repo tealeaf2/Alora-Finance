@@ -16,4 +16,5 @@ urlpatterns = [
     
     #TODO
     path('user/progress', getProgress, name='progress'),
+    path('topics/', getAllTopics, name='all-topics'),
 ]
