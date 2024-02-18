@@ -104,11 +104,4 @@ def getAllTopics(request):
     topics = Topic.objects.all().order_by('topic_num')
     serializer = TopicSerializer(topics, many=True)
     return Response(serializer.data)
-
-# get one topic
-@api_view(['GET'])
-def getTopic(request, pk):
-    topic = get_object_or_404(Topic, id=pk)
-    serializer = TopicSerializer(topic, many=False)
-    return Response(serializer.data)
     
