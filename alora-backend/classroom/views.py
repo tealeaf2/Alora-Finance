@@ -95,7 +95,34 @@ def name_list(request, uk):
 def getProgress(request):
 
     return Response({'template': 'template'})
-        
+
+@api_view(['PUT'])
+def updateLessonsDone(request, topic_id, progress_id):
+    try:
+        topic = Topic.objects.get(id=topic_id)
+        progress = Progress.objects.get(id=progress_id)
+    except Topic.DoesNotExist:
+        response_data = {'error': 'Topic not found'}
+        return Response(response_data)
+    except Progress.DoesNotExist:
+        response_data = {'error': 'Progress not found'}
+        return Response(response_data)
+    
+    lessonsDoneSum = 0
+    for unit in topic.unit_set.all():
+        for lesson in unit.lesson_set.all():
+            if lesson.done:
+                lessonsDoneSum += 1
+                
+    progress.lessons_done = lessonsDoneSum
+
+    response_data = {'success': True}
+    return Response(response_data)
+    
+    
+            
+
+
 #############################   TOPICS   #############################  
 
 # get all topics
