@@ -5,7 +5,7 @@ from rest_framework import status
 from django.shortcuts import get_object_or_404
 
 #models
-from classroom.models import Unit, Lesson, Quiz, Topic
+from classroom.models import Unit, Lesson, Quiz, Classroom, Topic
 
 #serializers
 from classroom.serializer import *
@@ -89,6 +89,16 @@ def name_list(request, uk):
             response_data = {'error': 'Unit not found'}
             return Response(response_data)
         
+#############################   MEMBERS    #############################
+@api_view(['GET'])
+def getMembers(request, ck):
+    try:
+        classroom = Classroom.objects.get(id=ck)
+        members_all = classroom.members.all()  
+        serializer = ClassroomSerializer(members_all, many=True)
+        return Response(serializer.data)
+    except Classroom.DoesNotExist:
+        return Response({'error': 'Classroom not found'})
 #############################   PROGRESS   #############################   
 #TODO
 @api_view(['GET'])
