@@ -7,13 +7,13 @@ import {
 } from '../constants/quizConstants'; 
 
 // ACTION CREATOR returning a function instead of an action through thunk
-export const listquizzes = () => async (dispatch) => {
+export const listQuizzes = (lesson_id) => async (dispatch) => {
     try {
         // Dispatches the action (with type QUIZ_LIST_REQUEST) to indicate the start of the async operation
         dispatch({ type: QUIZ_LIST_REQUEST });
 
         // Make an asynchronous API call (e.g., using axios)
-        const { data } = await axios.get('/api/quizzes/');
+        const { data } = await axios.get(`/api/lessons/${lesson_id}/quiz`);
 
         // Dispatches the action (with type QUIZ_LIST_SUCCESS) when the API call is successful
         dispatch({
