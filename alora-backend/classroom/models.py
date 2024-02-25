@@ -73,7 +73,7 @@ class Progress(models.Model):
         (B, "B"),
     }
     
-    tree_type = models.CharField( max_length=1, choices=TREE_TYPE_CHOICES, default=A)
+    tree_type = models.CharField(max_length=1, choices=TREE_TYPE_CHOICES, default=A)
     name = models.CharField(max_length=100)
     account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name="progress_acount", null=True, blank=True)
     lessons_done = models.IntegerField(default=0)
