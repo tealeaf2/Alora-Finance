@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Unit, Lesson, Progress, Topic
+from .models import Unit, Lesson, Progress, Topic, Classroom
 
 class UnitSerializer(serializers.ModelSerializer):
     class Meta:
