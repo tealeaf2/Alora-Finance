@@ -2,7 +2,7 @@ import React, { useState , useEffect} from 'react'
 import { Link } from "react-router-dom";
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import '../styles/index.css';
+// import '../styles/index.css';
 import '../styles/App.css';
 import { register } from '../actions/accountActions'
 
