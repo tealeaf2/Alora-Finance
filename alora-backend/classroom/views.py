@@ -28,6 +28,8 @@ def getUnit(request, uk):
 #############################   LESSONS   #############################   
 
 #TODO
+
+
 #Gets a specific lesson from a unit
 @api_view(['GET'])
 def getUnitsFromTopic(request):
@@ -59,6 +61,16 @@ def getQuiz(request, lk):
     else:
         return Response({'message': 'Quiz not found for this lesson'}, status=404)
 
+#Mark Lesson as Done
+@api_view(['POST'])
+def markLessonDone(request, lk):
+    try:
+        lesson = Lesson.objects.get(id=lk)
+    except Lesson.DoesNotExist:
+        return Response({'error': 'Lesson not found'}, status=status.HTTP_404_NOT_FOUND)
+    lesson.done = True
+    lesson.save()
+    return Response({'success': True})
 #############################   NAME   #############################   
 
 
