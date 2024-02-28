@@ -141,4 +141,15 @@ def getAllTopics(request):
     topics = Topic.objects.all().order_by('topic_num')
     serializer = TopicSerializer(topics, many=True)
     return Response(serializer.data)
-    
+
+# get all units from one topic
+@api_view(['GET'])
+def getUnitsForTopic(request, topic_id):
+    try:
+        topic = Topic.objects.get(id=topic_id)
+        units = topic.unit_set.all()
+        serializer = UnitSerializer(units, many=True)
+        return Response(serializer.data)
+    except Topic.DoesNotExist:
+        # If topic with the provided ID does not exist
+        return Response({'error': 'Topic not found'}, status=status.HTTP_404_NOT_FOUND)
