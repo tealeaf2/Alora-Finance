@@ -49,188 +49,342 @@ const CoinQuestGame = () => {
         }
 
         //randomly generate target number
-        let targetNum = Math.round(Math.random() * 1000);
+        let targetNum = (Math.random() * 10).toFixed(2);
 
         //create current number
         let currentNum = 0;
 
+        //draw line
+        let rect = new PIXI.Graphics();
+        rect.beginFill(0x000000)
+        rect.drawRect((app.view.width*0.8), 0, 1, 10000);
+        rect.endFill();
+        app.stage.addChild(rect);
+
+        //draw receipt
+        let rect2 = new PIXI.Graphics();
+        rect2.beginFill(0xdce1e8)
+        rect2.drawRect(0, 0, 250, 300);
+        rect2.endFill();
+        app.stage.addChild(rect2);
+
+        //generate receipt text
+        var receiptText = new PIXI.Text("RECEIPT", {font:"75px", fill:"black"});
+        rect2.addChild(receiptText);
+
         //generate target text
-        var targetText = new PIXI.Text("Target number: " + targetNum, {font:"50px", fill:"black"});
-        app.stage.addChild(targetText);
+        var targetText = new PIXI.Text("TOTAL: $" + targetNum, {font:"50px", fill:"black"});
+        rect2.addChild(targetText)
+        targetText.y = app.view.height * 0.10;
 
         //display current number
-        var currentText = new PIXI.Text("Current total: " + currentNum, {font:"50px", fill:"black"});
-        app.stage.addChild(currentText);
-        currentText.y = app.view.height * 0.10;
+        var currentText = new PIXI.Text("PAID: $" + Math.abs(currentNum), {font:"50px", fill:"black"});
+        rect2.addChild(currentText);
+        currentText.y = app.view.height * 0.20;
 
-        //draw buttons
-        oneButton();
-        tenButton();
-        hundredButton();
+        //add text
+        var pennyButtonText = new PIXI.Text("Add penny", {fontSize: 14, font:"10px", fill:"black"});
+        app.stage.addChild(pennyButtonText);
+        pennyButtonText.x = (app.view.width - 120);
+        pennyButtonText.y = 47;
+        pennyButtonText.interactive = true;
+        pennyButtonText.buttonMode = true;
+        pennyButtonText.on('click', placePenny);
 
-        //add text to buttons
-        var oneButtonText = new PIXI.Text("Add 1 block", {fontSize: 14, font:"10px", fill:"black"});
-        app.stage.addChild(oneButtonText);
-        oneButtonText.x = (app.view.width - 120);
-        oneButtonText.y = 47;
-        oneButtonText.interactive = true;
-        oneButtonText.buttonMode = true;
-        oneButtonText.on('click', placeOne);
+        var nickelButtonText = new PIXI.Text("Add nickel", {fontSize: 14, font:"10px", fill:"black"});
+        app.stage.addChild(nickelButtonText);
+        nickelButtonText.x = (app.view.width - 120);
+        nickelButtonText.y = 147;
+        nickelButtonText.interactive = true;
+        nickelButtonText.buttonMode = true;
+        nickelButtonText.on('click', placeNickel);
 
-        var tenButtonText = new PIXI.Text("Add 10 blocks", {fontSize: 14, font:"10px", fill:"black"});
-        app.stage.addChild(tenButtonText);
-        tenButtonText.x = (app.view.width - 125);
-        tenButtonText.y = 147;
-        tenButtonText.interactive = true;
-        tenButtonText.buttonMode = true;
-        tenButtonText.on('click', placeTen);
+        var dimeButtonText = new PIXI.Text("Add dime", {fontSize: 14, font:"10px", fill:"black"});
+        app.stage.addChild(dimeButtonText);
+        dimeButtonText.x = (app.view.width - 120);
+        dimeButtonText.y = 247;
+        dimeButtonText.interactive = true;
+        dimeButtonText.buttonMode = true;
+        dimeButtonText.on('click', placeDime);
 
-        var hundredButtonText = new PIXI.Text("Add 100 blocks", {fontSize: 14, font:"10px", fill:"black"});
-        app.stage.addChild(hundredButtonText);
-        hundredButtonText.x = (app.view.width - 128);
-        hundredButtonText.y = 247;
-        hundredButtonText.interactive = true;
-        hundredButtonText.buttonMode = true;
-        hundredButtonText.on('click', placeHundred);
+        var quarterButtonText = new PIXI.Text("Add quarter", {fontSize: 14, font:"10px", fill:"black"});
+        app.stage.addChild(quarterButtonText);
+        quarterButtonText.x = (app.view.width - 120);
+        quarterButtonText.y = 347;
+        quarterButtonText.interactive = true;
+        quarterButtonText.buttonMode = true;
+        quarterButtonText.on('click', placeQuarter);
+
+        var dollarButtonText = new PIXI.Text("Add dollar", {fontSize: 14, font:"10px", fill:"black"});
+        app.stage.addChild(dollarButtonText);
+        dollarButtonText.x = (app.view.width - 116);
+        dollarButtonText.y = 447;
+        dollarButtonText.interactive = true;
+        dollarButtonText.buttonMode = true;
+        dollarButtonText.on('click', placeDollar);
 
 
-        // Create a button to add 1 block
-        
-        function oneButton() {
-            let addOne = new PIXI.Graphics();
-            addOne.beginFill(0x258f99);
-            addOne.drawRoundedRect((app.view.width - 130), 30, 100, 50);
-            addOne.endFill();
-            app.stage.addChild(addOne);
-            addOne.interactive = true;
-            addOne.buttonMode = true;
-            addOne.on('click', placeOne);
+        // Create a button to add penny
+        function pennyButton() {
+            let addPenny = new PIXI.Graphics();
+            addPenny.beginFill(0x258f99);
+            addPenny.drawRoundedRect((app.view.width - 130), 30, 100, 50);
+            addPenny.endFill();
+            app.stage.addChild(addPenny);
+            addPenny.interactive = true;
+            addPenny.buttonMode = true;
+            addPenny.on('click', placePenny);
         }
 
-        // Create a button to add 10 blocks
-        function tenButton () {
-            let addTen = new PIXI.Graphics();
-            addTen.beginFill(0x258f99);
-            addTen.drawRoundedRect((app.view.width - 130), 130, 100, 50);
-            addTen.endFill();
-            addTen.interactive = true;
-            addTen.buttonMode = true;
-            app.stage.addChild(addTen);
-            addTen.on('click', placeTen)
+        //Create button to add nickel
+        function nickelButton () {
+            let addNickel = new PIXI.Graphics();
+            addNickel.beginFill(0x258f99);
+            addNickel.drawRoundedRect((app.view.width - 130), 130, 100, 50);
+            addNickel.endFill();
+            addNickel.interactive = true;
+            addNickel.buttonMode = true;
+            app.stage.addChild(addNickel);
+            addNickel.on('click', placeNickel)
+        }
+
+        //Create a button to add dime
+        function dimeButton () {
+            let addDime = new PIXI.Graphics();
+            addDime.beginFill(0x258f99);
+            addDime.drawRoundedRect((app.view.width - 130), 230, 100, 50);
+            addDime.endFill();
+            addDime.interactive = true;
+            addDime.buttonMode = true;
+            app.stage.addChild(addDime);
+            addDime.on('click', placeDime)
+        }
+
+        //Create button to add quarter
+        function quarterButton () {
+            let addQuarter = new PIXI.Graphics();
+            addQuarter.beginFill(0x258f99);
+            addQuarter.drawRoundedRect((app.view.width - 130), 330, 100, 50);
+            addQuarter.endFill();
+            addQuarter.interactive = true;
+            addQuarter.buttonMode = true;
+            app.stage.addChild(addQuarter);
+            addQuarter.on('click', placeQuarter)
         }
 
         // Create a button to add 100 block
-        function hundredButton () {
-            let addHundred = new PIXI.Graphics();
-            addHundred.beginFill(0x258f99);
-            addHundred.drawRoundedRect((app.view.width - 130), 230, 100, 50);
-            addHundred.endFill();
-            addHundred.interactive = true;
-            addHundred.buttonMode = true;
-            app.stage.addChild(addHundred);
-            addHundred.on('click', placeHundred)
+        function dollarButton () {
+            let addDollar = new PIXI.Graphics();
+            addDollar.beginFill(0x258f99);
+            addDollar.drawRoundedRect((app.view.width - 130), 430, 100, 50);
+            addDollar.endFill();
+            addDollar.interactive = true;
+            addDollar.buttonMode = true;
+            app.stage.addChild(addDollar);
+            addDollar.on('click', placeDollar)
         }
 
-
+        //set counts for sprite placement
         let xCount = 300;
         let yCount = 200;
 
-        //function to determine placement of sprites
-        function spriteLocation () {
+        placePenny();
+        placeNickel();
+        placeDime();
+        placeQuarter();
+        placeDollar();
 
-            if (xCount % 1000 === 0) {
-
-                yCount = yCount + 100;
-                xCount = 300;
-
-            } else if (yCount > 700) {
-
-                //clear stage
-                app.stage.removeChildren(true);
-
-                //display failure text
-                var spaceText = new PIXI.Text("You placed too many blocks! Try using larger quantities next time.", {font:"50px", fill:"black", x:0.5, y:0.5});
-                spaceText.x = app.view.width * 0.25;
-                spaceText.y = app.view.height * 0.50;
-                app.stage.addChild(spaceText);
-
-                //display restart button
-                restartButton();
-
-
-            } else {
-
-                xCount = xCount + 100;
-
+        //functions to handle new coin addition
+        function pennyCheck() {
+            if (this['added'] == 0) {
+                if (this.getBounds().x < (app.view.width*0.8)) {
+                    currentNum = currentNum + 0.01;
+                }
+                placePenny()
             }
-
-
+            if (this.getBounds().x >= (app.view.width*0.8)) {
+            this.destroy()
+                if (this['added'] == 1) {
+                    currentNum = currentNum - 0.01;
+                }
+            }
+            this['added'] = 1
+            updateTotal()
         }
 
+        function nickelCheck() {
+            if (this['added'] == 0) {
+                if (this.getBounds().x < (app.view.width*0.8)) {
+                    currentNum = currentNum + 0.05;
+                }
+                placeNickel()
+            } 
+            if (this.getBounds().x >= (app.view.width*0.8)) {
+                this.destroy()
+                if (this['added'] == 1) {
+                    currentNum = currentNum - 0.05;
+                }
+            }
+            this['added'] = 1
+            updateTotal()
+        }
+
+        function dimeCheck() {
+            if (this['added'] == 0) {
+                if (this.getBounds().x < (app.view.width*0.8)) {
+                    currentNum = currentNum + 0.10;
+                }
+                placeDime()
+            }
+            if (this.getBounds().x >= (app.view.width*0.8)) {
+            this.destroy()
+                if (this['added'] == 1) {
+                  currentNum = currentNum - 0.10;
+                }
+            }
+            this['added'] = 1
+            updateTotal()
+        }
+
+        function quarterCheck() {
+            if (this['added'] == 0) {
+                if (this.getBounds().x < (app.view.width*0.8)) {
+                    currentNum = currentNum + 0.25;
+                }
+                placeQuarter()
+            }
+            if (this.getBounds().x >= (app.view.width*0.8)) {
+            this.destroy()
+                if (this['added'] == 1) {
+                    currentNum = currentNum - 0.25;
+                }
+            }
+            this['added'] = 1
+            updateTotal()
+        }
+
+        function dollarCheck() {
+            if (this['added'] == 0) {
+                if (this.getBounds().x < (app.view.width*0.8)) {
+                    currentNum = currentNum + 1;
+                }
+                placeDollar()
+            }
+            if (this.getBounds().x >= (app.view.width*0.8)) {
+            this.destroy()
+                if (this['added'] == 1) {
+                    currentNum = currentNum - 1;
+                }
+            }
+            this['added'] = 1
+            updateTotal()
+        }
 
         //generate new sprite of single block piece
-        function placeOne(e) {
+        function placePenny(e) {
 
-            //placeholder sprite - replace with one block sprite
-            const sprite1 = PIXI.Sprite.from(block);
-            sprite1.eventMode='static'
-            sprite1.cursor='pointer'
-            sprite1.anchor.set(0.5, 0.5)
-            sprite1.on('pointerdown', onDragStart, sprite1);
-            sprite1.width = 50;
-            sprite1.height = 50;
-            sprite1.x = xCount;
-            sprite1.y = yCount;
-            app.stage.addChild(sprite1);
-            currentNum = currentNum + 1;
-            spriteLocation();
+            //placeholder sprite - replace with penny block sprite
+            const pennySprite = PIXI.Sprite.from(block);
+            //status to keep track of whether a coin has been added yet
+            pennySprite['added'] = 0
+            pennySprite.eventMode='static'
+            pennySprite.cursor='pointer'
+            pennySprite.anchor.set(0.5, 0.5)
+            pennySprite.on('pointerdown', onDragStart, pennySprite);
+            pennySprite.on('pointerup', pennyCheck, pennySprite);
+            pennySprite.width = 30;
+            pennySprite.height = 30;
+            pennySprite.x = (app.view.width - 90);
+            pennySprite.y = 100;
+            app.stage.addChild(pennySprite);
             updateTotal();
         }
 
-        //generate new sprite of ten block piece
-        function placeTen(e) {
+        function placeNickel(e) {
 
 
-            //placeholder sprite - replace with ten block sprite
-            const sprite10 = PIXI.Sprite.from(block);
-            sprite10.eventMode='static'
-            sprite10.cursor='pointer'
-            sprite10.anchor.set(0.5, 0.5)
-            sprite10.on('pointerdown', onDragStart, sprite10);
-            sprite10.width = 50;
-            sprite10.height = 50;
-            sprite10.x = xCount;
-            sprite10.y = yCount;
-            app.stage.addChild(sprite10);
-            currentNum = currentNum + 10;
-            spriteLocation();
+            //placeholder sprite - replace with nickel block sprite
+            const nickelSprite = PIXI.Sprite.from(block);
+            nickelSprite['added'] = 0
+            nickelSprite.eventMode='static'
+            nickelSprite.cursor='pointer'
+            nickelSprite.anchor.set(0.5, 0.5)
+            nickelSprite.on('pointerdown', onDragStart, nickelSprite);
+            nickelSprite.on('pointerup', nickelCheck, nickelSprite);
+            nickelSprite.width = 30;
+            nickelSprite.height = 30;
+            nickelSprite.x = (app.view.width - 90);
+            nickelSprite.y = 200;
+            app.stage.addChild(nickelSprite);
+            updateTotal();
+        }
+
+        //generate new sprite of dime block piece
+        function placeDime(e) {
+
+
+            //placeholder sprite - replace with dime block sprite
+            const dimeSprite = PIXI.Sprite.from(block);
+            dimeSprite['added'] = 0
+            dimeSprite.eventMode='static'
+            dimeSprite.cursor='pointer'
+            dimeSprite.anchor.set(0.5, 0.5)
+            dimeSprite.on('pointerdown', onDragStart, dimeSprite);
+            dimeSprite.on('pointerup', dimeCheck, dimeSprite);
+            dimeSprite.width = 30;
+            dimeSprite.height = 30;
+            dimeSprite.x = (app.view.width - 90);
+            dimeSprite.y = 300;
+            app.stage.addChild(dimeSprite);
+            updateTotal();
+        }
+
+        function placeQuarter(e) {
+
+
+            //placeholder sprite - replace with quarter block sprite
+            const quarterSprite = PIXI.Sprite.from(block);
+            quarterSprite['added'] = 0
+            quarterSprite.eventMode='static'
+            quarterSprite.cursor='pointer'
+            quarterSprite.anchor.set(0.5, 0.5)
+            quarterSprite.on('pointerdown', onDragStart, quarterSprite);
+            quarterSprite.on('pointerup', quarterCheck, quarterSprite);
+            quarterSprite.width = 30;
+            quarterSprite.height = 30;
+            quarterSprite.x = (app.view.width - 90);
+            quarterSprite.y = 400;
+            app.stage.addChild(quarterSprite);
             updateTotal();
         }
 
         //generate new sprite of 100 block sprite
-        function placeHundred(e) {
+        function placeDollar(e) {
 
-            //placeholder sprite - replace with one block sprite
-            const sprite100 = PIXI.Sprite.from(block);
-            sprite100.eventMode='static'
-            sprite100.cursor='pointer'
-            sprite100.anchor.set(0.5, 0.5)
-            sprite100.on('pointerdown', onDragStart, sprite100);
-            sprite100.width = 50;
-            sprite100.height = 50;
-            sprite100.x = xCount;
-            sprite100.y = yCount;
-            app.stage.addChild(sprite100);
-            currentNum = currentNum + 100;
-            spriteLocation();
+            //placeholder sprite - replace with penny block sprite
+            const dollarSprite = PIXI.Sprite.from(block);
+            dollarSprite['added'] = 0
+            dollarSprite.eventMode='static'
+            dollarSprite.cursor='pointer'
+            dollarSprite.anchor.set(0.5, 0.5)
+            dollarSprite.on('pointerdown', onDragStart, dollarSprite);
+            dollarSprite.on('pointerup', dollarCheck, dollarSprite);
+            dollarSprite.width = 30;
+            dollarSprite.height = 30;
+            dollarSprite.x = (app.view.width - 90);
+            dollarSprite.y = 500;
+            app.stage.addChild(dollarSprite);
             updateTotal();
         }
 
         function updateTotal(e) {
 
-            currentText.text = 'Current total: ' + currentNum;
+            console.log(targetNum)
+            console.log(currentNum)
 
-            if (targetNum === currentNum) {
+            currentText.text = 'PAID: $' + currentNum.toFixed(2);
+
+            if (targetNum === currentNum.toFixed(2)) {
 
                 //clear stage
                 app.stage.removeChildren(true);
