@@ -2,7 +2,6 @@ import '../styles/App.css';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
-import '../styles/index.css'
 
 
 import Header from '../global/Header';
@@ -18,6 +17,9 @@ export default function Units() {
 
     const [unit, setUnit] = useState({})
     const [home, setHome] = useState(false)
+  
+
+    console.log(unit)
     
 
     // const [units, setUnits] = useState([])
@@ -57,19 +59,19 @@ export default function Units() {
                         
                         
                 {/* RIGHT SIDE BAR */}
-                <div className="flex-grow max-w-screen-xl mx-auto p-6 max-h-screen overflow-auto">
+                <div className="flex-grow max-w-screen-xl mx-auto p-6">
                     {home ? <DisplayUnitAndLessons number={unit.number} name={unit.name} />
                         :
-                        <div className="max-h-screen max-w-screen-xl mx-auto px-10 py-5">
+                        <div className="max-h-screen overflow-y-auto max-w-screen-xl mx-auto px-10 py-5">
                             {units.map(unit => (
                                 <div key={unit._id} className="py-2">
                                     <button
                                         className="text-left py-10 px-10 rounded-3xl w-full text-3xl App-header-sections-button3"
                                         onClick={() => {
                                             setHome(true)
-                                            setUnit(units[unit.number - 1])
+                                            setUnit(units[unit.id - 1])
                                         }}>
-                                        Unit {unit.number}: {unit.name}
+                                        Unit {unit.id}: {unit.name}
                                     </button>
                                 </div>
                             ))}
@@ -80,3 +82,4 @@ export default function Units() {
         </>
     )
 }
+

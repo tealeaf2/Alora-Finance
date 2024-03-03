@@ -3,15 +3,6 @@ from account.models import Account
 
 
 # Create your models here.
-class Topic(models.Model):
-    name = models.CharField(max_length=100)
-    topic_num = models.IntegerField(default=0)
-    units_total = models.IntegerField(default=0)
-    tree_name = models.CharField(max_length=50, null=True, blank=True)
-
-    def __str__(self):
-        return self.name
-
 class Classroom(models.Model):
     name = models.CharField(max_length=100)
     teacher = models.CharField(max_length=100)
@@ -31,8 +22,6 @@ class Unit(models.Model):
         return self.name
 
 class Lesson(models.Model):
-    def _id(self):
-        return self.id
     name = models.CharField(max_length=100)
     link = models.CharField(max_length=200)
     # videos = models.JSONField(default=None, blank=True, null=True)
@@ -51,12 +40,23 @@ class Lesson(models.Model):
     
     
 class Quiz(models.Model):
+    MULTIPLE_CHOICE = "MCQ"
+    FREE_RESPONSE = "FRQ"
+
+    QUIZ_TYPE_CHOICES = {
+        (MULTIPLE_CHOICE, "Multiple Choice"),
+        (FREE_RESPONSE, "Free Response"),
+    }
+    
+    name = models.CharField(max_length=100, default=None, null=True, blank=True)
+    quiz_type = models.CharField(max_length=3, choices=QUIZ_TYPE_CHOICES, default=MULTIPLE_CHOICE)
     # questions and answers
     content = models.JSONField(null=True, blank=True)
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name="lesson_quiz", null=True, blank=True)
+
     
     def __str__(self):
-        return self.lesson.name
+        return self.quiz_type
     
 
 class Progress(models.Model):

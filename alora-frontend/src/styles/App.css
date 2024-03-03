@@ -19,105 +19,78 @@
 
 /* Header Menu */
 .App-header {
-  background-color: #ffffff;
-  overflow: hidden;
-  height: 120px;
-  padding: 30px;
+  background-color: #E8F9D6;
+  padding: 30px 32px 28px;
+  /* display: flex; */
+ /* justify-content: space-between; */
+  /* font-weight: bold;*/
+  color: #4B6133;
+  overflow: auto;
+
 }
 
-/* Logo on the left and stays constant */
-.App-header-home {
+/* Logo/Home on the left */
+.App-header-home{
+  /*margin:auto;*/
+  vertical-align:middle;
+}
+.App-header-home-logo{
   vertical-align: middle;
-  float: left;
-  min-width: 260px;
-  flex-grow: 0;
-  flex-shrink: 0;
+  object-fit: cover;
+  /* object-position: 50% 45%; */
+  cursor: pointer;
 }
 
-/* Links on the right */
-.App-header-sections {
+/* Pages on the right */
+.App-header-sections{
+  margin-top: 10px;
   font-family: monospace;
-  float: right;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
-.App-header-sections-button {
-  background-color: #ffffff;
+.App-header-sections-button{
+  background-color: white;
   border: none;
-  border-radius: 100px;
+  vertical-align: middle;
+  border-radius:30px;
   margin: 4px 10px;
-  display: block;
-  float: right;
-
+  display: inline-block;
+  
   text-align: center;
-  padding: 4px 20px;
-  color: #000000;
-  font-weight: normal;
-  font-size: 20px;
-  transition-duration: 0.2s;
+  padding: 8px 20px;
+  color: black;
+  font-weight: bold;
+  font-size: 17px;
+  transition-duration: 0.4s;
   cursor: pointer;
   text-decoration-line: none;
 }
 
-/*Buttons and effects*/
-.App-header-sections-button1 {
-  border: 4px solid #ef7a43;
-}
-.App-header-sections-button1:hover {
-  background-color: #ef7a43;
-  color: #ffffff;
-}
-.button1-active {
-  background-color: #ef7a43;
-  color: #ffffff;
+.Unit-display-lesson{
+  border: 3px solid #F6DFC4;
 }
 
-.App-header-sections-button2 {
-  border: 4px solid #0e87b3;
+.App-header-sections-button1{
+  border: 3px solid #FFE4F7;
 }
-.App-header-sections-button2:hover {
-  background-color: #0e87b3;
-  color: #ffffff;
+.App-header-sections-button1:hover{
+  background-color: #FFE4F7;
 }
-.button2-active {
-  background-color: #0e87b3;
-  color: #ffffff;
+.App-header-sections-button2{
+  border: 3px solid #C8D1FD;
 }
-
-.App-header-sections-button3 {
-  border: 4px solid #eea930;
+.App-header-sections-button2:hover{
+  background-color: #C8D1FD;
 }
-.App-header-sections-button3:hover {
-  background-color: #eea930;
-  color: #ffffff;
+.App-header-sections-button3{
+  border: 3px solid #F6DFC4;
 }
-.button3-active {
-  background-color: #eea930;
-  color: #ffffff;
+.App-header-sections-button3:hover{
+  background-color: #F6DFC4;
 }
-
-.App-header-sections-button4 {
-  border: 4px solid #3a8989;
+.App-header-sections-button4{
+  border: 3px solid #DBF4C0;
 }
-.App-header-sections-button4:hover {
-  background-color: #3a8989;
-  color: #ffffff;
-}
-.button4-active {
-  background-color: #3a8989;
-  color: #ffffff;
-}
-
-/*Hide links when screen gets too small*/
-@media (max-width: 768px) {
-  .App-header-sections li {
-    display: none;
-  }
-}
-
-.Unit-display-lesson {
-  border: 3px solid #f6dfc4;
+.App-header-sections-button4:hover{
+  background-color: #DBF4C0;
 }
 
 .App-link {
@@ -146,12 +119,12 @@
   bottom: 65%;
   left: 55%;
   transform: translateX(-50%);
-  transform: translateY(-50%);
+  transform: translateY(-50%)
 }
 
 .horizontal-line {
   width: 50%; /* Set the width of your horizontal line */
-  height: 2px; /* Set the height of your horizontal line */
+  height: 2px;  /* Set the height of your horizontal line */
   background-color: #4c4f54; /* Set the color of your horizontal line */
   transform: rotate(90deg); /* Rotate the line 90 degrees to make it vertical */
   position: fixed; /* Use absolute positioning */
@@ -160,6 +133,7 @@
   transform-origin: 0 0; /* Set the transform origin to the top-left corner */
 }
 
-.container {
+.container{
   width: 500px;
 }
+
