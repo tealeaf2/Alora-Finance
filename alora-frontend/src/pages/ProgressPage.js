@@ -12,15 +12,21 @@ function Progress() {
   const [progress] = useState(35); // Change this value for progress
 
   return (
-    <div className="App" style={{ minHeight: "100vh", position: "relative" }}>
+    <div
+      className="App"
+      style={{
+        minHeight: "100vh",
+        position: "relative",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <Header />
       <div
         style={{
           height: "80%",
           display: "flex",
           flexDirection: "column",
-          width: "100%",
-          position: "relative",
           marginTop: "2%",
         }}
       >
@@ -44,11 +50,11 @@ function Progress() {
             <ProgressLabel progress={progress} />
           </div>
         </div>
-        <div style={{ flexGrow: 1 }}>
+        <div style={{ flex: "1", overflowY: "auto" }}>
           <ProgressBar progress={progress} />
         </div>
       </div>
-      <div style={{ position: "absolute", bottom: "0", width: "100%" }}>
+      <div style={{ marginTop: "auto" }}>
         <TreeCarousel />
       </div>
     </div>

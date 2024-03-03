@@ -20,8 +20,8 @@ const Carousel = () => {
       <button
         style={{
           flex: "1",
-          width: "50px",
-          fontSize: "15rem",
+          width: "5vw",
+          fontSize: "10vw",
           color: "#68b17e",
           fontWeight: "bold",
           textAlign: "center",
@@ -36,8 +36,8 @@ const Carousel = () => {
       <button
         style={{
           flex: "1",
-          width: "50px",
-          fontSize: "15rem",
+          width: "5vw",
+          fontSize: "10vw",
           color: "#68b17e",
           fontWeight: "bold",
           textAlign: "center",
