@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import UnitsPage from "./pages/UnitsPage";
 import LessonPage from "./pages/LessonPage";
 import ProfilePage from "./pages/ProfilePage";
+import ChangePassword from "./pages/ChangePassword";
 import ProgressPage from "./pages/ProgressPage";
 import GamePage from "./pages/GamePage";
 import LoginPage from "./pages/LoginPage";
@@ -23,6 +24,7 @@ export default function App() {
          <Route path='/games' element={<GamePage/>} />
          <Route path='/progress' element={<ProgressPage/>} />
          <Route path='/profile' element={<ProfilePage/>} />
+         <Route path='/profile/changepassword' element={<ChangePassword/>}/> {/* <-- Not sure if this way is secure */}
          <Route path='/login' element={<LoginPage/>} />
          <Route path='/register' element={<RegisterPage/>} />
          <Route path='/games/CoinQuest' element={<CoinQuestGame/>} />
