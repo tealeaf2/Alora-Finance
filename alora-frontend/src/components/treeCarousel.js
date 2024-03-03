@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import TreeProgress from './treeProgress';
+import React, { useState } from "react";
+import { TreeProgress } from "./treeProgress";
 
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
@@ -16,24 +16,36 @@ const Carousel = () => {
   };
 
   return (
-    <div>
-      <div>
-        <button
-          className="absolute top-1/2 left-1/2 bg-gray-800 text-white p-2 rounded-full"
-          onClick={prevSlide}
-        >
-          {'<'}
-        </button>
-        <button
-          className="absolute top-1/2 right-0 bg-gray-800 text-white p-2 rounded-full"
-          onClick={nextSlide}
-        >
-          {'>'}
-        </button>
-          <TreeProgress
-            isActive={currentIndex}
-          />
+    <div style={{ display: "flex", alignItems: "flex-start" }}>
+      <button
+        style={{
+          flex: "1",
+          width: "50px",
+          fontSize: "15rem",
+          color: "#68b17e",
+          fontWeight: "bold",
+          textAlign: "center",
+        }}
+        onClick={prevSlide}
+      >
+        {"<"}
+      </button>
+      <div style={{ flex: "1", position: "relative", marginTop: "10px" }}>
+        <TreeProgress isActive={currentIndex} />
       </div>
+      <button
+        style={{
+          flex: "1",
+          width: "50px",
+          fontSize: "15rem",
+          color: "#68b17e",
+          fontWeight: "bold",
+          textAlign: "center",
+        }}
+        onClick={nextSlide}
+      >
+        {">"}
+      </button>
     </div>
   );
 };

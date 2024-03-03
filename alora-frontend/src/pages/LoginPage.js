@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
-import '../styles/index.css';
-import '../styles/App.css';
-import plant3 from '../images/plant3.png';
-import { login } from '../actions/accountActions';
+import { useDispatch, useSelector } from "react-redux";
+import "../styles/index.css";
+import "../styles/App.css";
+import plant3 from "../images/Plant3.png";
+import { login } from "../actions/accountActions";
 
 function LoginPage() {
   const location = useLocation();
@@ -23,8 +23,10 @@ function LoginPage() {
     setPassword(e.target.value);
   };
 
-  const redirect = location.search ? location.search.split('=')[1] : '/progress';
-  const accountLogin = useSelector(state => state.accountLogin);
+  const redirect = location.search
+    ? location.search.split("=")[1]
+    : "/progress";
+  const accountLogin = useSelector((state) => state.accountLogin);
   const { error, loading, accountInfo } = accountLogin;
 
   const submitHandler = (e) => {
@@ -41,17 +43,26 @@ function LoginPage() {
   return (
     <div className="flex h-screen items-center justify-center">
       <div className="grid grid-cols-2 mx-16 xl:mr-[300px] flex-1">
-        <div className='absolute bottom-0 left-[-80px] flex flex-col justify-center max-w-[60vw] justify-self-center'>
-          <img alt="alora finance logo" src={plant3} className="App-header-logo-width" width="100%" height='60px'/>         
+        <div className="absolute bottom-0 left-[-80px] flex flex-col justify-center max-w-[60vw] justify-self-center">
+          <img
+            alt="alora finance logo"
+            src={plant3}
+            className="App-header-logo-width"
+            width="100%"
+            height="60px"
+          />
         </div>
         <div className="aspect-square flex flex-col col-start-2 justify-center items-center grow p-5 md:px-[6%] rounded-[14%] border-2 border-[#CFDADD] max-w-[600px] ">
           <h1 className="text-center text-register-green text-4xl lg:text-[2.6rem] font-bold mb-4 lg:mb-8">
             Sign In
           </h1>
-          <div className='flex mb-3 lg:mb-4 self-stretch'>
-            <div className='px-6 border-2 border-r-0 border-[#C5E3C4] rounded-l-full'></div>
-            <div className='flex-1'>
-              <label htmlFor="Username" className="relative block overflow-hidden rounded-r-full border-2 border-[#C5E3C4] pr-10 pt-3 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
+          <div className="flex mb-3 lg:mb-4 self-stretch">
+            <div className="px-6 border-2 border-r-0 border-[#C5E3C4] rounded-l-full"></div>
+            <div className="flex-1">
+              <label
+                htmlFor="Username"
+                className="relative block overflow-hidden rounded-r-full border-2 border-[#C5E3C4] pr-10 pt-3 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
+              >
                 <input
                   type="email"
                   id="Username"
@@ -65,10 +76,13 @@ function LoginPage() {
               </label>
             </div>
           </div>
-          <div className='flex mb-4 lg:mb-5 self-stretch'>
-            <div className='px-6 border-2 border-r-0 border-[#C5E3C4] rounded-l-full'></div>
-            <div className='flex-1'>
-              <label htmlFor="Password" className="relative block overflow-hidden rounded-r-full border-2 border-[#C5E3C4] pr-10 pt-3 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
+          <div className="flex mb-4 lg:mb-5 self-stretch">
+            <div className="px-6 border-2 border-r-0 border-[#C5E3C4] rounded-l-full"></div>
+            <div className="flex-1">
+              <label
+                htmlFor="Password"
+                className="relative block overflow-hidden rounded-r-full border-2 border-[#C5E3C4] pr-10 pt-3 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
+              >
                 <input
                   type="password"
                   id="Password"
@@ -91,9 +105,7 @@ function LoginPage() {
           <Link className="text-sm mb-2 lg:mb-4" to="/reset-password">
             Forgot Password?
           </Link>
-          <p className='mb-[-5px]'>
-            Don't have an account yet?
-          </p>
+          <p className="mb-[-5px]">Don't have an account yet?</p>
           <Link className="text-register-green" to="/register">
             Create an account
           </Link>

@@ -5,15 +5,16 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["Varela Round", "sans-serif"],
-        'outfit': 'Outfit Regular'
+        outfit: "Outfit Regular",
       },
       colors: {
-        'login-green': '#d2e5ba',
-        'register-input-green': '#C5E3C4',
-        'register-green' : '#79AF82'
-      }
+        "login-green": "#d2e5ba",
+        "register-input-green": "#C5E3C4",
+        "register-green": "#79AF82",
+        "plant-green": "#68b17e",
+        "water-blue": "#0e87b3",
+      },
     },
   },
   plugins: [],
-}
-
+};
