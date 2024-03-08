@@ -16,11 +16,12 @@ function RegisterPage() {
   const history = useNavigate();
   const dispatch = useDispatch();
 
+
   //For fields
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
-  const [email, setEmail] = useState("test@gmail.com");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [school, setSchool] = useState("")

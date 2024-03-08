@@ -1,15 +1,65 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ProfileImage from '../../images/Home_Dude.png';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../actions/accountActions'
 
 // hard code the content display for now
 // CHANGE PASSWORD
 
 export default function StudentProfile() {
 
+    const history = useNavigate();
+    const location = useLocation();
+    const redirect = location.search ? location.search.split('=')[1] : '/login';
+  
+
     // To check for states of saving
     const [isSaving, setIsSaving] = useState(false);
     const [showSavedMessage, setShowSavedMessage] = useState(false);
     const [inputValue, setInputValue] = useState('');
+
+    const [fname, setFname] = useState('');
+    const [lname, setLname] = useState('');
+    const [email, setEmail] = useState('');
+
+
+    // get account info from state
+    const accountLogin = useSelector(state => state.accountLogin);
+    const { accountInfo } = accountLogin
+
+   
+
+
+    const dispatch = useDispatch()
+
+
+
+    useEffect(() => {
+        // set info
+        try {
+            setFname(accountInfo.first_name);
+            setLname(accountInfo.last_name);
+            setEmail(accountInfo.email);
+          }
+        catch(err) {
+        }
+
+
+        // redirect to home if not logged in
+        if (!accountInfo) {
+            history(redirect);
+          }
+
+    },  [history, accountInfo, redirect]);
+
+
+    
+    const logoutHandler = () => {
+        dispatch(logout())
+        console.log('LOGOUT')
+        history(redirect);
+    }
 
     // For the save button
     const handleSave = () => {
@@ -48,7 +98,19 @@ export default function StudentProfile() {
 
                 {/* container for username */}
                 <div className="sm:order-4 order-2">
-                    <p className="px-4 text-xl">Username</p>
+                    <p className="px-4">Status</p>
+                        <input
+                        type="status"
+                        id="Status"
+                        placeholder="Student"
+                        className="w-full py-2 px-4 border-4 rounded-3xl border-neutral-400/60"
+                        onChange={handleInputChange}
+                        />
+                </div>
+
+                {/* container for last name */}
+                {/* <div className="sm:order-4 order-2">
+                    <p className="px-4 text-xl">Last Name</p>
                     <input
                     type="username"
                     id="Username"
@@ -56,7 +118,7 @@ export default function StudentProfile() {
                     className="w-full py-2 px-4 border-4 rounded-3xl border-neutral-400/60"
                     onChange={handleInputChange}
                     />
-                </div>
+                </div> */}
 
                 {/* container for email */}
                 <div className="sm:order-5 order-3">
@@ -64,7 +126,7 @@ export default function StudentProfile() {
                     <input
                     type="email"
                     id="Email"
-                    placeholder="Email"
+                    placeholder={email}
                     className="w-full py-2 px-4 border-4 rounded-3xl border-neutral-400/60"
                     onChange={handleInputChange}
                     />
@@ -91,13 +153,25 @@ export default function StudentProfile() {
                     
                 </div>
 
-                {/* container for pronouns*/}
-                <div className="sm:order-2 sm:col-span-2 order-5">
-                    <p className="px-4">Pronouns</p>
+                {/* container for First Name */}
+                <div className="sm:order-2 sm:col-span-1 order-5">
+                <p className="px-4 text-xl">First name</p>
                     <input
-                    type="pronouns"
-                    id="Pronouns"
-                    placeholder="empty"
+                    type="fname"
+                    id="fname"
+                    placeholder={fname}
+                    className="w-full py-2 px-4 border-4 rounded-3xl border-neutral-400/60"
+                    onChange={handleInputChange}
+                    />
+                </div>
+
+                {/* container for Last name */}
+                <div className="sm:order-2 sm:col-span-1 order-5">
+                <p className="px-4 text-xl">Last Name</p>
+                    <input
+                    type="lname"
+                    id="lname"
+                    placeholder={lname}
                     className="w-full py-2 px-4 border-4 rounded-3xl border-neutral-400/60"
                     onChange={handleInputChange}
                     />
@@ -115,18 +189,20 @@ export default function StudentProfile() {
                     />
                 </div>
 
-
-                {/* container for status */}
+                {/* container for pronouns*/}
                 <div className="sm:order-6 sm:col-span-2 order-7">
-                    <p className="px-4">Status</p>
+                    <p className="px-4">Pronouns</p>
                     <input
-                    type="status"
-                    id="Status"
-                    placeholder="student"
+                    type="pronouns"
+                    id="Pronouns"
+                    placeholder="empty"
                     className="w-full py-2 px-4 border-4 rounded-3xl border-neutral-400/60"
                     onChange={handleInputChange}
                     />
                 </div>
+
+
+                
 
 
                 {/* container for school id */}
@@ -148,7 +224,7 @@ export default function StudentProfile() {
                 <div className = "inline-flex items-center justify-center">
                     {/* Logout button */}
                     {/* DOESN'T DO ANYTHING FOR NOW */}
-                    <button className="w-28 bg-logo-green hover:bg-logo-green-dark text-white font-bold py-2 px-4 border-2 border-logo-green hover:border-transparent rounded-3xl">
+                    <button className="w-28 bg-logo-green hover:bg-logo-green-dark text-white font-bold py-2 px-4 border-2 border-logo-green hover:border-transparent rounded-3xl" onClick={logoutHandler}>
                         Logout
                     </button>
                 </div>

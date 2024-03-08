@@ -7,6 +7,10 @@ import {
     ACCOUNT_REGISTER_REQUEST,
     ACCOUNT_REGISTER_SUCCESS,
     ACCOUNT_REGISTER_FAILURE,
+
+    ACCOUNT_DETAILS_RESET,
+    ACCOUNT_LIST_RESET,
+
 } from '../constants/accountConstants'; 
 
 import axios from 'axios'
@@ -96,4 +100,11 @@ export const register = (fname, lname, email, password) => async (dispatch) => {
                 : error.message,
         })
     }
+}
+
+export const logout = () => (dispatch) => {
+    localStorage.removeItem('accountInfo')
+    dispatch({ type: ACCOUNT_LOGOUT })
+    dispatch({ type: ACCOUNT_DETAILS_RESET })
+    dispatch({ type: ACCOUNT_LIST_RESET })
 }

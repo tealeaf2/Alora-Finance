@@ -13,7 +13,14 @@ import RegisterPage from "./pages/RegisterPage";
 import CoinQuestGame from "./games/CoinQuest/CoinQuestGame";
 
 export default function App() {
-
+{/* <Route
+  path="/dashboard"
+  element={
+    <PrivateRoute>
+      <Dashboard />
+    </PrivateRoute>
+  }
+/> */}
  return (
    <>
      <Router>
