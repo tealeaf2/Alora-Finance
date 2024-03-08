@@ -22,6 +22,7 @@ export default function StudentProfile() {
     const [fname, setFname] = useState('');
     const [lname, setLname] = useState('');
     const [email, setEmail] = useState('');
+    const [accountType, setAccountType] = useState('');
 
 
     // get account info from state
@@ -33,14 +34,35 @@ export default function StudentProfile() {
 
     const dispatch = useDispatch()
 
+    // const accountLogin = useSelector(state => state.accountLogin);
+    // const { accountInfo } = accountLogin
+
+    // const history = useNavigate();
+    // const location = useLocation();
+    // const redirect = location.search ? location.search.split('=')[1] : '/login';
+
+    // useEffect(() => {
+    //     // redirect to home if not logged in
+    //     if (!accountInfo) {
+    //         history(redirect);
+    //     }
+
+    // },  [history, accountInfo, redirect]);
 
 
     useEffect(() => {
+        console.log(accountInfo);
         // set info
         try {
             setFname(accountInfo.first_name);
             setLname(accountInfo.last_name);
             setEmail(accountInfo.email);
+            
+            if (accountInfo.account_type == 'S') {
+                setAccountType("Student");
+            } else {
+                setAccountType("Teacher");
+            }
           }
         catch(err) {
         }
@@ -96,13 +118,13 @@ export default function StudentProfile() {
                     />
                 </div>
 
-                {/* container for username */}
+                {/* container for status */}
                 <div className="sm:order-4 order-2">
                     <p className="px-4">Status</p>
                         <input
                         type="status"
                         id="Status"
-                        placeholder="Student"
+                        placeholder={accountType}
                         className="w-full py-2 px-4 border-4 rounded-3xl border-neutral-400/60"
                         onChange={handleInputChange}
                         />
