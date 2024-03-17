@@ -15,8 +15,6 @@ import logo from '../images/logo-1.png'
 import aloraFinance from '../images/alora finance.png'
 
 import Header from '../global/Header';
-import UnitDisplaySmall from '../components/unitDisplaySmall';
-import DisplayUnitAndLessons from '../components/displayUnitAndLessons'
 import Button from '../components/Button.js'
 import HomeSection from '../components/HomePage/HomeSection.js';
 import UnitItem from '../components/HomePage/UnitItem.js';
