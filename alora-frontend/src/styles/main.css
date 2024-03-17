@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 
-/* import font used by Sadie */
-@font-face{
-    font-family: 'Outfit Regular';
-    src: local('Outfit-Regular'),
-      url(../fonts/Outfit/static/Outfit-Regular.ttf) format('ttf');
-  }
+/*import font used by Sadie*/
+@font-face {
+  font-family: 'Outfit Regular';
+  src: local('Outfit-Regular'),
+       url(../fonts/Outfit/static/Outfit-Regular.ttf) format('truetype');
+}
 
 *{
     padding:0;
