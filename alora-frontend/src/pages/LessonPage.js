@@ -20,23 +20,30 @@ export default function Lesson() {
     const lessonDetails = useSelector(state => state.lessonDetails)
     const { error, loading, lesson } = lessonDetails
 
+    // For resetting selected quiz options when unit_num and/or lesson_num changes. (Otherwise answers will carry over when next/previous lesson buttons are clicked)
+    const [resetSelectedOptions, setResetSelectedOptions] = useState(false);
+
     useEffect(() => {
-        dispatch(listLessonDetails(uid, lid))
-    }, [dispatch, uid, lid])
+        dispatch(listLessonDetails(uid, lid));
+        setResetSelectedOptions(false); // reset the flag after resetting selectedOptions
+    }, [dispatch, uid, lid, resetSelectedOptions]);
 
     return (
         <>
             <Header />
-            <div className="flex justify-between">
-                <Sidebar />
-                <div className="mx-auto flex-grow mx-auto">
-
-                    <LessonVideo lesson={lesson} />
-                    <LessonsQuiz/>
-
-                    <Footer/>
+            <div className="flex">
+                {/* <div className="flex"> */}
+                    <Sidebar/>
+                {/* </div> */}
+                <div className="mx-auto w-3/4 lg:w-4/5">
+                    <div className="p-8 sm:p-10 bg-gray-100 flex-grow">
+                        <LessonVideo lesson={lesson} />
+                        <LessonsQuiz resetSelectedOptions={resetSelectedOptions} />
+                    </div>
+                    <div className="p-8 sm:p-10 bg-white">
+                        <Footer unit_num = {uid} lesson_num={lid} setResetSelectedOptions={setResetSelectedOptions}/>
+                    </div>
                 </div>
-
             </div>
         </>
     )
