@@ -15,6 +15,9 @@ module.exports = {
         'logo-green-dark': '#54795A',
         'sky-blue': '#2493AF',
         'sky-blue-dark': '#068F92',
+      },
+      gridTemplateColumns: {
+        'max-3' : 'repeat(3, max-content)'
       }
     },
   },
