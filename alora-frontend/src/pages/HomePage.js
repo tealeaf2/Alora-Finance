@@ -14,17 +14,12 @@ import unit6 from '../images/unit-images/unit6.png'
 import logo from '../images/logo-1.png'
 import aloraFinance from '../images/alora finance.png'
 
-
-
 import Header from '../global/Header';
 import UnitDisplaySmall from '../components/unitDisplaySmall';
 import DisplayUnitAndLessons from '../components/displayUnitAndLessons'
 import Button from '../components/Button.js'
 import HomeSection from '../components/HomePage/HomeSection.js';
 import UnitItem from '../components/HomePage/UnitItem.js';
-
-import { listUnits } from '../actions/unitActions'
-
 
 export default function Home() {
  return (
@@ -38,7 +33,7 @@ export default function Home() {
       <div class="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
         <div class="flex justify-center relative overflow-hidden sm:h-80 lg:h-full">
           <img
-            alt=""
+            alt="Mascot"
             src={HomeDude}
             class="absolute h-full aspect-auto"
           />

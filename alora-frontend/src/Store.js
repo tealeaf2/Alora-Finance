@@ -1,23 +1,24 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
-import { unitListReducer } from './reducers/unitReducers'
+import { topicListReducer } from './redux/reducers/topicReducers'
+import { unitListReducer } from './redux/reducers/unitReducers'
 import { lessonListReducer,
         lessonDetailsReducer 
+} from './redux/reducers/lessonReducers'
 
-} from './reducers/lessonReducers'
-
-import { quizListReducer } from './reducers/quizReducers'
+import { quizListReducer } from './redux/reducers/quizReducers'
 
 import { listTreeNameReducer,
         updateTreeNameReducer
-} from './reducers/treeReducers';
+} from './redux/reducers/treeReducers';
 
 import { accountLoginReducer,
         accountRegisterReducer,
-} from './reducers/accountReducers'
+} from './redux/reducers/accountReducers'
 
 
 const reducer = combineReducers({
+    topicList: topicListReducer,
     unitList: unitListReducer,
 
     lessonList: lessonListReducer,

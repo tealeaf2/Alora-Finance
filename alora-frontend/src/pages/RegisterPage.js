@@ -1,10 +1,10 @@
-import React, { useState , useEffect} from 'react'
+import React, { useState , useEffect, useCallback} from 'react'
 import { Link } from "react-router-dom";
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 // import '../styles/index.css';
 import '../styles/App.css';
-import { register } from '../actions/accountActions'
+import { register } from '../redux/actions/accountActions'
 
 
 import sprout from '../images/Sprout.png';
@@ -45,27 +45,45 @@ function RegisterPage() {
   // const { error, loading, accountInfo } = accountRegister;
   const { error, loading, accountInfo } = accountLogin;
 
-
-
-  useEffect(() => {
-    checkSubmit()
-    console.log(canSubmit)
-
-    if (accountInfo) {
-      history(redirect);
-    }
-    
-  }, [history, accountInfo, redirect]);
-
   // check if we can submit
-  const checkSubmit = () => {
-    if (password != confirmPassword) {
-      setCanSubmit(false);
-      setMessage('Passwords do not match')
-    }
-    else if (firstName && lastName && password && confirmPassword && accountType) setCanSubmit(true);
-    else setCanSubmit(false);
-  }
+  // const checkSubmit = () => {
+  //   if (password !== confirmPassword) {
+  //     setCanSubmit(false);
+  //     setMessage('Passwords do not match')
+  //   }
+  //   else if (firstName && lastName && password && confirmPassword && accountType) setCanSubmit(true);
+  //   else setCanSubmit(false);
+  // }
+
+  // useEffect(() => {
+  //   checkSubmit()
+
+  //   if (accountInfo) {
+  //     history(redirect);
+  //   }
+    
+  // }, [history, accountInfo, redirect, checkSubmit]);
+
+    // Assuming other state variables and functions
+
+    const checkSubmit = useCallback(() => {
+      if (password !== confirmPassword) {
+        setCanSubmit(false);
+        setMessage('Passwords do not match');
+      } else if (firstName && lastName && password && confirmPassword && accountType) {
+        setCanSubmit(true);
+      } else {
+        setCanSubmit(false);
+      }
+    }, [firstName, lastName, password, confirmPassword, accountType]);
+  
+    useEffect(() => {
+      checkSubmit();
+  
+      if (accountInfo) {
+        history(redirect);
+      }
+    }, [firstName, lastName, password, confirmPassword, accountType, accountInfo, redirect, checkSubmit, history]);
 
   // when button is submitted we pass in info to db to register if valid
   const submitHandler = (e) => {

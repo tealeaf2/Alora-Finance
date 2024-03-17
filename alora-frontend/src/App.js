@@ -2,8 +2,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // import './styles/App.css';
 import HomePage from "./pages/HomePage";
-import UnitsPage from "./pages/UnitsPage";
-import LessonPage from "./pages/LessonPage";
+import LessonsMainPage from "./pages/LessonsPage/LessonsMainPage";
+import UnitsFromTopicPage from "./pages/LessonsPage/UnitsFromTopicPage"
+import LessonsFromUnitPage from "./pages/LessonsPage/LessonsFromUnitPage"
+import QuizPage from "./pages/QuizPage";
 import ProfilePage from "./pages/ProfilePage";
 import ChangePassword from "./pages/ChangePassword";
 import ProgressPage from "./pages/ProgressPage";
@@ -19,8 +21,10 @@ export default function App() {
      <Router>
        <Routes>
          <Route exact path='/' element={<HomePage/>} />
-         <Route path='/lessons' element={<UnitsPage/>} />
-         <Route path='/unit/:uid/lesson/:lid/:rlid' element={<LessonPage/>} />
+         <Route path='/lessons/main' element={<LessonsMainPage/>} />
+         <Route path='/lessons/topic/:tid/:tname' element={<UnitsFromTopicPage/>}/>
+         <Route path='/lessons/topic/unit/:uid/:uname/:urid' element={<LessonsFromUnitPage/>}/>
+         <Route path='/lesson/:uid/:lid/video-quiz' element={<QuizPage/>} />
          <Route path='/games' element={<GamePage/>} />
          <Route path='/progress' element={<ProgressPage/>} />
          <Route path='/profile' element={<ProfilePage/>} />

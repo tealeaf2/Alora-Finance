@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProfileImage from '../../images/Teacher_Icon.png';
 
-export default function ChangePassword() {
+export default function TeacherChangePassword() {
 
     // for saving (doesn't actually do anything here)
     const [isSaving, setIsSaving] = useState(false);
@@ -56,7 +56,7 @@ export default function ChangePassword() {
                 {/* Container for image */}
                 <div className="flex items-center justify-center w-1/2">
                     <img 
-                        className="object-cover border-8 rounded-full border-sky-blue"
+                        className="object-cover border-8 rounded-full border-water-blue"
                         src={ProfileImage}
                     />
                 </div>
@@ -93,13 +93,13 @@ export default function ChangePassword() {
                     <div className="flex items-center justify-between my-5 text-lg text-center">
                         
                         {/* Save button */}
-                        <button onClick={handleSave} disabled={isSaving || !passwordsMatch} className="w-28 bg-sky-blue hover:bg-sky-blue-dark text-white font-bold py-2 px-4 border-2 border-sky-blue hover:border-transparent rounded-3xl">
+                        <button onClick={handleSave} disabled={isSaving || !passwordsMatch} className="w-28 bg-water-blue hover:bg-water-blue-dark text-white font-bold py-2 px-4 border-2 border-water-blue hover:border-transparent rounded-3xl">
                             Save
                         </button>
 
                         {/* Cancel button */}
                         {/* Just redirects to profile page */}
-                        <button onClick={handleCancel} className="w-28 bg-transparent hover:bg-logo-sky-blue font-semibold hover:text-white py-2 px-4 border-2 border-sky-blue hover:border-transparent rounded-3xl">
+                        <button onClick={handleCancel} className="w-28 bg-transparent hover:bg-logo-water-blue font-semibold hover:text-white py-2 px-4 border-2 border-water-blue hover:border-transparent rounded-3xl">
                             Cancel
                         </button>
 

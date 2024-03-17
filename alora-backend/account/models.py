@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+import uuid
 
 # from classroom.models import Classroom
 
@@ -20,7 +21,6 @@ class Account(AbstractUser):
         
         Added:
         account_type (CharField): Field storing the user's role (Teacher or Student).
-        classroom (ForeignKey): Relationship with the Classroom model.
 
     Methods:
         __str__(): Returns a string representation of the user using the username.
@@ -41,16 +41,8 @@ class Account(AbstractUser):
         choices=USER_TYPE_CHOICES,
         default=STUDENT,
     )
-
-
-    # # many to one: one classroom to many users
-    # classroom = models.ForeignKey(
-    #     Classroom,
-    #     on_delete=models.CASCADE,
-    #     related_name="classroom_id",
-    #     null=True, 
-    #     blank=True,  
-    # )
+    user_id = models.UUIDField(default=uuid.uuid4, editable=False)
+    id = models.AutoField(primary_key=True)
 
     # string representation of the user (their name)
     def __str__(self):

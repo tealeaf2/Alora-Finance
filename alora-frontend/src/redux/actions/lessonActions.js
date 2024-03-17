@@ -35,14 +35,14 @@ export const listLessons = (number) => async (dispatch) => {
 };
 
 
-export const listLessonDetails = (unit_id, lesson_id) => async (dispatch) => {
+export const listLessonDetails = (uid, lid) => async (dispatch) => {
 
     try {
 
         dispatch({ type: LESSON_DETAILS_REQUEST })
 
 
-        const { data } = await axios.get(`/api/units/${unit_id}/lessons/${lesson_id}`)
+        const { data } = await axios.get(`/api/lessons/${uid}/${lid}/video/`)
 
         dispatch({
             type: LESSON_DETAILS_SUCCESS,
