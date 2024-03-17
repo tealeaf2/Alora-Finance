@@ -41,7 +41,7 @@ export default function StudentProfile() {
                 {/* container for image */}
                 <div className="flex sm:order-1 row-span-3 items-center justify-center order-1 ">
                     <img 
-                        className="object-cover border-8 rounded-full border-sky-blue"
+                        className="object-cover border-8 rounded-full border-water-blue"
                         src={ProfileImage}
                     />
                 </div>
@@ -148,7 +148,7 @@ export default function StudentProfile() {
                 <div className = "inline-flex items-center justify-center">
                     {/* Logout button */}
                     {/* DOESN'T DO ANYTHING FOR NOW */}
-                    <button className="w-28 bg-sky-blue hover:bg-sky-blue-dark text-white font-bold py-2 px-4 border-2 border-sky-blue hover:border-transparent rounded-3xl">
+                    <button className="w-28 bg-water-blue hover:bg-water-blue-dark text-white font-bold py-2 px-4 border-2 border-water-blue hover:border-transparent rounded-3xl">
                         Logout
                     </button>
                 </div>
@@ -159,13 +159,13 @@ export default function StudentProfile() {
                     {showSavedMessage && <p className = "text-right text-sm text-gray-600">Changes Saved</p>}
 
                     {/* Save button */}
-                    <button onClick={handleSave} disabled={isSaving} className="w-28 bg-sky-blue hover:bg-sky-blue-dark text-white font-bold py-2 px-4 border-2 border-sky-blue hover:border-transparent rounded-3xl">
+                    <button onClick={handleSave} disabled={isSaving} className="w-28 bg-water-blue hover:bg-water-blue-dark text-white font-bold py-2 px-4 border-2 border-water-blue hover:border-transparent rounded-3xl">
                         Save
                     </button>
                     
                     {/* Cancel Button */}
                     {/* DOESN'T DO ANYTHING FOR NOW */}
-                    <button className="w-28 bg-transparent hover:bg-sky-blue-dark font-semibold hover:text-white py-2 px-4 border-2 border-sky-blue hover:border-transparent rounded-3xl">
+                    <button className="w-28 bg-transparent hover:bg-water-blue-dark font-semibold hover:text-white py-2 px-4 border-2 border-water-blue hover:border-transparent rounded-3xl">
                         Cancel
                     </button>
                 </div>
