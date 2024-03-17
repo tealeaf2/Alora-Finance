@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProfileImage from '../../images/Home_Dude.png';
 
-export default function ChangePassword() {
+export default function StudentChangePassword() {
 
     // for saving (doesn't actually do anything here)
     const [isSaving, setIsSaving] = useState(false);
