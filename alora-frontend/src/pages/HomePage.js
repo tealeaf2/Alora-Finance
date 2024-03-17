@@ -12,9 +12,14 @@ import unit4 from '../images/unit-images/unit4.png'
 import unit5 from '../images/unit-images/unit5.png'
 import unit6 from '../images/unit-images/unit6.png'
 import logo from '../images/logo-1.png'
+import pic2 from '../images/home_page/pic2.png'
+import pic3 from '../images/home_page/pic3.png'
+import pic4 from '../images/home_page/pic4.png'
+import license1 from '../images/home_page/license1.png'
+import license2 from '../images/home_page/license2.png'
 import aloraFinance from '../images/alora finance.png'
 
-import Header from '../global/Header';
+import Header from '../components/HomePage/HomeHeader';
 import Button from '../components/Button.js'
 import HomeSection from '../components/HomePage/HomeSection.js';
 import UnitItem from '../components/HomePage/UnitItem.js';
@@ -68,19 +73,19 @@ export default function Home() {
     <HomeSection
     sectionText="video based learning"
     textLeft={true}
-    imgSrc={HomeDude}
+    imgSrc={pic2}
     />
 
     <HomeSection
     sectionText="financial simulations"
     textLeft={false}
-    imgSrc={HomeDude}
+    imgSrc={pic3}
     />
 
     <HomeSection
     sectionText="customizable lesson plans"
     textLeft={true}
-    imgSrc={HomeDude}
+    imgSrc={pic4}
     />
 
 <section class="bg-white text-black">
@@ -157,12 +162,12 @@ export default function Home() {
     className="grid grid-cols-2 justify-items-center">
       <img
       className='col-start-1'
-      src="#"
+      src={license1}
 
       />
       <img
       className='col-start-2'
-      src="#"
+      src={license2}
       />
     </div>
 

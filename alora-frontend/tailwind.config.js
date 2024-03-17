@@ -20,7 +20,7 @@ module.exports = {
         'button-blue':'#0e87b3',
         'button-yellow':'#eea930',
         'button-green':'#3a8989',
-        'sky-blue':'#83cdc8'
+        'sky-blue':'#83cdc8',
         'sky-blue-dark': '#068F92',
       },
       gridTemplateColumns: {
