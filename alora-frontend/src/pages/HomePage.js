@@ -5,14 +5,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import '../styles/index.css'
 
-
-import Header from '../global/Header';
-import UnitDisplaySmall from '../components/unitDisplaySmall';
-import DisplayUnitAndLessons from '../components/displayUnitAndLessons'
-
-import { listUnits } from '../actions/unitActions'
-
-
 export default function Home() {
  return (
   <section>

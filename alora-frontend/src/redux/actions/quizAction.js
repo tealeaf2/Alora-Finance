@@ -13,7 +13,7 @@ export const listQuizzes = (lesson_id) => async (dispatch) => {
         dispatch({ type: QUIZ_LIST_REQUEST });
 
         // Make an asynchronous API call (e.g., using axios)
-        const { data } = await axios.get(`/api/lessons/${lesson_id}/quiz`);
+        const { data } = await axios.get(`/api/lessons/${lesson_id}/quiz/`);
 
         // Dispatches the action (with type QUIZ_LIST_SUCCESS) when the API call is successful
         dispatch({

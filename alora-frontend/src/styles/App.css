@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Progress bar */
+.progress-wrapper {
+  width: 50%;
+  margin: auto;
+}
+
+.progress-bar {
+  height: 50px;
+  border: 4px solid #0e87b3; /* Needs to be changed later */
+  border-radius: 30px;
+}
+
+.progress-inner {
+  display: block;
+  height: 100%;
+  background-color: #0e87b3; /* Needs to be changed later */
+  border-radius: 30px;
+  margin-left: -0.1%; /* adjust for whitespace */
+  width: 100.2%; /* make sure bar gets filled at 100%*/
+}
+
 .App {
   text-align: center;
 }

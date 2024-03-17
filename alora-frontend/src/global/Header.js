@@ -37,7 +37,7 @@ const Header = () => {
           {/*Page links*/}
           <ul className="App-header-sections flex tems-center">
             <li>
-              <Link to="/lessons">
+              <Link to="/lessons/main">
                 {/* Sadie needs to fix this for all of the buttons */}
                 <button
                   className={`sm:flex App-header-sections-button App-header-sections-button1 ${
