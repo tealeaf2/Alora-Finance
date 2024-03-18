@@ -2,6 +2,7 @@ from django.urls import path
 from classroom.curriculum.views.lesson_views import *
 from classroom.curriculum.views.topic_views import *
 from classroom.curriculum.views.unit_views import *
+from classroom.curriculum.views.quiz_views import *
 
 #Need to change everything here from units to topics, and change a lot lol
 urlpatterns = [
@@ -14,6 +15,10 @@ urlpatterns = [
 
     path('lessons/<int:uk>/<int:lk>/video/', getLesson, name='lesson'),
     path('lessons/<int:lk>/quiz/', getQuiz, name='lesson-quiz'),
+
+    ################# For Parsing Quiz #################
+
+    path('parse-quiz-file/', parseToQuiz, name='parsing-quizzes-from-csv')
 
     ################# For Progress Page #################
 
