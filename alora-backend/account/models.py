@@ -49,5 +49,5 @@ class Account(AbstractUser):
         """
         Returns a string representation of the user, using the username.
         """
-        return self.username
+        return f'{self.email}, {self.first_name}, {self.last_name}, {self.password}, {self.account_type}'
     

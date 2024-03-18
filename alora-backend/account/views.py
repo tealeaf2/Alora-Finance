@@ -39,6 +39,8 @@ def registerUser(request):
         user = Account.objects.create(
             first_name=data['first_name'],
             last_name=data['last_name'],
+            account_type=data['account_type'],
+
             username=data['email'],
             email=data['email'],
             password=make_password(data['password'])
@@ -56,11 +58,30 @@ def registerUser(request):
 def updateUserProfile(request):
     user = request.user 
     serializer = UserSerializerWithToken(user, many=False)
-
+    
     data = request.data
-    user.first_name = data['name']
+    
+    # print(request.account)
+    
+    # print("\n\nUSER: ")
+    # print(user)
+    # print(type(user))
+ 
+    # print("\n\DATA: ")
+    # print(data)
+    
+
+    user.first_name = data['first_name']
+    user.last_name = data['last_name']
+
     user.username = data['email']
     user.email = data['email']
+    
+    # print("USER: ")
+    # print(user)
+    
+    # print("\n\SERIALIZER: ")
+    # print(serializer.data)
 
     if data['password'] != '':
         user.password = make_password(data['password'])
@@ -74,8 +95,19 @@ def updateUserProfile(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getUserProfile(request):
+    # print('\n\nREQUEST: ')
+    # print(request)
+
+    
     user = request.user
+    
+    # print('\n\nUSER: ')
+    # print(user)
+    
     serializer = UserSerializer(user, many=False)
+    
+    # print("\n\nSERIALIZER: ")
+    # print(serializer)
     return Response(serializer.data)
 
 # RETURNS ALL USERS IN DB (must be admin)

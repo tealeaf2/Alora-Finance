@@ -14,6 +14,8 @@ import { listTreeNameReducer,
 
 import { accountLoginReducer,
         accountRegisterReducer,
+        accountDetailsReducer,
+        accountUpdateProfileReducer,
 } from './redux/reducers/accountReducers'
 
 
@@ -31,6 +33,8 @@ const reducer = combineReducers({
 
     accountLogin: accountLoginReducer,
     accountRegister: accountRegisterReducer,
+    accountDetails: accountDetailsReducer,
+    accountUpdateProfile: accountUpdateProfileReducer,
 })
 
 const accountInfoFromStorage = localStorage.getItem('accountInfo') ?

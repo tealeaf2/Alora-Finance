@@ -36,14 +36,16 @@ function RegisterPage() {
   const [teacherClicked, setTeacherClicked] = useState(false);
   const [fieldsRequired, setFieldsRequired] = useState(false);
 
+
   const redirect = location.search ? location.search.split('=')[1] : '/progress';
   const accountLogin = useSelector(state => state.accountLogin);
+  const { error, loading, accountInfo } = accountLogin;
+
 
   // const accountRegister = useSelector(state => state.accountRegister);
   // const accountLogin = useSelector(state => state.aco);
 
   // const { error, loading, accountInfo } = accountRegister;
-  const { error, loading, accountInfo } = accountLogin;
 
   // check if we can submit
   // const checkSubmit = () => {
@@ -77,7 +79,9 @@ function RegisterPage() {
       }
     }, [firstName, lastName, password, confirmPassword, accountType]);
   
+
     useEffect(() => {
+      console.log(accountType)
       checkSubmit();
   
       if (accountInfo) {
@@ -91,8 +95,8 @@ function RegisterPage() {
     checkSubmit()
 
     if (canSubmit) {
-      console.log(firstName, email, password)
-      dispatch(register(firstName, lastName, email, password))
+      console.log(firstName, lastName, accountType, email, password)
+      dispatch(register(firstName, lastName, accountType, email, password))
     }
 
   }
@@ -101,13 +105,13 @@ function RegisterPage() {
   //For the teacher and student buttons //
   const handleStudentButtonClick = () => {
     setStudentClicked(true);
-    setAccountType("Student")
+    setAccountType("S")
     setTeacherClicked(false);
   }
 
   const handleTeacherButtonClick = () => {
     setStudentClicked(false);
-    setAccountType("Teacher")
+    setAccountType("T")
     setTeacherClicked(true);
   }
 
