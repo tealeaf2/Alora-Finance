@@ -1,11 +1,11 @@
-import "../styles/App.css";
-import Header from "../global/Header";
-import TreeCarousel from "../components/treeCarousel";
+import "../../styles/App.css";
+import Header from "../../global/Header";
+import TreeCarousel from "../../components/treeCarousel";
 import {
   NameInput,
   ProgressBar,
   ProgressLabel,
-} from "../components/treeProgress";
+} from "../../components/treeProgress";
 
 
 import React, { useState , useEffect } from 'react'
@@ -14,7 +14,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 function Progress() {
-
     const location = useLocation();
     const history = useNavigate();
     const redirect = location.search ? location.search.split('=')[1] : '/login';
@@ -23,14 +22,10 @@ function Progress() {
 
 
     useEffect(() => {
-        if (!accountInfo) {
+        if (!accountInfo || accountInfo.account_type !== 'S') {
             history(redirect);
         }
     }, [accountInfo, redirect, history]);
-
-
-
-
 
     const [progress] = useState(35); // Change this value for progress
 

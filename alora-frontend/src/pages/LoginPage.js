@@ -23,9 +23,12 @@ function LoginPage() {
     setPassword(e.target.value);
   };
 
-  const redirect = location.search
+  const redirectStudent = location.search
     ? location.search.split("=")[1]
     : "/progress";
+  const redirectTeacher = location.search
+    ? location.search.split("=")[1]
+    : "/teacher/class";
   const accountLogin = useSelector((state) => state.accountLogin);
   const { error, loading, accountInfo } = accountLogin;
 
@@ -36,9 +39,14 @@ function LoginPage() {
 
   useEffect(() => {
     if (accountInfo) {
-      history(redirect);
+      if (accountInfo.account_type === 'S') {
+        history(redirectStudent);
+      }
+      else if (accountInfo.account_type === 'T') {
+        history(redirectTeacher);
+      }
     }
-  }, [history, accountInfo, redirect]);
+  }, [history, accountInfo, redirectStudent, redirectTeacher]);
 
   return (
     <div className="flex h-screen items-center justify-center">

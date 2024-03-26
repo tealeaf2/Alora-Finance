@@ -1,17 +1,17 @@
-import '../styles/App.css';
+import '../../styles/App.css';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import LessonVideo from '../components/LessonPage/lessonVideo'
+import LessonVideo from '../../components/LessonPage/lessonVideo'
 
-import Header from '../global/Header';
-import Sidebar from '../components/LessonPage/lessonsPageSideBar'
-import Footer from '../components/LessonPage/lessonsFooter'
-import LessonsQuiz from '../components/LessonPage/lessonsQuiz';
+import Header from '../../global/Header';
+import Sidebar from '../../components/LessonPage/lessonsPageSideBar'
+import Footer from '../../components/LessonPage/lessonsFooter'
+import LessonsQuiz from '../../components/LessonPage/lessonsQuiz';
 
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { listLessonDetails } from '../redux/actions/lessonActions'
+import { listLessonDetails } from '../../redux/actions/lessonActions'
 
 // match is the object that contains info on how route matches with url (e.g id)
 export default function Lesson() {
@@ -34,7 +34,7 @@ export default function Lesson() {
     const [resetSelectedOptions, setResetSelectedOptions] = useState(false);
 
     useEffect(() => {
-        if (!accountInfo) {
+        if (!accountInfo || accountInfo.account_type !== 'S') {
             history(redirect);
         }
 

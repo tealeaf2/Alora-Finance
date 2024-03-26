@@ -37,7 +37,8 @@ function RegisterPage() {
   const [fieldsRequired, setFieldsRequired] = useState(false);
 
 
-  const redirect = location.search ? location.search.split('=')[1] : '/progress';
+  const redirectStudent = location.search ? location.search.split('=')[1] : '/progress';
+  const redirectTeacher = location.search ? location.search.split('=')[1] : '/teacher/class';
   const accountLogin = useSelector(state => state.accountLogin);
   const { error, loading, accountInfo } = accountLogin;
 
@@ -85,9 +86,14 @@ function RegisterPage() {
       checkSubmit();
   
       if (accountInfo) {
-        history(redirect);
+        if (accountInfo.account_type === 'S'){
+          history(redirectStudent);
+        }
+        else if (accountInfo.account_type === 'T'){
+          history(redirectTeacher);
+        }
       }
-    }, [firstName, lastName, password, confirmPassword, accountType, accountInfo, redirect, checkSubmit, history]);
+    }, [firstName, lastName, password, confirmPassword, accountType, accountInfo, redirectStudent, redirectTeacher, checkSubmit, history]);
 
   // when button is submitted we pass in info to db to register if valid
   const submitHandler = (e) => {

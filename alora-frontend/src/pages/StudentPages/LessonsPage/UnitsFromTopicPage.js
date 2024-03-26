@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import TopicsDisplay from './TopicsDisplay';
 // import '../styles/index.css';
-import Header from '../../global/Header';
-import { listUnits } from '../../redux/actions/unitActions';
+import Header from '../../../global/Header';
+import { listUnits } from '../../../redux/actions/unitActions';
 
 export default function UnitsFromTopicPage({ topic }) {
     const dispatch = useDispatch();

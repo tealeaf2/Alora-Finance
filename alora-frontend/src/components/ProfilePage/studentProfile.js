@@ -69,7 +69,7 @@ export default function StudentProfile() {
         catch(err) {
         }
         // redirect to home if not logged in
-        if (!accountInfo) {
+        if (!accountInfo || accountInfo.account_type !== 'S') {
             history(redirect);
           }
 
