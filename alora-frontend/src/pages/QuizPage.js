@@ -9,11 +9,21 @@ import Sidebar from '../components/LessonPage/lessonsPageSideBar'
 import Footer from '../components/LessonPage/lessonsFooter'
 import LessonsQuiz from '../components/LessonPage/lessonsQuiz';
 
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { listLessonDetails } from '../redux/actions/lessonActions'
 
 // match is the object that contains info on how route matches with url (e.g id)
 export default function Lesson() {
+
+    
+
+    const location = useLocation();
+    const history = useNavigate();
+    const redirect = location.search ? location.search.split('=')[1] : '/login';
+    const accountLogin = useSelector(state => state.accountLogin);
+    const { err, loadng, accountInfo } = accountLogin;
+
 
     const { uid, lid } = useParams()
     const dispatch = useDispatch()
@@ -24,9 +34,13 @@ export default function Lesson() {
     const [resetSelectedOptions, setResetSelectedOptions] = useState(false);
 
     useEffect(() => {
+        if (!accountInfo) {
+            history(redirect);
+        }
+
         dispatch(listLessonDetails(uid, lid));
         setResetSelectedOptions(false); // reset the flag after resetting selectedOptions
-    }, [dispatch, uid, lid, resetSelectedOptions]);
+    }, [dispatch, uid, lid, resetSelectedOptions, accountInfo, redirect, history]);
 
     if (loading) return <div>Loading...</div>;
     else if (error) return <div>Error: {error}</div>;
