@@ -3,6 +3,7 @@ from classroom.curriculum.views.lesson_views import *
 from classroom.curriculum.views.topic_views import *
 from classroom.curriculum.views.unit_views import *
 from classroom.curriculum.views.quiz_views import *
+from classroom.curriculum.views.progress_views import *
 
 #Need to change everything here from units to topics, and change a lot lol
 urlpatterns = [
@@ -18,9 +19,11 @@ urlpatterns = [
 
     ################# For Parsing Quiz #################
 
-    path('parse-quiz-file/', parseToQuiz, name='parsing-quizzes-from-csv')
+    path('parse-quiz-file/', parseToQuiz, name='parsing-quizzes-from-csv'),
 
     ################# For Progress Page #################
+
+    path('user/student/progress/', getProgressOfStudent, name='progress-of-student-on-trees'),
 
     # path('units/<int:uk>/name', name_list),
     

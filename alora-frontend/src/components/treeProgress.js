@@ -8,14 +8,14 @@ export const NameInput = () => {
     const [tempName, setTempName] = useState("");
     const dispatch = useDispatch();
 
-    const treeName = useSelector((state) => state.treeName);
-    const { treeNameGet } = treeName;
+    const treeNames = useSelector((state) => state.treeNames);
+    const { treeNameGet } = treeNames;
 
     // const name = treeNameGet.name;
     const name = 'Tim'
 
     useEffect(() => {
-        dispatch(listTreeName(1));
+        dispatch(listTreeName());
     }, [dispatch]);
 
     const handleName = (e) => {

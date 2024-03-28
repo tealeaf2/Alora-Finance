@@ -9,13 +9,13 @@ import {
     NAME_UPDATE_FAILURE,
 } from '../constants/treeConstants'; 
 
-export const listTreeName = (id) => async (dispatch) => {
+export const listTreeName = () => async (dispatch) => {
     try {
         // Dispatches the action (with type NAME_LIST_REQUEST) to indicate the start of the async operation
         dispatch({ type: NAME_DETAIL_REQUEST });
 
         // Make an asynchronous API call (e.g., using axios)
-        const { data } = await axios.get(`/api/units/${id}/name`);
+        const { data } = await axios.get(`/api/user/student/progress`);
 
         // Dispatches the action (with type NAME_LIST_SUCCESS) when the API call is successful
         dispatch({

@@ -7,9 +7,11 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth.hashers import make_password
 from rest_framework.response import Response
 from rest_framework import status
-
+from django.db import IntegrityError
+from django.dispatch import Signal
 
 from .models import Account
+from classroom.signals import create_fields_completed_for_user
 
 from .serializer import UserSerializer, UserSerializerWithToken
 
@@ -27,8 +29,8 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
 # return view of token
 class MyTokenObtainPairView(TokenObtainPairView):
-    serializer_class = MyTokenObtainPairSerializer
-    
+    serializer_class = MyTokenObtainPairSerializer 
+
 # registers user
 @api_view(['POST'])
 def registerUser(request):
@@ -43,14 +45,29 @@ def registerUser(request):
 
             username=data['email'],
             email=data['email'],
-            password=make_password(data['password'])
+            password=make_password(data['password']),
         )
+        if data.get('account_type') == 'S':
+            print('sent')
+            create_fields_completed_for_user(user=user)
 
         serializer = UserSerializerWithToken(user, many=False)
         return Response(serializer.data)
-    except:
-        message = {'detail': 'User with this email already exists'}
+    except KeyError:
+        message = {'detail': 'Invalid request data'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
+    except IntegrityError as e:
+        # Extract the specific integrity constraint violated
+        constraint_name = e.args[0]
+        if 'unique constraint' in constraint_name:
+            message = {'detail': 'A user with this email already exists.'}
+        else:
+            message = {'detail': 'Integrity error: ' + constraint_name}
+        return Response(message, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        message = {'detail': str(e)}
+        return Response(message, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
 
 # updates user info
 @api_view(['PUT'])
