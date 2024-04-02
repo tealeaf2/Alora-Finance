@@ -19,13 +19,3 @@ def getLesson(request, uk, lk):
     lesson = get_object_or_404(Lesson, unit_id=uk, lesson_num=lk)
     serializer = LessonSerializer(lesson, many=False)
     return Response(serializer.data)
-
-#Gets a specific quiz from a specifc lesson
-@api_view(['GET'])
-def getQuiz(request, lk):
-    lesson = get_object_or_404(Lesson, id=lk)
-    quiz = Quiz.objects.filter(lesson_id=lesson).first()
-    if quiz:
-        return Response(quiz.content)
-    else:
-        return Response({'message': 'Quiz not found for this lesson'}, status=404)

@@ -115,7 +115,7 @@ class Lessons_Completed(models.Model):
     '''
     lesson_id = models.ForeignKey(Lesson, on_delete=models.CASCADE, null=True, blank=True)
     user_id = models.ForeignKey(Account, on_delete=models.CASCADE, null=True, blank=True)
-    lesson_completed = models.IntegerField(default=0)
+    lesson_completed = models.BooleanField(default=False)
     lesson_grade = models.IntegerField(default=0)
     attempts = models.IntegerField(default=0)
     date_attempted = models.DateTimeField(default=now)
@@ -150,7 +150,7 @@ class Lesson_Assignment(models.Model):
     assigned = models.BooleanField(default=False)
     date_due = models.DateTimeField(default=now)
     date_available = models.DateTimeField(default=now)
-    attempts_max = models.IntegerField(default=0)
+    attempts_max = models.IntegerField(default=3)
 
     def __str__(self):
         return f'{self.user_id.first_name}: {self.lesson_id.lesson_name}'

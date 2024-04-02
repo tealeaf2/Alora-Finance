@@ -137,6 +137,10 @@ function RegisterPage() {
 
   return (
     // container for whole page
+    <>
+    <Link to="/" className="p-2">
+    Home
+    </Link>
     <div className="flex h-screen items-center justify-center">
       {/* login box */}
       <div className="flex flex-col justify-center items-center grow p-10 md:px-[6%] rounded-[14%] lg:rounded-[8%] border-2 border-[#CFDADD] max-w-[70vw] lg:max-w-[900px] aspect-square max-h-[80vh] lg:max-h-[78vh]">
@@ -412,7 +416,7 @@ function RegisterPage() {
 
     </div>
 
-
+    </>
   )
 }
 

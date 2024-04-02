@@ -16,7 +16,10 @@ import CoinQuestGame from "./games/CoinQuest/CoinQuestGame";
 
 import TeacherProfilePage from "./pages/TeacherPages/ProfilePage";
 import TeacherClassPage from "./pages/TeacherPages/ClassPage";
-import TeacherLessonsPage from "./pages/TeacherPages//LessonsPage/LessonsPage";
+import TeacherLessonsPage from "./pages/TeacherPages/LessonsPage/LessonsPage";
+import TeacherUnitsFromTopicPage from "./pages/TeacherPages/LessonsPage/TeacherUnitsFromTopicPage";
+import TeacherLessonsFromUnitPage from "./pages/TeacherPages/LessonsPage/TeacherLessonsFromUnitPage";
+import TeacherAssignPage from "./pages/TeacherPages/LessonsPage/TeacherAssignPage";
 
 export default function App() {
 
@@ -40,27 +43,11 @@ export default function App() {
          <Route path='/teacher/profile' element={<TeacherProfilePage/>} />
          <Route path='/teacher/class' element={<TeacherClassPage/>} />
          <Route path='/teacher/lessons/main' element={<TeacherLessonsPage/>} />
+         <Route path='/teacher/lessons/topic/:tid/:tname' element={<TeacherUnitsFromTopicPage/>} />
+         <Route path='/teacher/lessons/topic/unit/:uid/:uname/:urid' element={<TeacherLessonsFromUnitPage/>} />
+         <Route path='/teacher/lesson/:uid/:lid/assign' element={<TeacherAssignPage/>} />
        </Routes>
      </Router>
    </>
  );
 }
-
-// import './styles/App.css';
-// import Progress from './pages/Progress'
-// import Lessons from './pages/Lessons'
-// import Profile from './pages/Profile'
-// import Games from './pages/Games'
-
-// function App() {
-//   return (
-//     <>
-//       <Progress/>
-//       {/* <Games/>
-//       <Lessons/>
-//       <Profile/> */}
-//     </>
-//   )
-//   }
-
-// export default App;

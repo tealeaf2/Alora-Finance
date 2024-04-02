@@ -85,7 +85,7 @@ export default function TeacherProfile() {
                     id="Password"
                     placeholder="****************"
                     value="****************"
-                    readonly
+                    readOnly=""
                     className="w-full py-2 px-4 border-4 rounded-3xl border-neutral-400/60"
                     />
                     

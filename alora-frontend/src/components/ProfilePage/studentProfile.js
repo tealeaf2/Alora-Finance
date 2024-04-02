@@ -28,9 +28,6 @@ export default function StudentProfile() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-
-
-
     const accountDetails = useSelector(state => state.accountDetails)
     const { error, loading, account } = accountDetails
     // get account info from state
@@ -58,7 +55,7 @@ export default function StudentProfile() {
                 setLname(account.last_name);
                 setEmail(account.email);
                 
-                if (account.account_type == 'S') {
+                if (account.account_type === 'S') {
                     setAccountType("Student");
                 } else {
                     setAccountType("Teacher");
@@ -73,7 +70,7 @@ export default function StudentProfile() {
             history(redirect);
           }
 
-        }, [dispatch, history, accountInfo, account, success])
+        }, [dispatch, history, accountInfo, account, success, redirect])
 
 
     
@@ -86,7 +83,7 @@ export default function StudentProfile() {
     // SAVES W/ NEW PASSWORD + NEW INFO (cuz the put request requires password to update too)
     const handleSave = (e) => {
         e.preventDefault()
-        if (password != confirmPassword) {
+        if (password !== confirmPassword) {
             // setMessage('Passwords do not match')
             // continue
         } else {
@@ -123,6 +120,7 @@ export default function StudentProfile() {
                     <img 
                         className="object-cover border-8 rounded-full border-logo-green"
                         src={ProfileImage}
+                        alt='profile'
                     />
                 </div>
 

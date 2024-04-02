@@ -33,7 +33,7 @@ export const listTreeName = () => async (dispatch) => {
     }
 };
 
-export const updateTreeName = (id, name) => async (dispatch) => {
+export const updateTreeName = (name, topicId, userId) => async (dispatch) => {
 
     try {
 
@@ -44,11 +44,12 @@ export const updateTreeName = (id, name) => async (dispatch) => {
                 'Content-type': 'application/json',
             }
         }
+        const requestData = { name };
 
         //Calls the api in the backend and saves tree_name with new tempName
         const { data } = await axios.put(
-            `/api/units/${id}/name`, 
-            name,
+            `/api/user/student/${userId}/progress/${topicId}`, 
+            requestData,
             config
         )
 

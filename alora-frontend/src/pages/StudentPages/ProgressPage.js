@@ -16,10 +16,13 @@ function Progress() {
 
 
   useEffect(() => {
-    if (!accountInfo || accountInfo.account_type !== 'S') {
-      history(redirect);
+    if (!accountInfo){
+      history(redirect)
     }
-  }, [accountInfo, redirect, history]);
+    else if (accountInfo && accountInfo.account_type !== 'S') {
+      history(redirect)
+    }
+  }, [accountInfo, redirect, history])
 
   return (
     <div
@@ -33,7 +36,7 @@ function Progress() {
     >
       <Header />
       <div style={{ marginTop: "auto" }}>
-        <Carousel/>
+        <Carousel userId={accountInfo.id}/>
       </div>
     </div>
   );

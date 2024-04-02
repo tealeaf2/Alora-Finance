@@ -49,6 +49,10 @@ function LoginPage() {
   }, [history, accountInfo, redirectStudent, redirectTeacher]);
 
   return (
+    <>
+    <Link to="/" className="p-2">
+    Home
+    </Link>
     <div className="flex h-screen items-center justify-center">
       <div className="grid grid-cols-2 mx-16 xl:mr-[300px] flex-1">
         <div className="absolute bottom-0 left-[-80px] flex flex-col justify-center max-w-[60vw] justify-self-center">
@@ -120,6 +124,7 @@ function LoginPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

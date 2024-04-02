@@ -7,6 +7,48 @@ class UnitSerializer(serializers.ModelSerializer):
         model = Unit
         fields = '__all__'
 
+class QuizSerializer(serializers.ModelSerializer):
+    quiz_content = serializers.SerializerMethodField()
+    lesson_grade = serializers.SerializerMethodField()
+    attempts = serializers.SerializerMethodField()
+    lesson_completed = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = Quiz
+        fields = ['quiz_content', 'lesson_grade', 'attempts', 'lesson_completed']
+
+    def get_quiz_content(self, obj):
+        lesson_id = obj.lesson_id
+        quiz = Quiz.objects.filter(lesson_id=lesson_id).first()
+        if quiz:
+            return quiz.content
+        return None
+    
+    def get_lesson_completed(self, obj):
+        lesson_id = obj.lesson_id
+        user_id = obj.user_id
+        lesson_completed = Lessons_Completed.objects.filter(lesson_id=lesson_id, user_id=user_id).first()
+        if lesson_completed:
+            return lesson_completed.lesson_completed
+        return None
+    
+    def get_attempts(self, obj):
+        lesson_id = obj.lesson_id
+        user_id = obj.user_id
+        lesson_completed = Lessons_Completed.objects.filter(lesson_id=lesson_id, user_id=user_id).first()
+        if lesson_completed:
+            return lesson_completed.attempts
+        return None
+
+    def get_lesson_grade(self, obj):
+        lesson_id = obj.lesson_id
+        user_id = obj.user_id
+        lesson_completed = Lessons_Completed.objects.filter(lesson_id=lesson_id, user_id=user_id).first()
+        if lesson_completed:
+            return lesson_completed.lesson_grade
+        return None
+    
+
 class LessonSerializer(serializers.ModelSerializer):
     number_of_lessons = serializers.SerializerMethodField()
     class Meta:
