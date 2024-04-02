@@ -1,4 +1,3 @@
-import Progress from './ProgressPage'
 import '../styles/App.css';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'

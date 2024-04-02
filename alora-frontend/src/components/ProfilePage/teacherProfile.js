@@ -1,6 +1,6 @@
-
 import React, { useState } from 'react';
 import ProfileImage from '../../images/Teacher_Icon.png';
+import { logout } from '../../redux/actions/accountActions'
 
 // hard code the content display for now
 // CHANGE PASSWORD
@@ -29,7 +29,6 @@ export default function TeacherProfile() {
         setShowSavedMessage(false); //save message disappears when input fields are editted
         setInputValue(e.target.value);
     };
-
 
     return(
 
@@ -86,7 +85,7 @@ export default function TeacherProfile() {
                     id="Password"
                     placeholder="****************"
                     value="****************"
-                    readonly
+                    readOnly=""
                     className="w-full py-2 px-4 border-4 rounded-3xl border-neutral-400/60"
                     />
                     

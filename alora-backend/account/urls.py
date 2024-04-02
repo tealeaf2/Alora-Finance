@@ -8,13 +8,4 @@ urlpatterns = [
 
     path('users/', views.getUsers, name='users'),
     path('users/register/', views.registerUser, name='register'),
-    # path('units/', getAllUnits, name='all-units'),
-    # path('units/<int:uk>', getUnit, name='unit'),
-
-    # path('lessons/', getAllLessons, name='all-lessons'),
-    # path('units/<int:uk>/lessons/<int:lk>', getLesson, name='lesson'),
-
-    # path('units/<int:uk>/name', name_list),
-    
-    # path('progress', getAllProgress, name='progress'),
 ]

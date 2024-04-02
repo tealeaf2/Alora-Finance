@@ -6,17 +6,17 @@ import { listTreeName, updateTreeName } from "../redux/actions/treeActions";
 
 export const NameInput = () => {
     const [tempName, setTempName] = useState("");
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
-    const treeName = useSelector((state) => state.treeName);
-    const { treeNameGet } = treeName;
+    // const treeNames = useSelector((state) => state.treeNames);
+    // const { treeNameGet } = treeNames;
 
     // const name = treeNameGet.name;
     const name = 'Tim'
 
-    useEffect(() => {
-        dispatch(listTreeName(1));
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(listTreeName());
+    // }, [dispatch]);
 
     const handleName = (e) => {
         setTempName(e.target.value);
@@ -24,7 +24,7 @@ export const NameInput = () => {
 
     return (
         <>
-            {name ? (
+            {/* {name ? (
                 <div style={{ fontSize: "30px", color: "#68b17e" }}>{name}</div>
             ) : (
                 <form>
@@ -40,15 +40,15 @@ export const NameInput = () => {
                         type="button"
                         onClick={() => {
                             if (tempName !== "") {
-                                dispatch(updateTreeName(1, { name: tempName }));
-                                dispatch(listTreeName(1));
+                                // dispatch(updateTreeName(1, { name: tempName }));
+                                // dispatch(listTreeName(1));
                             }
                         }}
                     >
                         Submit
                     </button>
                 </form>
-            )}
+            )} */}
         </>
     );
 };

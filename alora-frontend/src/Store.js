@@ -6,9 +6,11 @@ import { lessonListReducer,
         lessonDetailsReducer 
 } from './redux/reducers/lessonReducers'
 
-import { quizListReducer } from './redux/reducers/quizReducers'
+import { quizListReducer,
+        quizUpdateReducer,
+} from './redux/reducers/quizReducers'
 
-import { listTreeNameReducer,
+import { listTreeNamesReducer,
         updateTreeNameReducer
 } from './redux/reducers/treeReducers';
 
@@ -27,8 +29,9 @@ const reducer = combineReducers({
     lessonDetails: lessonDetailsReducer,
 
     quizList: quizListReducer,
+    quizUpdate: quizUpdateReducer,
 
-    treeName: listTreeNameReducer,
+    treeNames: listTreeNamesReducer,
     treeNameUpdate: updateTreeNameReducer,
 
     accountLogin: accountLoginReducer,

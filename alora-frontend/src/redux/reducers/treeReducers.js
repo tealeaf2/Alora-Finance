@@ -7,12 +7,12 @@ import {
     NAME_DETAIL_FAILURE
 } from '../constants/treeConstants'; 
 
-export const listTreeNameReducer = (state = { treeNameGet: { 'name': null } }, action) => {
+export const listTreeNamesReducer = (state = { treeNameGet: [] }, action) => {
     switch (action.type) {
         // When a request looking for name
         case NAME_DETAIL_REQUEST:
             // return state s.t. request is loading and returns name dict with null value
-            return { loading: true, treeNameGet: { 'name': null } }
+            return { loading: true, treeNameGet: [] }
 
         // When the NAME list request is successful
         case NAME_DETAIL_SUCCESS:

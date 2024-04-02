@@ -1,10 +1,9 @@
-import Header from '../global/Header';
-import GameChoice from '../components/gameChoice'
+import Header from '../../global/Header';
+import GameChoice from '../../components/gameChoice'
 
 import React, { useState , useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
 
 export default function Games() {
 
@@ -16,7 +15,7 @@ export default function Games() {
     const { error, loading, accountInfo } = accountLogin;
 
     useEffect(() => {
-        if (!accountInfo) {
+        if (!accountInfo || accountInfo.account_type !== 'S') {
             history(redirect);
         }
     }, [accountInfo, redirect, history]);

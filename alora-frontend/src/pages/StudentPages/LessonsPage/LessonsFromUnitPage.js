@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import Header from '../../global/Header'
+import Header from '../../../global/Header'
 import TopicsDisplay from './TopicsDisplay'
-import { listLessons } from '../../redux/actions/lessonActions'
+import { listLessons } from '../../../redux/actions/lessonActions'
 
 function LessonsFromUnitPage() {
     // const [lessons, setLessons] = useState([])
