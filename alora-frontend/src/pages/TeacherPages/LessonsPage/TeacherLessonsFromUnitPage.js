@@ -1,11 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom'
 import Header from '../../../global/Header'
 import TopicsDisplay from './TeacherTopicsDisplay'
 import { listLessons } from '../../../redux/actions/lessonActions'
 
 function LessonsFromUnitPage() {
+
+    const location = useLocation();
+    const history = useNavigate();
+    const redirect = location.search ? location.search.split('=')[1] : '/login';
+    const accountLogin = useSelector(state => state.accountLogin);
+    const { error_, loading_, accountInfo } = accountLogin;
+
     // const [lessons, setLessons] = useState([])
     const dispatch = useDispatch()
     const { uid, uname, urid } = useParams()
@@ -13,9 +21,16 @@ function LessonsFromUnitPage() {
     const { error, loading, lessons } = lessonList
 
     useEffect(() => {
+        if (!accountInfo){
+            history(redirect)
+        }
+        else if (accountInfo && accountInfo.account_type !== 'T') {
+        history(redirect)
+        }
+
         dispatch(listLessons(urid))
 
-    }, [dispatch, urid])
+    }, [dispatch, urid, accountInfo, redirect, history])
 
     return (
         <>

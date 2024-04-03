@@ -30,6 +30,7 @@ export default function StudentProfile() {
 
     const accountDetails = useSelector(state => state.accountDetails)
     const { error, loading, account } = accountDetails
+
     // get account info from state
     const accountLogin = useSelector(state => state.accountLogin);
     const { accountInfo } = accountLogin
@@ -41,10 +42,12 @@ export default function StudentProfile() {
     const dispatch = useDispatch()
 
 
-    useEffect(() => {
-        // console.log(accountInfo);
-        // console.log(account)
-        // set info
+    useEffect(() => {   
+        if (!accountInfo || accountInfo.account_type !== 'S') {
+            history(redirect);
+        }
+
+
         try {
 
             if (!account || !account.email || success || accountInfo._id !== account._id) {
@@ -66,9 +69,7 @@ export default function StudentProfile() {
         catch(err) {
         }
         // redirect to home if not logged in
-        if (!accountInfo || accountInfo.account_type !== 'S') {
-            history(redirect);
-          }
+        
 
         }, [dispatch, history, accountInfo, account, success, redirect])
 

@@ -1,12 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState , useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useLocation, useNavigate } from 'react-router-dom'
 import TopicsDisplay from './TopicsDisplay';
 // import '../styles/index.css';
 import Header from '../../../global/Header';
 import { listUnits } from '../../../redux/actions/unitActions';
 
 export default function UnitsFromTopicPage({ topic }) {
+    const location = useLocation();
+    const history = useNavigate();
+    const redirect = location.search ? location.search.split('=')[1] : '/login';
+    const accountLogin = useSelector(state => state.accountLogin);
+    const { _error, _loading, accountInfo } = accountLogin;
+
     const dispatch = useDispatch();
     const { tid, tname } = useParams()
     const unitList = useSelector(state => state.unitList);
@@ -15,6 +21,15 @@ export default function UnitsFromTopicPage({ topic }) {
     useEffect(() => {
         dispatch(listUnits(tid));
     }, [dispatch, tid]);
+
+    useEffect(() => {
+        if (!accountInfo || accountInfo.account_type !== 'S') {
+            history(redirect);
+        }
+        
+        dispatch(listUnits(tid));
+
+    }, [dispatch, tid, accountInfo, redirect, history])
 
     return (
         <>
