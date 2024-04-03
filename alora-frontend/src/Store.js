@@ -3,7 +3,10 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { topicListReducer } from './redux/reducers/topicReducers'
 import { unitListReducer } from './redux/reducers/unitReducers'
 import { lessonListReducer,
-        lessonDetailsReducer 
+        lessonDetailsReducer,
+        assignLessonReducer,
+        deleteLessonReducer,
+        teacherClassIDsReducer,
 } from './redux/reducers/lessonReducers'
 
 import { quizListReducer,
@@ -27,6 +30,9 @@ const reducer = combineReducers({
 
     lessonList: lessonListReducer,
     lessonDetails: lessonDetailsReducer,
+    assignStatus: deleteLessonReducer,
+    assignment: assignLessonReducer,
+    teacherClassIds: teacherClassIDsReducer,
 
     quizList: quizListReducer,
     quizUpdate: quizUpdateReducer,

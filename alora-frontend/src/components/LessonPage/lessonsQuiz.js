@@ -46,6 +46,11 @@ export default function LessonsQuiz({ resetSelectedOptions }) {
     if (quiz && quiz.quiz_content && quiz.quiz_content.length > 0) {
       setAttemptCount(quiz.attempts)
       setScore(quiz.lesson_grade)
+      setAttemptsScores(prevAttemptsScores => {
+        const newAttemptsScores = [...prevAttemptsScores];
+        newAttemptsScores[attemptCount] = score;
+        return newAttemptsScores;
+      });
     }
   }, [quiz])
 
@@ -156,7 +161,7 @@ export default function LessonsQuiz({ resetSelectedOptions }) {
               // Container for Quiz Report
               <div className="flex flex-col w-full items-center justify-center bg-gray-100 bottom-0 max-w-screen-xl mx-auto my-2 min-h-48 rounded-2xl bg-sky-blue text-white text-lg p-7">
                 {/* Score Report */}
-                <div className="font-semibold text-xl">Highest Score: {score}/{questions.length} Correct</div>
+                <div className="font-semibold text-xl">Highest Score: {Math.max(...attemptsScores)}/{questions.length} Correct</div>
                 <div>--------------------</div>
                 {/* Attempts remaining */}
                 <div className="font-semibold">{attemptCount} {attemptCount === 1 ? "attempt" : "attempts"} made. {MAX_NUM_ATTEMPTS - attemptCount} {MAX_NUM_ATTEMPTS - attemptCount === 1 ? "attempt" : "attempts"} remaining!</div>

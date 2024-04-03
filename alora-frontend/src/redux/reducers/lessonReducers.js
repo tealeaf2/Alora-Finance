@@ -4,7 +4,16 @@ import {
     LESSON_LIST_FAILURE,
     LESSON_DETAILS_REQUEST,
     LESSON_DETAILS_SUCCESS,
-    LESSON_DETAILS_FAILURE
+    LESSON_DETAILS_FAILURE,
+    LESSON_ASSIGN_REQUEST,
+    LESSON_ASSIGN_SUCCESS,
+    LESSON_ASSIGN_FAILURE,
+    LESSON_DELETE_REQUEST,
+    LESSON_DELETE_SUCCESS,
+    LESSON_DELETE_FAILURE,
+    TEACHER_IDS_REQUEST,
+    TEACHER_IDS_SUCCESS,
+    TEACHER_IDS_FAILURE,
 } from '../constants/lessonConstants'; 
 
 
@@ -42,6 +51,56 @@ export const lessonDetailsReducer = (state = { lesson: {}}, action) => {
             return { loading: false, lesson: action.payload }
         
         case LESSON_DETAILS_FAILURE:
+            return { loading: false, error: action.payload }
+
+        default:
+            return state
+    }
+}
+
+//////////////////////// TEACHER SIDE ////////////////////////
+
+export const teacherClassIDsReducer = (state = { classIds : [] }, action) => {
+    switch (action.type) {
+        case TEACHER_IDS_REQUEST:
+            return { loading: true, classIds: []}
+        
+        case TEACHER_IDS_SUCCESS:
+            return { loading: false, classIds: action.payload }
+        
+        case TEACHER_IDS_FAILURE:
+            return { loading: false, error: action.payload }
+
+        default:
+            return state
+    }
+}
+
+export const assignLessonReducer = (state = {}, action) => {
+    switch (action.type) {
+        case LESSON_ASSIGN_REQUEST:
+            return { loading: true }
+        
+        case LESSON_ASSIGN_SUCCESS:
+            return { loading: false, assignment: action.payload }
+        
+        case LESSON_ASSIGN_FAILURE:
+            return { loading: false, error: action.payload }
+
+        default:
+            return state
+    }
+}
+
+export const deleteLessonReducer = (state = {}, action) => {
+    switch (action.type) {
+        case LESSON_DELETE_REQUEST:
+            return { loading: true }
+        
+        case LESSON_DELETE_SUCCESS:
+            return { loading: false, assignStatus: action.payload }
+        
+        case LESSON_DELETE_FAILURE:
             return { loading: false, error: action.payload }
 
         default:

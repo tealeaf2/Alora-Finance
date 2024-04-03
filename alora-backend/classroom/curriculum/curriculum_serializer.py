@@ -7,6 +7,11 @@ class UnitSerializer(serializers.ModelSerializer):
         model = Unit
         fields = '__all__'
 
+class ClassRoomSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ClassRoom
+        fields = '__all__'
+
 class QuizSerializer(serializers.ModelSerializer):
     quiz_content = serializers.SerializerMethodField()
     lesson_grade = serializers.SerializerMethodField()
@@ -51,12 +56,19 @@ class QuizSerializer(serializers.ModelSerializer):
 
 class LessonSerializer(serializers.ModelSerializer):
     number_of_lessons = serializers.SerializerMethodField()
+    unit_name = serializers.SerializerMethodField()
     class Meta:
         model = Lesson
         fields = '__all__'
+
     def get_number_of_lessons(self, lesson):
         if lesson.unit_id:
             return lesson.unit_id.number_of_lessons
+        return 0
+    
+    def get_unit_name(self, lesson):
+        if lesson.unit_id:
+            return lesson.unit_id.unit_name
         return 0
 
 class TopicSerializer(serializers.ModelSerializer):

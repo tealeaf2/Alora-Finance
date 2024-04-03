@@ -7,7 +7,6 @@ from rest_framework_simplejwt.tokens import RefreshToken
 class UserSerializer(serializers.ModelSerializer):
     _id = serializers.SerializerMethodField(read_only=True)
     isAdmin = serializers.SerializerMethodField(read_only=True)
-
     class Meta:
         model = Account
         # fields = ['id', '_id', 'username', 'email', 'name', 'isAdmin']
