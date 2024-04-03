@@ -49,7 +49,6 @@ export default function StudentProfile() {
 
 
         try {
-
             if (!account || !account.email || success || accountInfo._id !== account._id) {
                 dispatch({ type: ACCOUNT_UPDATE_PROFILE_RESET })
                 dispatch(getAccountDetails('profile'))
@@ -86,10 +85,10 @@ export default function StudentProfile() {
         e.preventDefault()
         if (password !== confirmPassword) {
             // setMessage('Passwords do not match')
+            console.log('password no match')
             // continue
         } else {
 
-            console.log(account._id, fname, lname, email, password)
             dispatch(updateAccountProfile({
                 'id': account._id,
                 'first_name': fname,
@@ -97,6 +96,7 @@ export default function StudentProfile() {
                 'email': email,
                 'password': password
             }))
+
         }
     }
    
