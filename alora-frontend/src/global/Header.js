@@ -101,7 +101,7 @@ const Header = () => {
                 </ul>
               </div>
             }
-            {accountInfo.account_type === 'T' &&
+            {accountInfo && accountInfo.account_type === 'T' &&
               <div className="flex h-20 items-center justify-between">
                 {/* Alora logo */}
                 <div className="App-header-home flex items-center">
