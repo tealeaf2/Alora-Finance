@@ -55,7 +55,7 @@ export default function Lesson() {
                     <div className="mx-auto w-3/4 lg:w-4/5">
                         <div className="p-8 sm:p-10 bg-gray-100 flex-grow">
                             <LessonVideo lesson={lesson} />
-                            <LessonsQuiz resetSelectedOptions={resetSelectedOptions} />
+                            <LessonsQuiz resetSelectedOptions={resetSelectedOptions} lesson={lesson}/>
                         </div>
                         <div className="p-8 sm:p-10 bg-white">
                             <Footer unit_id={uid} lesson={lesson} setResetSelectedOptions={setResetSelectedOptions} />

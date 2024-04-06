@@ -18,7 +18,7 @@ def getAllLessons(request, uk):
 #Gets a specific lesson from a unit
 @api_view(['GET'])
 def getLesson(request, uk, lk):
-    lesson = get_object_or_404(Lesson, unit_id=uk, lesson_num=lk)
+    lesson = get_object_or_404(Lesson, unit_id__unit_number=uk, lesson_num=lk)
     serializer = LessonSerializer(lesson, many=False)
     return Response(serializer.data)
 

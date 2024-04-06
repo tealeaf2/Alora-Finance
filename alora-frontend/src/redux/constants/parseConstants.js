@@ -1,0 +1,3 @@
+export const PARSE_REQUEST = 'PARSE_REQUEST';
+export const PARSE_SUCCESS = 'PARSE_SUCCESS';
+export const PARSE_FAILURE = 'PARSE_FAILURE';

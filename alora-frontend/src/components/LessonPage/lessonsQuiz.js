@@ -4,12 +4,12 @@ import { useParams, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { listQuizzes, updateQuiz } from '../../redux/actions/quizAction'
 
-export default function LessonsQuiz({ resetSelectedOptions }) {
+export default function LessonsQuiz({ resetSelectedOptions, lesson}) {
   //All of this for fetching the data and intializing the website
   const [current, setCurrent] = useState(0)
   const [questions, setQuestions] = useState([])
   const location = useLocation()
-  const { lid } = useParams()
+  const { uid, lid } = useParams()
   const dispatch = useDispatch()
   const quizList = useSelector(state => state.quizList)
   const accountLogin = useSelector(state => state.accountLogin);
@@ -17,8 +17,8 @@ export default function LessonsQuiz({ resetSelectedOptions }) {
   const { error, loading, quiz } = quizList
 
   useEffect(() => {
-    dispatch(listQuizzes(lid, accountInfo.id))
-  }, [dispatch, lid, accountInfo.id])
+    dispatch(listQuizzes(lesson.id, accountInfo.id))
+  }, [dispatch, lesson.id, accountInfo.id])
   //Derefences quiz and puts in in questions for easier readibility, very inefficient
   useEffect(() => {
     if (quiz && quiz.quiz_content && quiz.quiz_content.length > 0) {

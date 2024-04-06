@@ -23,6 +23,10 @@ import { accountLoginReducer,
         accountUpdateProfileReducer,
 } from './redux/reducers/accountReducers'
 
+import {
+        parseCurriculumReducer
+} from './redux/reducers/parseReducers'
+
 
 const reducer = combineReducers({
     topicList: topicListReducer,
@@ -39,6 +43,8 @@ const reducer = combineReducers({
 
     treeNames: listTreeNamesReducer,
     treeNameUpdate: updateTreeNameReducer,
+
+    parseUpdate: parseCurriculumReducer,
 
     accountLogin: accountLoginReducer,
     accountRegister: accountRegisterReducer,

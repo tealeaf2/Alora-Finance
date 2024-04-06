@@ -28,11 +28,6 @@ def getQuiz(request, lk, user_id):
     except Lessons_Completed.DoesNotExist:
         return Response({'error': 'Lessons_Completed record not found'}, status=status.HTTP_404_NOT_FOUND)
 
-@api_view(['POST'])
-def parseToQuiz():
-    pass
-
-
 @api_view(['PUT'])
 def updateQuizProgress(request, lk, user_id):
     try:
