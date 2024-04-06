@@ -14,7 +14,8 @@ export default function TeacherAssignPage() {
     const [dateAvailable, setDateAvailable] = useState(new Date());
     const [classId, setClassId] = useState(0);
     const [dateDue, setDateDue] = useState(new Date());
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
+    const location = useLocation()
     const history = useNavigate()
     const redirect = location.search ? location.search.split('=')[1] : '/login';
     const { uid, lid } = useParams();
