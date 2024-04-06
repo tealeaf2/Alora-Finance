@@ -14,8 +14,13 @@ function Progress() {
   const accountLogin = useSelector(state => state.accountLogin);
   const { error, loading, accountInfo } = accountLogin;
 
+  console.log("acc info")
+  console.log(accountInfo)
+
 
   useEffect(() => {
+    console.log("in use effet")
+
     if (!accountInfo){
       history(redirect)
     }
@@ -36,7 +41,7 @@ function Progress() {
     >
       <Header />
       <div style={{ marginTop: "auto" }}>
-        <Carousel userId={accountInfo.id}/>
+      {accountInfo && <Carousel userId={accountInfo.id}/>}
       </div>
     </div>
   );

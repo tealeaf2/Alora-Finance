@@ -26,9 +26,11 @@ function LoginPage() {
   const redirectStudent = location.search
     ? location.search.split("=")[1]
     : "/progress";
+
   const redirectTeacher = location.search
     ? location.search.split("=")[1]
     : "/teacher/class";
+    
   const accountLogin = useSelector((state) => state.accountLogin);
   const { error, loading, accountInfo } = accountLogin;
 

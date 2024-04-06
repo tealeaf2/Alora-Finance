@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Header from '../../../global/Header';
 import LessonInformation from '../../../components/TeacherAssignPage/lessonInformation'
 import ButtonAssignLesson from '../../../components/TeacherAssignPage/buttonAssignLesson'
@@ -21,10 +22,13 @@ export default function TeacherAssignPage() {
     const { accountInfo } = accountLogin;
 
     useEffect(() => {
-        if (accountInfo && accountInfo.id && accountInfo.account_type === 'T') {
-            dispatch(listTeacherClassIds(accountInfo.id))
+        if (!accountInfo){
+        history(redirect)
         }
-    }, [dispatch, accountInfo])
+        else if (accountInfo && accountInfo.account_type !== 'T') {
+        history(redirect)
+        }
+    }, [accountInfo, redirect, history])
 
     useEffect(() => {
         if (classIds.length > 0) {

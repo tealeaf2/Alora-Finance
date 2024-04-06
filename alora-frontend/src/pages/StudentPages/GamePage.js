@@ -1,9 +1,8 @@
-import Header from '../../global/Header';
-import GameChoice from '../../components/gameChoice'
-
 import React, { useState , useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import Header from '../../global/Header';
+import GameChoice from '../../components/gameChoice'
 
 export default function Games() {
 

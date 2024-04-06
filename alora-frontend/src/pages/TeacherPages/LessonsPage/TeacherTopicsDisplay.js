@@ -1,17 +1,31 @@
-import React, { useEffect} from 'react';
+import React, { useState, useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 // import '../styles/index.css';
 import { listTopics } from '../../../redux/actions/topicActions';
 
 export default function TopicsDisplay() {
+    const location = useLocation();
+    const history = useNavigate();
+    const redirect = location.search ? location.search.split('=')[1] : '/login';
+    const accountLogin = useSelector(state => state.accountLogin);
+    const { error_, loading_, accountInfo } = accountLogin;
+
     const dispatch = useDispatch();
     const topicList = useSelector(state => state.topicList);
     const { error, loading, topics } = topicList;
 
     useEffect(() => {
+        if (!accountInfo){
+            history(redirect)
+        }
+        else if (accountInfo && accountInfo.account_type !== 'T') {
+            history(redirect)
+        }
+
         dispatch(listTopics());
-    }, [dispatch]);
+    }, [dispatch, accountInfo, redirect, history]);
 
     return (
         <>
