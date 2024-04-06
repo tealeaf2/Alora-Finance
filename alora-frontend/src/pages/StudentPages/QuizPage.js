@@ -22,7 +22,7 @@ export default function Lesson() {
     const history = useNavigate();
     const redirect = location.search ? location.search.split('=')[1] : '/login';
     const accountLogin = useSelector(state => state.accountLogin);
-    const { err, loadng, accountInfo } = accountLogin;
+    const { err, load, accountInfo } = accountLogin
 
 
     const { uid, lid } = useParams()
@@ -38,8 +38,8 @@ export default function Lesson() {
             history(redirect);
         }
 
-        dispatch(listLessonDetails(uid, lid));
-        setResetSelectedOptions(false); // reset the flag after resetting selectedOptions
+        dispatch(listLessonDetails(uid, lid))
+        setResetSelectedOptions(false) // reset the flag after resetting selectedOptions
     }, [dispatch, uid, lid, resetSelectedOptions, accountInfo, redirect, history]);
 
     if (loading) return <div>Loading...</div>;
@@ -55,7 +55,7 @@ export default function Lesson() {
                     <div className="mx-auto w-3/4 lg:w-4/5">
                         <div className="p-8 sm:p-10 bg-gray-100 flex-grow">
                             <LessonVideo lesson={lesson} />
-                            <LessonsQuiz resetSelectedOptions={resetSelectedOptions} />
+                            <LessonsQuiz resetSelectedOptions={resetSelectedOptions} lesson={lesson}/>
                         </div>
                         <div className="p-8 sm:p-10 bg-white">
                             <Footer unit_id={uid} lesson={lesson} setResetSelectedOptions={setResetSelectedOptions} />

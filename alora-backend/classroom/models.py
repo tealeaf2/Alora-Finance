@@ -23,12 +23,12 @@ class User_To_Class(models.Model):
     user_id: If Account is deleted, then User_to_Class doesn't exist
     class_id: If ClassRoom is deleted, then User_to_Class doesn't exist
     '''
-    user_id = models.OneToOneField(Account, on_delete=models.CASCADE, null=True, blank=True)
+    user_id = models.ForeignKey(Account, on_delete=models.PROTECT, null=True, blank=True)
     #Equivalent to course_ID on canvas
-    class_id = models.OneToOneField(ClassRoom, on_delete=models.CASCADE, null=True, blank=True)
+    class_id = models.ForeignKey(ClassRoom, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return self.user_id
+        return f'{self.class_id.class_name}: {self.user_id.email}'
     
 ##################### Curriculum Related Models #####################
 
@@ -153,5 +153,5 @@ class Lesson_Assignment(models.Model):
     attempts_max = models.IntegerField(default=3)
 
     def __str__(self):
-        return f'{self.user_id.first_name}: {self.lesson_id.lesson_name}'
+        return f'{self.lesson_id}: {self.date_due}'
     

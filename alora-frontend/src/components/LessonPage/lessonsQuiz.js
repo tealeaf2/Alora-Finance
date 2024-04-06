@@ -4,12 +4,12 @@ import { useParams, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { listQuizzes, updateQuiz } from '../../redux/actions/quizAction'
 
-export default function LessonsQuiz({ resetSelectedOptions }) {
+export default function LessonsQuiz({ resetSelectedOptions, lesson}) {
   //All of this for fetching the data and intializing the website
   const [current, setCurrent] = useState(0)
   const [questions, setQuestions] = useState([])
   const location = useLocation()
-  const { lid } = useParams()
+  const { uid, lid } = useParams()
   const dispatch = useDispatch()
   const quizList = useSelector(state => state.quizList)
   const accountLogin = useSelector(state => state.accountLogin);
@@ -17,8 +17,8 @@ export default function LessonsQuiz({ resetSelectedOptions }) {
   const { error, loading, quiz } = quizList
 
   useEffect(() => {
-    dispatch(listQuizzes(lid, accountInfo.id))
-  }, [dispatch, lid, accountInfo.id])
+    dispatch(listQuizzes(lesson.id, accountInfo.id))
+  }, [dispatch, lesson.id, accountInfo.id])
   //Derefences quiz and puts in in questions for easier readibility, very inefficient
   useEffect(() => {
     if (quiz && quiz.quiz_content && quiz.quiz_content.length > 0) {
@@ -46,6 +46,11 @@ export default function LessonsQuiz({ resetSelectedOptions }) {
     if (quiz && quiz.quiz_content && quiz.quiz_content.length > 0) {
       setAttemptCount(quiz.attempts)
       setScore(quiz.lesson_grade)
+      setAttemptsScores(prevAttemptsScores => {
+        const newAttemptsScores = [...prevAttemptsScores];
+        newAttemptsScores[attemptCount] = score;
+        return newAttemptsScores;
+      });
     }
   }, [quiz])
 
@@ -156,7 +161,7 @@ export default function LessonsQuiz({ resetSelectedOptions }) {
               // Container for Quiz Report
               <div className="flex flex-col w-full items-center justify-center bg-gray-100 bottom-0 max-w-screen-xl mx-auto my-2 min-h-48 rounded-2xl bg-sky-blue text-white text-lg p-7">
                 {/* Score Report */}
-                <div className="font-semibold text-xl">Highest Score: {score}/{questions.length} Correct</div>
+                <div className="font-semibold text-xl">Highest Score: {Math.max(...attemptsScores)}/{questions.length} Correct</div>
                 <div>--------------------</div>
                 {/* Attempts remaining */}
                 <div className="font-semibold">{attemptCount} {attemptCount === 1 ? "attempt" : "attempts"} made. {MAX_NUM_ATTEMPTS - attemptCount} {MAX_NUM_ATTEMPTS - attemptCount === 1 ? "attempt" : "attempts"} remaining!</div>

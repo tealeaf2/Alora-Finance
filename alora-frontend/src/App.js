@@ -21,6 +21,8 @@ import TeacherUnitsFromTopicPage from "./pages/TeacherPages/LessonsPage/TeacherU
 import TeacherLessonsFromUnitPage from "./pages/TeacherPages/LessonsPage/TeacherLessonsFromUnitPage";
 import TeacherAssignPage from "./pages/TeacherPages/LessonsPage/TeacherAssignPage";
 
+import Parser from "./pages/Parser"
+
 export default function App() {
 
  return (
@@ -46,6 +48,8 @@ export default function App() {
          <Route path='/teacher/lessons/topic/:tid/:tname' element={<TeacherUnitsFromTopicPage/>} />
          <Route path='/teacher/lessons/topic/unit/:uid/:uname/:urid' element={<TeacherLessonsFromUnitPage/>} />
          <Route path='/teacher/lesson/:uid/:lid/assign' element={<TeacherAssignPage/>} />
+
+         <Route path='/run/parser' element={<Parser/>} />
        </Routes>
      </Router>
    </>

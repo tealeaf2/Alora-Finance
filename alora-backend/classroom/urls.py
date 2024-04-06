@@ -4,6 +4,7 @@ from classroom.curriculum.views.topic_views import *
 from classroom.curriculum.views.unit_views import *
 from classroom.curriculum.views.quiz_views import *
 from classroom.curriculum.views.progress_views import *
+from classroom.curriculum.views.quiz_parser import *
 
 #Need to change everything here from units to topics, and change a lot lol
 urlpatterns = [
@@ -20,16 +21,16 @@ urlpatterns = [
 
     ################# For Parsing Quiz #################
 
-    path('parse-quiz-file/', parseToQuiz, name='parsing-quizzes-from-csv'),
+    path('parse-quiz-file/', parseCurriculum, name='parsing-quizzes-from-csv'),
 
     ################# For Progress Page #################
 
     path('user/student/progress/', getProgressOfStudent, name='progress-of-student-on-trees'),
-    path('user/student/<int:user_id>/progress/<int:topic_id>', updateTreeOfTopicTree, name='update-name-of-topic-tree'),
+    path('user/student/<int:user_id>/progress/<int:topic_id>/', updateTreeOfTopicTree, name='update-name-of-topic-tree'),
 
-    # path('units/<int:uk>/name', name_list),
-    
-    # path('user/progress', getProgress, name='progress'),
-    # path('topics/', getAllTopics, name='all-topics'),
-    # path('topics/<int:topic_id>/units/', getUnitsForTopic, name='get_units_for_topic'),
+    ################# For Teacher Pages #################
+
+    path('teacher/assign-lesson/<int:lk>/', assignLesson, name='teacher-assigning-lesson'),
+    path('teacher/delete-lesson/<int:lk>/', deleteLesson, name='teacher-delete-lesson'),
+    path('teacher/class-ids/user/<int:user_id>/', getAllTeacherClasses, name='all-teacher-class-id'),
 ]
