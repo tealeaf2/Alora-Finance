@@ -188,7 +188,7 @@ STATIC_URL = 'static/'
 MEDIA_URL = '/icons/'
 
 #this is to let backend know that the static folder exists in backend
-STATICFILES_DIR = [
+STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 

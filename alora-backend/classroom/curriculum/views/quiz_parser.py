@@ -14,6 +14,10 @@ import re
 BASE_DIR = settings.BASE_DIR
 file_name = os.path.join(BASE_DIR, 'classroom', "Alora_Finance.csv")
 
+#TODO
+def quiz_update_for_user(request):
+    pass
+
 def get_correct_option(correct_answer):
     """Helper function to map correct_answer to correct_option (1-4)."""
     if correct_answer in ['A', 'T']:

@@ -14,6 +14,9 @@ def getAllLessons(request, uk):
     serializer = LessonSerializer(lessons, many=True)
     return Response(serializer.data)
 
+#TODO
+def getAllDueLessons(request):
+    pass
 
 #Gets a specific lesson from a unit
 @api_view(['GET'])
